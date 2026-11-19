@@ -74,3 +74,89 @@ export function rawColorScales(combination: Record<string, TokenEntry>): RawScal
       .map((id) => ({ id, step: id.split('.').pop() ?? id })),
   })).filter((scale) => scale.steps.length > 0);
 }
+
+export interface DimensionValue {
+  value: number;
+  unit: string;
+}
+
+export interface TypographyValue {
+  fontFamily: string[];
+  fontSize: DimensionValue;
+  fontWeight: number;
+  lineHeight: DimensionValue;
+  letterSpacing: DimensionValue;
+}
+
+export interface DimensionToken {
+  id: string;
+  description: string;
+  value: DimensionValue;
+}
+
+export interface TypographyToken {
+  id: string;
+  description: string;
+  value: TypographyValue;
+}
+
+export const SPACE_GROUPS = [
+  { key: 'inline', label: 'Inline' },
+  { key: 'stack', label: 'Stack' },
+  { key: 'inset', label: 'Inset' },
+] as const;
+
+const RADIUS_ORDER = ['none', 'control', 'surface', 'pill'];
+const TYPOGRAPHY_ORDER = ['display.lg', 'heading.md', 'body.md', 'body.sm', 'label.md', 'code.md'];
+
+export function formatDimension(value: DimensionValue): string {
+  return `${value.value}${value.unit}`;
+}
+
+export function spaceGroups(combination: Record<string, TokenEntry>) {
+  return SPACE_GROUPS.map((group) => ({
+    ...group,
+    tokens: Object.keys(combination)
+      .filter((id) => id.startsWith(`semantic.space.${group.key}.`))
+      .sort(naturalSort)
+      .map<DimensionToken>((id) => ({
+        id,
+        description: combination[id].$description ?? '',
+        value: combination[id].$value as DimensionValue,
+      })),
+  })).filter((group) => group.tokens.length > 0);
+}
+
+export function radiusTokens(combination: Record<string, TokenEntry>): DimensionToken[] {
+  return Object.keys(combination)
+    .filter((id) => id.startsWith('semantic.radius.'))
+    .sort((a, b) => {
+      const rank = (id: string) => {
+        const index = RADIUS_ORDER.indexOf(id.split('.').pop() ?? '');
+        return index === -1 ? RADIUS_ORDER.length : index;
+      };
+      return rank(a) - rank(b) || naturalSort(a, b);
+    })
+    .map((id) => ({
+      id,
+      description: combination[id].$description ?? '',
+      value: combination[id].$value as DimensionValue,
+    }));
+}
+
+export function typographyTokens(combination: Record<string, TokenEntry>): TypographyToken[] {
+  return Object.keys(combination)
+    .filter((id) => id.startsWith('semantic.text.'))
+    .sort((a, b) => {
+      const rank = (id: string) => {
+        const index = TYPOGRAPHY_ORDER.indexOf(id.replace('semantic.text.', ''));
+        return index === -1 ? TYPOGRAPHY_ORDER.length : index;
+      };
+      return rank(a) - rank(b) || naturalSort(a, b);
+    })
+    .map((id) => ({
+      id,
+      description: combination[id].$description ?? '',
+      value: combination[id].$value as TypographyValue,
+    }));
+}

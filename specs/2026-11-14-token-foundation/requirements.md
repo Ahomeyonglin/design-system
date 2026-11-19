@@ -38,6 +38,7 @@ token 目前只存在于文档描述里，没有源文件、没有产物、没�
 | D19 | 语义颜色角色 | Background / Text / Border / Action / Status 五组共 32 个，亮色默认映射见下文；暗色映射在 P3 由 theme 覆盖 |
 | D20 | 透明 token | 新增 `raw.color.transparent`（alpha 0），供 `action.ghost.bg` 与 `action.ghost.border` 使用，避免在语义层写字面量 |
 | D21 | 主题文件结构 | `semantic.tokens.json` 的默认值即亮色；`themes/light.tokens.json` 只声明 light context、不重复 alias；`themes/dark.tokens.json` 只覆盖与亮色不同的 26 个颜色角色 |
+| D22 | 页面范围调整 | `/color` 同一页增加 space / radius / typography 区块；语义项展示并可复制变量名，raw 色阶仍默认折叠 |
 
 间距映射（D12）：
 
@@ -255,7 +256,7 @@ raw / semantic / brand / theme / resolver 五部分齐备，职责不重叠。�
 
 ### R5 Color 页
 
-展示全部语义色，值从解析结果读取；支持切换 light / dark；可一键复制变量名。单品牌下不渲染品牌切换器，但品牌状态仍参与解析。
+展示全部语义色，以及 space / radius / typography 区块；值从解析结果读取；支持切换 light / dark；可一键复制变量名。单品牌下不渲染品牌切换器，但品牌状态仍参与解析。
 
 **验收**：页面源码中 `grep` 不到 hex；切换 theme 后色块与变量名同步变化；复制得到的是变量名而非色值（如 `--semantic-color-bg-surface`）；页面无品牌切换入口。
 
@@ -273,15 +274,15 @@ resolver 声明哪些品牌支持哪些 theme。单品牌（light + dark）是 S
 
 ### R8 Color 页信息架构
 
-页面自上而下三段：语义色（按用途分组）→ 语义组合预览 → 原始色阶（折叠）。
+页面自上而下：语义色（按用途分组）→ 语义组合预览 → 间距 → 圆角 → 排版 → 原始色阶（折叠）。
 
 - 语义色分组固定为 Background / Text / Border / Action / Status，不按色相分组
 - 有状态变体的 token 按状态并列展示（如 `bg` / `bg-hover` / `bg-pressed`），无变体的只显示默认态
 - 组合预览用 token 驱动的静态预览块实现；S1 没有组件，不使用组件实例
+- 间距 / 圆角 / 排版只展示语义项，按用途分组；语义项可复制变量名
 - 原始色阶默认收起，不提供复制按钮
-- 非颜色 token 不在本页出现
 
-**验收**：分组与固定清单一致；状态行与产物中的 token 一一对应，不多不少；组合预览随 theme 切换重绘且无组件依赖；原始色阶默认不可见且无复制入口；页面中找不到非颜色 token。
+**验收**：分组与固定清单一致；状态行与产物中的 token 一一对应，不多不少；组合预览随 theme 切换重绘且无组件依赖；space / radius / typography 区块存在且值来自产物；原始色阶默认不可见且无复制入口。
 
 ### R9 非颜色基线
 

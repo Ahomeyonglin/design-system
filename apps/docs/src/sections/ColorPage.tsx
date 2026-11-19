@@ -1,10 +1,14 @@
 import { type CSSProperties, useEffect, useMemo, useState } from 'react';
 import {
   cssVar,
+  formatDimension,
   getCombination,
+  radiusTokens,
   rawColorScales,
   semanticGroups,
+  spaceGroups,
   tokens,
+  typographyTokens,
 } from '../lib/tokens';
 import './color.css';
 
@@ -34,6 +38,9 @@ export default function ColorPage() {
   const combination = useMemo(() => getCombination(theme, brand), [theme, brand]);
   const groups = useMemo(() => semanticGroups(combination), [combination]);
   const scales = useMemo(() => rawColorScales(combination), [combination]);
+  const spacing = useMemo(() => spaceGroups(combination), [combination]);
+  const radii = useMemo(() => radiusTokens(combination), [combination]);
+  const typography = useMemo(() => typographyTokens(combination), [combination]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -55,7 +62,7 @@ export default function ColorPage() {
         <div>
           <h1>颜色</h1>
           <p className="page__lead">
-            语义色与原始色阶。点击“复制变量名”只会复制 CSS 变量名。
+            语义色、间距、圆角与排版，原始色阶折叠在页尾。点击“复制变量名”只会复制 CSS 变量名。
           </p>
         </div>
         <div className="theme-switch" role="group" aria-label="主题">
@@ -143,6 +150,112 @@ export default function ColorPage() {
               <span className="demo-border demo-border--strong">Strong</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="spacing">
+        <h2 id="spacing">间距</h2>
+        <div className="groups">
+          {spacing.map((group) => (
+            <div key={group.key} className="group">
+              <h3>{group.label}</h3>
+              <ul className="token-list">
+                {group.tokens.map((token) => (
+                  <li key={token.id} className="token-row">
+                    <span
+                      className={`space-demo${group.key === 'inset' ? ' space-demo--inset' : ''}`}
+                      style={{ '--space': `var(${cssVar(token.id)})` } as CSSProperties}
+                    >
+                      <i className="space-demo__block" />
+                      <i className="space-demo__block" />
+                    </span>
+                    <span className="token-row__meta">
+                      <code>{token.id}</code>
+                      <span className="token-row__desc">
+                        {formatDimension(token.value)} · {token.description}
+                      </span>
+                    </span>
+                    <button
+                      type="button"
+                      className="copy-button"
+                      onClick={() => copyName(token.id)}
+                    >
+                      {copied === token.id ? '已复制' : '复制变量名'}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="radius">
+        <h2 id="radius">圆角</h2>
+        <div className="group">
+          <ul className="token-list">
+            {radii.map((token) => (
+              <li key={token.id} className="token-row">
+                <span
+                  className="radius-demo"
+                  style={{ '--radius': `var(${cssVar(token.id)})` } as CSSProperties}
+                />
+                <span className="token-row__meta">
+                  <code>{token.id}</code>
+                  <span className="token-row__desc">
+                    {formatDimension(token.value)} · {token.description}
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  className="copy-button"
+                  onClick={() => copyName(token.id)}
+                >
+                  {copied === token.id ? '已复制' : '复制变量名'}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="typography">
+        <h2 id="typography">排版</h2>
+        <div className="group">
+          <ul className="token-list">
+            {typography.map((token) => (
+              <li key={token.id} className="token-row">
+                <span
+                  className="type-demo"
+                  style={
+                    {
+                      '--type-family': `var(${cssVar(token.id)}-font-family)`,
+                      '--type-size': `var(${cssVar(token.id)}-font-size)`,
+                      '--type-weight': `var(${cssVar(token.id)}-font-weight)`,
+                      '--type-line-height': `var(${cssVar(token.id)}-line-height)`,
+                      '--type-letter-spacing': `var(${cssVar(token.id)}-letter-spacing)`,
+                    } as CSSProperties
+                  }
+                >
+                  Design System 设计系统 0123
+                </span>
+                <span className="token-row__meta">
+                  <code>{token.id}</code>
+                  <span className="token-row__desc">
+                    {formatDimension(token.value.fontSize)} / {formatDimension(token.value.lineHeight)} ·{' '}
+                    {token.description}
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  className="copy-button"
+                  onClick={() => copyName(token.id)}
+                >
+                  {copied === token.id ? '已复制' : '复制变量名'}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

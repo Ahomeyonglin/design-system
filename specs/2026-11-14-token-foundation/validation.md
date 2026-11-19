@@ -15,7 +15,7 @@
 | V6 | 构建可重复 | 连续构建两次并比对 | 产物字节一致 |
 | V16 | 命名分层 | `src/**` 中检索 token 路径 | 全部以 `raw` / `semantic` 开头，无 `comp` |
 | V17 | raw 变量隔离 | 检查 `dist/**/*.css` 与组件源码 | 主题 CSS 同时含 `--raw-*` / `--semantic-*`；品牌 CSS 只含 `--raw-color-brand-*`；组件源码无 `--raw-*` 引用 |
-| V18 | 非颜色产物 | 检查 CSS 与 JSON | space / text / radius 均存在，Color 页不出现 |
+| V18 | 非颜色产物 | 检查 CSS、JSON 与 Color 页 | space / text / radius 均存在；Color 页有对应区块且值来自产物 |
 
 ## 2. 人工验收
 
@@ -53,7 +53,7 @@
 | V15 | 切 Light / Dark 后组合预览与色卡整块变化 | 2026-11-19 | 通过 |
 | V16 | 测试断言 token id 仅以 raw / semantic 开头，无 comp | 2026-11-19 | 通过 |
 | V17 | 测试断言主题 CSS 含两类变量，品牌 CSS 仅 `--raw-color-brand-*` | 2026-11-19 | 通过 |
-| V18 | 测试断言 CSS / JSON 含 space / text / radius；Color 页只渲染颜色 | 2026-11-19 | 通过 |
+| V18 | 测试断言 CSS / JSON 含 space / text / radius；Color 页新增三个区块，浏览器验证 12 + 4 + 6 行 | 2026-11-19 | 通过 |
 | V19 | 无状态变体（D10）；语义色 32 个对应 32 行 | 2026-11-19 | 通过 |
 
 ## 4. 未通过的处理
