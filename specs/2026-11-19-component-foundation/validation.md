@@ -1,6 +1,6 @@
 # Validation — Component Foundation
 
-> 对应规格：`requirements.md` · 状态：V1–V25 已完成（V23–V25 为 CI 等价本地模拟，远程 CI 待首个 PR 触发）· 创建 2026-11-19
+> 对应规格：`requirements.md` · 状态：V1–V25 已完成（V23–V24 的拦截能力为本地模拟，CI 接入与正常流程已由 PR #1 验证）· 创建 2026-11-19
 > 规则：每一项必须有可复现的证据（命令输出、截图、URL），不接受「看起来没问题」。
 
 ## 1. 自动化检查
@@ -69,9 +69,9 @@
 | V20 | 浏览器：禁用按钮 `disabled=true`；禁用输入框 `disabled=true` 且 focus 不落焦 | 2026-11-19 | 通过 |
 | V21 | 浏览器：label `for` 与 input `id` 一致；`aria-invalid="true"`；`aria-describedby` 指向说明 / 错误文案 | 2026-11-19 | 通过 |
 | V22 | 临时 Divider：lint 6 组件通过、typecheck 通过、registry 排序正确；删除后 SHA 回到 `17f51c10…` | 2026-11-19 | 通过 |
-| V23 | 临时 git 仓库：提交篡改后的 registry → 重建后 `git diff --exit-code` 退出 1 | 2026-11-19 | 通过（本地模拟） |
-| V24 | 临时仓库注入 hex 后 lint 退出 1 | 2026-11-19 | 通过（本地模拟） |
-| V25 | 还原后 lint 退出 0；完整 workflow 序列本地全部通过 | 2026-11-19 | 通过（本地模拟） |
+| V23 | 临时 git 仓库模拟：提交篡改后的 registry → 重建后 `git diff --exit-code` 退出 1；PR #1 漂移检查步骤正常通过 | 2026-11-19 | 通过（拦截为本地模拟） |
+| V24 | 临时仓库注入 hex 后 lint 退出 1；PR #1 lint 步骤正常通过 | 2026-11-19 | 通过（拦截为本地模拟） |
+| V25 | PR [#1](https://github.com/Ahomeyonglin/design-system/pull/1) CI 全绿：verify 32s / 30s，含安装、tokens、lint、typecheck、registry 漂移、docs 构建 | 2026-11-19 | 通过（CI） |
 
 ## 5. 未通过的处理
 
