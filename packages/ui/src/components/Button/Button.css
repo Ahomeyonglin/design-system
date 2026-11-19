@@ -1,0 +1,70 @@
+.ds-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-lg);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--semantic-radius-control);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+  cursor: pointer;
+}
+
+.ds-button:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--semantic-color-border-focus);
+  outline-offset: 2px;
+}
+
+.ds-button[data-variant='primary'] {
+  color: var(--semantic-color-action-primary-text);
+  background: var(--semantic-color-action-primary-bg);
+  border-color: var(--semantic-color-action-primary-border);
+}
+
+.ds-button[data-variant='primary']:not(:disabled):hover {
+  background: var(--semantic-color-action-primary-bg-hover);
+  border-color: var(--semantic-color-action-primary-border-hover);
+}
+
+.ds-button[data-variant='primary']:disabled {
+  color: var(--semantic-color-text-disabled);
+  background: var(--semantic-color-action-primary-bg-disabled);
+  border-color: var(--semantic-color-action-primary-border-disabled);
+  cursor: not-allowed;
+}
+
+.ds-button[data-variant='secondary'] {
+  color: var(--semantic-color-action-secondary-text);
+  background: var(--semantic-color-action-secondary-bg);
+  border-color: var(--semantic-color-action-secondary-border);
+}
+
+.ds-button[data-variant='secondary']:not(:disabled):hover {
+  background: var(--semantic-color-action-secondary-bg-hover);
+}
+
+.ds-button[data-variant='secondary']:disabled {
+  color: var(--semantic-color-text-disabled);
+  border-color: var(--semantic-color-action-secondary-border-disabled);
+  cursor: not-allowed;
+}
+
+.ds-button[data-variant='ghost'] {
+  color: var(--semantic-color-action-ghost-text);
+  background: var(--semantic-color-action-ghost-bg);
+  border-color: var(--semantic-color-action-ghost-border);
+}
+
+.ds-button[data-variant='ghost']:not(:disabled):hover {
+  background: var(--semantic-color-action-ghost-bg-hover);
+}
+
+.ds-button[data-variant='ghost']:disabled {
+  color: var(--semantic-color-text-disabled);
+  cursor: not-allowed;
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Text",
+  "category": "text",
+  "$description": "承载排版组合与文字颜色的文本单元，用于标题、正文、标签与代码；不负责布局。",
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"display.lg\" | \"heading.md\" | \"body.md\" | \"body.sm\" | \"label.md\" | \"code.md\"",
+      "required": false,
+      "defaultValue": "\"body.md\"",
+      "description": "对应 semantic.text.* 排版组合。"
+    },
+    {
+      "name": "tone",
+      "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"disabled\"",
+      "required": false,
+      "defaultValue": "\"primary\"",
+      "description": "文字强弱层级。"
+    },
+    {
+      "name": "as",
+      "type": "\"span\" | \"p\" | \"h1\" | \"h2\" | \"h3\"",
+      "required": false,
+      "defaultValue": "\"span\"",
+      "description": "渲染的语义标签。"
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true,
+      "description": "文本内容。"
+    }
+  ],
+  "tokens": [
+    "semantic.color.text.disabled",
+    "semantic.color.text.primary",
+    "semantic.color.text.secondary",
+    "semantic.color.text.tertiary",
+    "semantic.text.body.md",
+    "semantic.text.body.sm",
+    "semantic.text.code.md",
+    "semantic.text.display.lg",
+    "semantic.text.heading.md",
+    "semantic.text.label.md"
+  ]
+}

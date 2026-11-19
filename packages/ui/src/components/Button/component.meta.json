@@ -1,0 +1,64 @@
+{
+  "name": "Button",
+  "category": "action",
+  "$description": "触发操作的按钮，用 primary / secondary / ghost 表达操作优先级。",
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"primary\" | \"secondary\" | \"ghost\"",
+      "required": false,
+      "defaultValue": "\"primary\"",
+      "description": "操作优先级。"
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\"",
+      "required": false,
+      "defaultValue": "\"button\"",
+      "description": "原生按钮类型。"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "禁用态。"
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false,
+      "description": "点击回调。"
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true,
+      "description": "按钮文字。"
+    }
+  ],
+  "tokens": [
+    "semantic.color.action.ghost.bg",
+    "semantic.color.action.ghost.bg-hover",
+    "semantic.color.action.ghost.border",
+    "semantic.color.action.ghost.text",
+    "semantic.color.action.primary.bg",
+    "semantic.color.action.primary.bg-disabled",
+    "semantic.color.action.primary.bg-hover",
+    "semantic.color.action.primary.border",
+    "semantic.color.action.primary.border-disabled",
+    "semantic.color.action.primary.border-hover",
+    "semantic.color.action.primary.text",
+    "semantic.color.action.secondary.bg",
+    "semantic.color.action.secondary.bg-hover",
+    "semantic.color.action.secondary.border",
+    "semantic.color.action.secondary.border-disabled",
+    "semantic.color.action.secondary.text",
+    "semantic.color.border.focus",
+    "semantic.color.text.disabled",
+    "semantic.radius.control",
+    "semantic.space.inset.lg",
+    "semantic.space.inset.sm",
+    "semantic.text.label.md"
+  ]
+}

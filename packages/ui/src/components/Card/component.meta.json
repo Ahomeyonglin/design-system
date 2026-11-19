@@ -1,0 +1,19 @@
+{
+  "name": "Card",
+  "category": "container",
+  "$description": "带描边的容器，用于把相关内容聚合成一个独立区块。",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true,
+      "description": "卡片内容。"
+    }
+  ],
+  "tokens": [
+    "semantic.color.bg.surface",
+    "semantic.color.border.subtle",
+    "semantic.radius.surface",
+    "semantic.space.inset.lg"
+  ]
+}

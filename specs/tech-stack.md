@@ -62,11 +62,11 @@ default/
 - 通用结构：`<层>.<类别>.<分组>.<角色>`；状态是角色段后缀（`bg`、`bg-hover`），默认态不写 `rest`。
 - `raw` 只放色阶与尺度，不出现 UI 用途词：`raw.color.brand.500`、`raw.color.neutral.500`、`raw.space.4`、`raw.text.size.300`、`raw.radius.2`。
 - `semantic` 只表达用途，不出现色相名：`semantic.color.bg.surface`、`semantic.color.action.primary.bg-hover`、`semantic.space.inline.md`、`semantic.text.body.md`、`semantic.radius.none`。
-- `comp`（S2 引入）：`comp.button.bg`。
+- `comp`（按需引入）：`comp.button.bg`；只在组件确有独立调整需求时创建，S2 不建。
 - 数字是序号，不是像素值：`raw.space.4` 的 4 不代表 4px。
 - 状态后缀只在确有视觉差异时创建，不要求每个 token 配齐所有状态。
 - CSS 变量名由 token 路径转换：`.` 换 `-`，前缀保留（`--semantic-color-bg-surface`）。
-- 产物同时输出 `--raw-*` 与 `--semantic-*`（S2 起增加 `--comp-*`）；`--raw-*` 只供品牌文件覆盖，组件与页面禁止消费。
+- 产物同时输出 `--raw-*` 与 `--semantic-*`；`comp` 层 token 只在组件确有独立调整需求时创建（S2 不建），存在时输出 `--comp-*`；`--raw-*` 只供品牌文件覆盖，组件与页面禁止消费。
 - 品牌名不进入 token 路径；跨品牌可变的色阶用 `raw.color.brand.*`，色相名只留给不随品牌变化的调色板。
 - 色阶为 `50–950`，这是本项目的约定，不是规范强制。
 - `$description` 项目内必填，作为 AI 理解用途的唯一线索。

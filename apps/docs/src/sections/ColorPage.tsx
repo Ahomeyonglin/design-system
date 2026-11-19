@@ -1,4 +1,8 @@
 import { type CSSProperties, useEffect, useMemo, useState } from 'react';
+import { Badge } from '@ds/ui/Badge';
+import { Button } from '@ds/ui/Button';
+import { Text } from '@ds/ui/Text';
+import { TextField } from '@ds/ui/TextField';
 import {
   cssVar,
   formatDimension,
@@ -34,6 +38,7 @@ function swatchStyle(id: string): CSSProperties {
 export default function ColorPage() {
   const [{ theme, brand }, setState] = useState(initialState);
   const [copied, setCopied] = useState<string>();
+  const [form, setForm] = useState({ name: '', branch: '' });
 
   const combination = useMemo(() => getCombination(theme, brand), [theme, brand]);
   const groups = useMemo(() => semanticGroups(combination), [combination]);
@@ -116,29 +121,72 @@ export default function ColorPage() {
           <div className="preview__panel">
             <span className="preview__label">Action</span>
             <div className="preview__actions">
-              <span className="demo-button demo-button--primary">Primary</span>
-              <span className="demo-button demo-button--secondary">Secondary</span>
-              <span className="demo-button demo-button--ghost">Ghost</span>
+              <Button>Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button disabled>Disabled</Button>
             </div>
           </div>
 
           <div className="preview__panel">
             <span className="preview__label">Status</span>
-            <div className="preview__statuses">
-              <span className="demo-status demo-status--success">Success</span>
-              <span className="demo-status demo-status--warning">Warning</span>
-              <span className="demo-status demo-status--danger">Danger</span>
-              <span className="demo-status demo-status--info">Info</span>
+            <div className="preview__badges">
+              <Badge>Neutral</Badge>
+              <Badge tone="info">Info</Badge>
+              <Badge tone="success">Success</Badge>
+              <Badge tone="warning">Warning</Badge>
+              <Badge tone="danger">Danger</Badge>
             </div>
           </div>
 
           <div className="preview__panel">
             <span className="preview__label">Text</span>
             <div className="preview__text">
-              <span className="demo-text demo-text--primary">Primary</span>
-              <span className="demo-text demo-text--secondary">Secondary</span>
-              <span className="demo-text demo-text--tertiary">Tertiary</span>
-              <span className="demo-text demo-text--disabled">Disabled</span>
+              <Text as="p" variant="display.lg">
+                Display LG
+              </Text>
+              <Text as="p" variant="heading.md">
+                Heading MD
+              </Text>
+              <Text as="p">Body MD 正文</Text>
+              <Text as="p" variant="body.sm" tone="secondary">
+                Body SM 次要文字
+              </Text>
+              <Text as="p" variant="label.md" tone="tertiary">
+                Label MD
+              </Text>
+              <Text as="p" variant="code.md">
+                semantic.color.bg.surface
+              </Text>
+              <Text as="p" tone="disabled">
+                Disabled 文字
+              </Text>
+            </div>
+          </div>
+
+          <div className="preview__panel">
+            <span className="preview__label">Form</span>
+            <div className="preview__form">
+              <TextField
+                label="项目名称"
+                description="用于列表与导出文件名。"
+                placeholder="例如 design-system"
+                value={form.name}
+                onChange={(name) => setForm((current) => ({ ...current, name }))}
+              />
+              <TextField
+                label="分支名"
+                error="只能包含小写字母、数字与连字符。"
+                value={form.branch}
+                onChange={(branch) => setForm((current) => ({ ...current, branch }))}
+              />
+              <TextField
+                label="组织 ID"
+                description="由管理员分配，不可修改。"
+                value="ds-core"
+                onChange={() => {}}
+                disabled
+              />
             </div>
           </div>
 

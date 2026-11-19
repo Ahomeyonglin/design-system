@@ -52,20 +52,58 @@
         "strong": {
           "$value": "{raw.color.neutral.600}",
           "$description": "需要强调的边框。"
+        },
+        "focus": {
+          "$value": "{raw.color.brand.300}",
+          "$description": "焦点指示，用于 outline。"
+        },
+        "invalid": {
+          "$value": "{raw.color.danger.200}",
+          "$description": "校验失败边框。"
         }
       },
       "action": {
+        "primary": {
+          "bg-hover": {
+            "$value": "{raw.color.brand.600}",
+            "$description": "主操作悬停背景。"
+          },
+          "bg-disabled": {
+            "$value": "{raw.color.neutral.800}",
+            "$description": "主操作禁用背景。"
+          },
+          "border-hover": {
+            "$value": "{raw.color.brand.600}",
+            "$description": "主操作悬停边框。"
+          },
+          "border-disabled": {
+            "$value": "{raw.color.neutral.800}",
+            "$description": "主操作禁用边框。"
+          }
+        },
         "secondary": {
           "bg": {
             "$value": "{raw.color.neutral.900}",
             "$description": "次操作背景。"
           },
+          "bg-hover": {
+            "$value": "{raw.color.neutral.800}",
+            "$description": "次操作悬停背景。"
+          },
           "text": {
             "$value": "{raw.color.brand.300}",
             "$description": "次操作文字。"
+          },
+          "border-disabled": {
+            "$value": "{raw.color.neutral.700}",
+            "$description": "次操作禁用边框。"
           }
         },
         "ghost": {
+          "bg-hover": {
+            "$value": "{raw.color.neutral.900}",
+            "$description": "弱操作悬停背景。"
+          },
           "text": {
             "$value": "{raw.color.brand.300}",
             "$description": "弱操作文字。"

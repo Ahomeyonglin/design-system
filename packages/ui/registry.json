@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "src/components/*/component.meta.json",
+  "components": [
+    {
+      "id": "Badge",
+      "name": "Badge",
+      "category": "marker",
+      "importPath": "@ds/ui/Badge",
+      "$description": "用于表达状态或分类的静态标记。",
+      "props": [
+        {
+          "name": "tone",
+          "type": "\"neutral\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
+          "required": false,
+          "defaultValue": "\"neutral\"",
+          "description": "状态语义。"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "标记文字。"
+        }
+      ],
+      "tokens": [
+        "semantic.color.bg.subtle",
+        "semantic.color.border.default",
+        "semantic.color.status.danger.bg",
+        "semantic.color.status.danger.border",
+        "semantic.color.status.danger.text",
+        "semantic.color.status.info.bg",
+        "semantic.color.status.info.border",
+        "semantic.color.status.info.text",
+        "semantic.color.status.success.bg",
+        "semantic.color.status.success.border",
+        "semantic.color.status.success.text",
+        "semantic.color.status.warning.bg",
+        "semantic.color.status.warning.border",
+        "semantic.color.status.warning.text",
+        "semantic.color.text.secondary",
+        "semantic.radius.pill",
+        "semantic.space.inline.sm",
+        "semantic.space.inset.sm",
+        "semantic.text.label.md"
+      ]
+    },
+    {
+      "id": "Button",
+      "name": "Button",
+      "category": "action",
+      "importPath": "@ds/ui/Button",
+      "$description": "触发操作的按钮，用 primary / secondary / ghost 表达操作优先级。",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"primary\" | \"secondary\" | \"ghost\"",
+          "required": false,
+          "defaultValue": "\"primary\"",
+          "description": "操作优先级。"
+        },
+        {
+          "name": "type",
+          "type": "\"button\" | \"submit\" | \"reset\"",
+          "required": false,
+          "defaultValue": "\"button\"",
+          "description": "原生按钮类型。"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "禁用态。"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "description": "点击回调。"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "按钮文字。"
+        }
+      ],
+      "tokens": [
+        "semantic.color.action.ghost.bg",
+        "semantic.color.action.ghost.bg-hover",
+        "semantic.color.action.ghost.border",
+        "semantic.color.action.ghost.text",
+        "semantic.color.action.primary.bg",
+        "semantic.color.action.primary.bg-disabled",
+        "semantic.color.action.primary.bg-hover",
+        "semantic.color.action.primary.border",
+        "semantic.color.action.primary.border-disabled",
+        "semantic.color.action.primary.border-hover",
+        "semantic.color.action.primary.text",
+        "semantic.color.action.secondary.bg",
+        "semantic.color.action.secondary.bg-hover",
+        "semantic.color.action.secondary.border",
+        "semantic.color.action.secondary.border-disabled",
+        "semantic.color.action.secondary.text",
+        "semantic.color.border.focus",
+        "semantic.color.text.disabled",
+        "semantic.radius.control",
+        "semantic.space.inset.lg",
+        "semantic.space.inset.sm",
+        "semantic.text.label.md"
+      ]
+    },
+    {
+      "id": "Card",
+      "name": "Card",
+      "category": "container",
+      "importPath": "@ds/ui/Card",
+      "$description": "带描边的容器，用于把相关内容聚合成一个独立区块。",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "卡片内容。"
+        }
+      ],
+      "tokens": [
+        "semantic.color.bg.surface",
+        "semantic.color.border.subtle",
+        "semantic.radius.surface",
+        "semantic.space.inset.lg"
+      ]
+    },
+    {
+      "id": "Text",
+      "name": "Text",
+      "category": "text",
+      "importPath": "@ds/ui/Text",
+      "$description": "承载排版组合与文字颜色的文本单元，用于标题、正文、标签与代码；不负责布局。",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"display.lg\" | \"heading.md\" | \"body.md\" | \"body.sm\" | \"label.md\" | \"code.md\"",
+          "required": false,
+          "defaultValue": "\"body.md\"",
+          "description": "对应 semantic.text.* 排版组合。"
+        },
+        {
+          "name": "tone",
+          "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"disabled\"",
+          "required": false,
+          "defaultValue": "\"primary\"",
+          "description": "文字强弱层级。"
+        },
+        {
+          "name": "as",
+          "type": "\"span\" | \"p\" | \"h1\" | \"h2\" | \"h3\"",
+          "required": false,
+          "defaultValue": "\"span\"",
+          "description": "渲染的语义标签。"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "文本内容。"
+        }
+      ],
+      "tokens": [
+        "semantic.color.text.disabled",
+        "semantic.color.text.primary",
+        "semantic.color.text.secondary",
+        "semantic.color.text.tertiary",
+        "semantic.text.body.md",
+        "semantic.text.body.sm",
+        "semantic.text.code.md",
+        "semantic.text.display.lg",
+        "semantic.text.heading.md",
+        "semantic.text.label.md"
+      ]
+    },
+    {
+      "id": "TextField",
+      "name": "TextField",
+      "category": "form",
+      "importPath": "@ds/ui/TextField",
+      "$description": "带标签、帮助文本与错误提示的单行输入域，用于表单中的文本采集。",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "description": "标签文字，渲染为 label[for]。"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "帮助文本，error 存在时不显示。"
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false,
+          "description": "错误文案，存在时进入 invalid 状态。"
+        },
+        {
+          "name": "type",
+          "type": "\"text\" | \"password\" | \"email\" | \"number\" | \"search\" | \"tel\" | \"url\"",
+          "required": false,
+          "defaultValue": "\"text\"",
+          "description": "输入类型。"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "受控值。"
+        },
+        {
+          "name": "onChange",
+          "type": "(value: string) => void",
+          "required": true,
+          "description": "值变化回调。"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "占位提示，不能替代标签。"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "禁用态。"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "透传原生 required，不渲染星号。"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "表单字段名。"
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "输入框 id，未传时自动生成。"
+        }
+      ],
+      "tokens": [
+        "semantic.color.bg.subtle",
+        "semantic.color.bg.surface",
+        "semantic.color.border.default",
+        "semantic.color.border.focus",
+        "semantic.color.border.invalid",
+        "semantic.color.status.danger.text",
+        "semantic.color.text.disabled",
+        "semantic.color.text.primary",
+        "semantic.color.text.tertiary",
+        "semantic.radius.control",
+        "semantic.space.inset.md",
+        "semantic.space.inset.sm",
+        "semantic.space.stack.sm",
+        "semantic.text.body.md",
+        "semantic.text.body.sm",
+        "semantic.text.label.md"
+      ]
+    }
+  ]
+}

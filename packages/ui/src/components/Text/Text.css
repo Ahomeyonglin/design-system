@@ -1,0 +1,63 @@
+.ds-text {
+  color: var(--semantic-color-text-primary);
+}
+
+.ds-text[data-tone='secondary'] {
+  color: var(--semantic-color-text-secondary);
+}
+
+.ds-text[data-tone='tertiary'] {
+  color: var(--semantic-color-text-tertiary);
+}
+
+.ds-text[data-tone='disabled'] {
+  color: var(--semantic-color-text-disabled);
+}
+
+.ds-text[data-variant='display.lg'] {
+  font-family: var(--semantic-text-display-lg-font-family);
+  font-size: var(--semantic-text-display-lg-font-size);
+  font-weight: var(--semantic-text-display-lg-font-weight);
+  line-height: var(--semantic-text-display-lg-line-height);
+  letter-spacing: var(--semantic-text-display-lg-letter-spacing);
+}
+
+.ds-text[data-variant='heading.md'] {
+  font-family: var(--semantic-text-heading-md-font-family);
+  font-size: var(--semantic-text-heading-md-font-size);
+  font-weight: var(--semantic-text-heading-md-font-weight);
+  line-height: var(--semantic-text-heading-md-line-height);
+  letter-spacing: var(--semantic-text-heading-md-letter-spacing);
+}
+
+.ds-text[data-variant='body.md'] {
+  font-family: var(--semantic-text-body-md-font-family);
+  font-size: var(--semantic-text-body-md-font-size);
+  font-weight: var(--semantic-text-body-md-font-weight);
+  line-height: var(--semantic-text-body-md-line-height);
+  letter-spacing: var(--semantic-text-body-md-letter-spacing);
+}
+
+.ds-text[data-variant='body.sm'] {
+  font-family: var(--semantic-text-body-sm-font-family);
+  font-size: var(--semantic-text-body-sm-font-size);
+  font-weight: var(--semantic-text-body-sm-font-weight);
+  line-height: var(--semantic-text-body-sm-line-height);
+  letter-spacing: var(--semantic-text-body-sm-letter-spacing);
+}
+
+.ds-text[data-variant='label.md'] {
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+  letter-spacing: var(--semantic-text-label-md-letter-spacing);
+}
+
+.ds-text[data-variant='code.md'] {
+  font-family: var(--semantic-text-code-md-font-family);
+  font-size: var(--semantic-text-code-md-font-size);
+  font-weight: var(--semantic-text-code-md-font-weight);
+  line-height: var(--semantic-text-code-md-line-height);
+  letter-spacing: var(--semantic-text-code-md-letter-spacing);
+}

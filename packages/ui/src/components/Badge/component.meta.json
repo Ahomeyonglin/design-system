@@ -1,0 +1,41 @@
+{
+  "name": "Badge",
+  "category": "marker",
+  "$description": "用于表达状态或分类的静态标记。",
+  "props": [
+    {
+      "name": "tone",
+      "type": "\"neutral\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
+      "required": false,
+      "defaultValue": "\"neutral\"",
+      "description": "状态语义。"
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true,
+      "description": "标记文字。"
+    }
+  ],
+  "tokens": [
+    "semantic.color.bg.subtle",
+    "semantic.color.border.default",
+    "semantic.color.status.danger.bg",
+    "semantic.color.status.danger.border",
+    "semantic.color.status.danger.text",
+    "semantic.color.status.info.bg",
+    "semantic.color.status.info.border",
+    "semantic.color.status.info.text",
+    "semantic.color.status.success.bg",
+    "semantic.color.status.success.border",
+    "semantic.color.status.success.text",
+    "semantic.color.status.warning.bg",
+    "semantic.color.status.warning.border",
+    "semantic.color.status.warning.text",
+    "semantic.color.text.secondary",
+    "semantic.radius.pill",
+    "semantic.space.inline.sm",
+    "semantic.space.inset.sm",
+    "semantic.text.label.md"
+  ]
+}
