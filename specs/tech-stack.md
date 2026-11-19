@@ -51,7 +51,7 @@ default/
 | 位置 | 规则 |
 | --- | --- |
 | `src/**` | 只允许 `oklch()`；出现 hex 视为构建失败 |
-| `dist/**` | 生成 6 位 hex（CSS 回退）+ 原始 oklch（JSON） |
+| `dist/**` | 生成 hex（alpha < 1 用 8 位）+ 原始 oklch（JSON）；CSS 中 semantic 通过 `var(--raw-*)` 引用 |
 | 超 sRGB 色域 | CI 报错，不允许静默裁剪 |
 
 理由：oklch 的 L/C/H 可独立调节，能保证色阶在感知上等距；同时 hex 回退覆盖不支持 oklch 的环境。
@@ -158,7 +158,8 @@ src/components/<PascalCase>/
 
 ## 8. 待确认
 
+文档站样式方案已确认（2026-11-19）：原生 CSS + `--semantic-*` 变量，不引入 Tailwind。
+
 | 问题 | 建议 | 影响面 |
 | --- | --- | --- |
-| 样式方案 | Tailwind v4，用 `@theme` 接 CSS 变量 | 影响组件写法与构建配置 |
 | 分发方式 | 先本地 workspace，暂不发布 npm | 影响是否需要 exports / files / 版本策略 |

@@ -1,0 +1,37 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--semantic-color-bg-page);
+  color: var(--semantic-color-text-primary);
+  font-family: var(--semantic-text-body-md-font-family);
+  font-size: var(--semantic-text-body-md-font-size);
+  font-weight: var(--semantic-text-body-md-font-weight);
+  line-height: var(--semantic-text-body-md-line-height);
+}
+
+.page {
+  padding: var(--semantic-space-inset-xl);
+}
+
+h1 {
+  margin: 0 0 var(--semantic-space-stack-md);
+  font-family: var(--semantic-text-display-lg-font-family);
+  font-size: var(--semantic-text-display-lg-font-size);
+  font-weight: var(--semantic-text-display-lg-font-weight);
+  line-height: var(--semantic-text-display-lg-line-height);
+}
+
+p {
+  margin: 0;
+  color: var(--semantic-color-text-secondary);
+}
+
+.page__link {
+  color: var(--semantic-color-action-ghost-text);
+}

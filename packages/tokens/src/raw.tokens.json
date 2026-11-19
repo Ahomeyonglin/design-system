@@ -1,0 +1,330 @@
+{
+  "raw": {
+    "$description": "原始层：只存放色阶与尺度，不表达 UI 用途。组件与页面禁止直接消费。",
+    "color": {
+      "$type": "color",
+      "$description": "原始颜色层：品牌、中性、状态四套色阶。",
+      "brand": {
+        "$description": "品牌色阶，锚点为 500。品牌文件按同名路径覆盖本组，色相固定 1.33°。",
+        "50": {
+          "$value": { "colorSpace": "oklch", "components": [0.975, 0.013, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 50：最浅一级，用于大面积弱化背景。"
+        },
+        "100": {
+          "$value": { "colorSpace": "oklch", "components": [0.94, 0.0322, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 100：浅色底。"
+        },
+        "200": {
+          "$value": { "colorSpace": "oklch", "components": [0.885, 0.0648, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 200：浅色底与边框的分界。"
+        },
+        "300": {
+          "$value": { "colorSpace": "oklch", "components": [0.8, 0.1229, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 300：浅色强调与边框。"
+        },
+        "400": {
+          "$value": { "colorSpace": "oklch", "components": [0.68, 0.19, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 400：中间浅色，深色模式下的强调色。"
+        },
+        "500": {
+          "$value": { "colorSpace": "oklch", "components": [0.5592, 0.2131, 1.33], "alpha": 1 },
+          "$description": "品牌基色，主操作背景锚点。配白色文字满足 WCAG AA 正文对比度。"
+        },
+        "600": {
+          "$value": { "colorSpace": "oklch", "components": [0.5, 0.2019, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 600：500 的加深一级，用于悬停等强调态。"
+        },
+        "700": {
+          "$value": { "colorSpace": "oklch", "components": [0.435, 0.175, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 700：浅色模式下的品牌文字色。"
+        },
+        "800": {
+          "$value": { "colorSpace": "oklch", "components": [0.36, 0.14, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 800：深色强调。"
+        },
+        "900": {
+          "$value": { "colorSpace": "oklch", "components": [0.29, 0.105, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 900：深色背景。"
+        },
+        "950": {
+          "$value": { "colorSpace": "oklch", "components": [0.225, 0.075, 1.33], "alpha": 1 },
+          "$description": "品牌色阶 950：最深的品牌背景与文字。"
+        }
+      },
+      "neutral": {
+        "$description": "中性灰阶，承载背景、文字与边框。不随品牌变化。",
+        "50": {
+          "$value": { "colorSpace": "oklch", "components": [1, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 50：纯白，亮色模式的页面底色。"
+        },
+        "100": {
+          "$value": { "colorSpace": "oklch", "components": [0.985, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 100：最浅的可见分层。"
+        },
+        "200": {
+          "$value": { "colorSpace": "oklch", "components": [0.965, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 200：弱化背景。"
+        },
+        "300": {
+          "$value": { "colorSpace": "oklch", "components": [0.925, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 300：边框与分隔线。"
+        },
+        "400": {
+          "$value": { "colorSpace": "oklch", "components": [0.82, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 400：较强的边框与占位文字。"
+        },
+        "500": {
+          "$value": { "colorSpace": "oklch", "components": [0.68, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 500：中灰，禁用态文字。"
+        },
+        "600": {
+          "$value": { "colorSpace": "oklch", "components": [0.56, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 600：次要文字。"
+        },
+        "700": {
+          "$value": { "colorSpace": "oklch", "components": [0.445, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 700：正文文字的弱一级。"
+        },
+        "800": {
+          "$value": { "colorSpace": "oklch", "components": [0.31, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 800：主要文字。"
+        },
+        "900": {
+          "$value": { "colorSpace": "oklch", "components": [0.225, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 900：高对比文字与深色背景。"
+        },
+        "950": {
+          "$value": { "colorSpace": "oklch", "components": [0.155, 0, 0], "alpha": 1 },
+          "$description": "中性色阶 950：近黑，暗色模式的页面底色。"
+        }
+      },
+      "transparent": {
+        "$value": { "colorSpace": "oklch", "components": [0, 0, 0], "alpha": 0 },
+        "$description": "完全透明。供 action.ghost 的 bg 与 border 使用，避免在语义层写透明度字面量。"
+      },
+      "success": {
+        "$description": "成功状态色阶，色相 150°。只用于 semantic.status，不新增 action 变体。",
+        "50": {
+          "$value": { "colorSpace": "oklch", "components": [0.97, 0.02, 150], "alpha": 1 },
+          "$description": "成功状态 50：浅色背景。"
+        },
+        "100": {
+          "$value": { "colorSpace": "oklch", "components": [0.94, 0.05, 150], "alpha": 1 },
+          "$description": "成功状态 100：浅色背景的强调一级。"
+        },
+        "200": {
+          "$value": { "colorSpace": "oklch", "components": [0.88, 0.09, 150], "alpha": 1 },
+          "$description": "成功状态 200：边框。"
+        },
+        "700": {
+          "$value": { "colorSpace": "oklch", "components": [0.43, 0.1184, 150], "alpha": 1 },
+          "$description": "成功状态 700：浅色模式文字。"
+        },
+        "950": {
+          "$value": { "colorSpace": "oklch", "components": [0.22, 0.0605, 150], "alpha": 1 },
+          "$description": "成功状态 950：暗色模式背景与深色文字。"
+        }
+      },
+      "warning": {
+        "$description": "警告状态色阶，色相 75°。只用于 semantic.status，不新增 action 变体。",
+        "50": {
+          "$value": { "colorSpace": "oklch", "components": [0.98, 0.0159, 75], "alpha": 1 },
+          "$description": "警告状态 50：浅色背景。"
+        },
+        "100": {
+          "$value": { "colorSpace": "oklch", "components": [0.95, 0.0404, 75], "alpha": 1 },
+          "$description": "警告状态 100：浅色背景的强调一级。"
+        },
+        "200": {
+          "$value": { "colorSpace": "oklch", "components": [0.9, 0.0832, 75], "alpha": 1 },
+          "$description": "警告状态 200：边框。"
+        },
+        "700": {
+          "$value": { "colorSpace": "oklch", "components": [0.5, 0.1054, 75], "alpha": 1 },
+          "$description": "警告状态 700：浅色模式文字。"
+        },
+        "950": {
+          "$value": { "colorSpace": "oklch", "components": [0.25, 0.0527, 75], "alpha": 1 },
+          "$description": "警告状态 950：暗色模式背景与深色文字。"
+        }
+      },
+      "danger": {
+        "$description": "危险状态色阶，色相 27°，与品牌色相 1.33° 区分。只用于 semantic.status，不新增 action 变体。",
+        "50": {
+          "$value": { "colorSpace": "oklch", "components": [0.97, 0.0147, 27], "alpha": 1 },
+          "$description": "危险状态 50：浅色背景。"
+        },
+        "100": {
+          "$value": { "colorSpace": "oklch", "components": [0.94, 0.0301, 27], "alpha": 1 },
+          "$description": "危险状态 100：浅色背景的强调一级。"
+        },
+        "200": {
+          "$value": { "colorSpace": "oklch", "components": [0.88, 0.0634, 27], "alpha": 1 },
+          "$description": "危险状态 200：边框。"
+        },
+        "700": {
+          "$value": { "colorSpace": "oklch", "components": [0.42, 0.1711, 27], "alpha": 1 },
+          "$description": "危险状态 700：浅色模式文字。"
+        },
+        "950": {
+          "$value": { "colorSpace": "oklch", "components": [0.22, 0.08, 27], "alpha": 1 },
+          "$description": "危险状态 950：暗色模式背景与深色文字。"
+        }
+      },
+      "info": {
+        "$description": "信息状态色阶，色相 255°。只用于 semantic.status，不新增 action 变体。",
+        "50": {
+          "$value": { "colorSpace": "oklch", "components": [0.97, 0.0144, 255], "alpha": 1 },
+          "$description": "信息状态 50：浅色背景。"
+        },
+        "100": {
+          "$value": { "colorSpace": "oklch", "components": [0.94, 0.0291, 255], "alpha": 1 },
+          "$description": "信息状态 100：浅色背景的强调一级。"
+        },
+        "200": {
+          "$value": { "colorSpace": "oklch", "components": [0.88, 0.0594, 255], "alpha": 1 },
+          "$description": "信息状态 200：边框。"
+        },
+        "700": {
+          "$value": { "colorSpace": "oklch", "components": [0.45, 0.1481, 255], "alpha": 1 },
+          "$description": "信息状态 700：浅色模式文字。"
+        },
+        "950": {
+          "$value": { "colorSpace": "oklch", "components": [0.23, 0.0757, 255], "alpha": 1 },
+          "$description": "信息状态 950：暗色模式背景与深色文字。"
+        }
+      }
+    },
+    "space": {
+      "$type": "dimension",
+      "$description": "间距尺度，按 100 步进命名。数字只是序号，不代表像素值。",
+      "100": {
+        "$value": { "value": 2, "unit": "px" },
+        "$description": "间距 2px：最小行内间隔。"
+      },
+      "200": {
+        "$value": { "value": 4, "unit": "px" },
+        "$description": "间距 4px：紧凑的行内间隔。"
+      },
+      "300": {
+        "$value": { "value": 8, "unit": "px" },
+        "$description": "间距 8px：常规行内间隔与紧凑内边距。"
+      },
+      "400": {
+        "$value": { "value": 12, "unit": "px" },
+        "$description": "间距 12px：常规内边距。"
+      },
+      "500": {
+        "$value": { "value": 16, "unit": "px" },
+        "$description": "间距 16px：常规块级间隔。"
+      },
+      "600": {
+        "$value": { "value": 24, "unit": "px" },
+        "$description": "间距 24px：宽松块级间隔。"
+      },
+      "700": {
+        "$value": { "value": 32, "unit": "px" },
+        "$description": "间距 32px：区块之间的最大间隔。"
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$description": "圆角尺度，按 100 步进命名。数字只是序号，不代表像素值。",
+      "100": {
+        "$value": { "value": 0, "unit": "px" },
+        "$description": "圆角 0：直角。"
+      },
+      "200": {
+        "$value": { "value": 8, "unit": "px" },
+        "$description": "圆角 8px：可交互控件。"
+      },
+      "300": {
+        "$value": { "value": 12, "unit": "px" },
+        "$description": "圆角 12px：容器与表面。"
+      },
+      "400": {
+        "$value": { "value": 9999, "unit": "px" },
+        "$description": "圆角 9999px：胶囊形。"
+      }
+    },
+    "text": {
+      "$description": "排版原始值：字号、行高、字重、字体与字距。",
+      "size": {
+        "$type": "dimension",
+        "$description": "字号档位，按 100 步进命名。",
+        "200": {
+          "$value": { "value": 14, "unit": "px" },
+          "$description": "14px：正文小号与标签。"
+        },
+        "300": {
+          "$value": { "value": 16, "unit": "px" },
+          "$description": "16px：正文默认字号。"
+        },
+        "400": {
+          "$value": { "value": 20, "unit": "px" },
+          "$description": "20px：小节标题。"
+        },
+        "600": {
+          "$value": { "value": 32, "unit": "px" },
+          "$description": "32px：页面主标题。"
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$description": "行高档位，与字号档位配合使用。",
+        "100": {
+          "$value": { "value": 20, "unit": "px" },
+          "$description": "20px 行高：14px 字号使用。"
+        },
+        "200": {
+          "$value": { "value": 24, "unit": "px" },
+          "$description": "24px 行高：16px 字号使用。"
+        },
+        "300": {
+          "$value": { "value": 28, "unit": "px" },
+          "$description": "28px 行高：20px 字号使用。"
+        },
+        "400": {
+          "$value": { "value": 40, "unit": "px" },
+          "$description": "40px 行高：32px 字号使用。"
+        }
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$description": "字重档位。只保留原始值，语义层通过排版组合消费。",
+        "regular": {
+          "$value": 400,
+          "$description": "常规字重 400。"
+        },
+        "medium": {
+          "$value": 500,
+          "$description": "中等字重 500。"
+        },
+        "semibold": {
+          "$value": 600,
+          "$description": "半粗字重 600。"
+        }
+      },
+      "family": {
+        "$type": "fontFamily",
+        "$description": "字体族。",
+        "sans": {
+          "$value": ["system-ui", "-apple-system", "Segoe UI", "PingFang SC", "Microsoft YaHei", "sans-serif"],
+          "$description": "无衬线字体族，用于全部界面文本。"
+        },
+        "mono": {
+          "$value": ["SFMono-Regular", "Menlo", "Consolas", "monospace"],
+          "$description": "等宽字体族，用于代码与变量名展示。"
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$description": "字距档位。",
+        "normal": {
+          "$value": { "value": 0, "unit": "px" },
+          "$description": "默认字距 0，不做额外字距调整。"
+        }
+      }
+    }
+  }
+}

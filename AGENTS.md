@@ -27,23 +27,24 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 
 ## 3. 当前阶段
 
-**S0（地基）**：只有目录骨架、三份宪法和本文件。三个包内没有任何实现代码、依赖或构建脚本。
+**S1（Token 地基）已实现**：`packages/tokens` 具备 raw / semantic / brand / theme / resolver、构建与测试；`apps/docs` 具备可运行的 Color 验收页。`packages/ui` 仍为空，组件与 `registry.json` 属于 S2。
 
 因此：
 
-- 不要假设存在 `build`、`test`、`lint` 脚本，先看 `package.json`。
-- 命令不存在时，不要自行发明脚本名；在回答里说明缺少什么，让用户确认。
-- 不要为了让命令跑起来而临时引入设计稿、依赖或构建配置——技术栈仍有待确认项（见 `tech-stack.md §8`）。
+- 包内脚本以各 `package.json` 为准，不要发明脚本名。
+- 改 token 值必须重新构建并更新快照：`UPDATE_SNAPSHOT=1 pnpm --filter @ds/tokens test`。
+- 未确认项（品牌支持矩阵的运行时行为、组件层）先问，不要替用户决定。
 
 ## 4. 命令
 
 | 命令 | 用途 | 状态 |
 | --- | --- | --- |
 | `pnpm install` | 安装 workspace 依赖 | 可用 |
-| `pnpm --filter @ds/tokens build` | 生成 token 产物 | S1 引入 |
-| `pnpm --filter @ds/tokens test` | hex 快照 + 色域校验 | S1 引入 |
+| `pnpm --filter @ds/tokens build` | 生成 token 产物 | 可用 |
+| `pnpm --filter @ds/tokens test` | 快照 + 色域 + 违规 fixture | 可用 |
 | `pnpm --filter @ds/ui build:registry` | 聚合 `registry.json` | S2 引入 |
-| `pnpm --filter @ds/docs dev` | 启动文档站 | S1 引入 |
+| `pnpm --filter @ds/docs dev` | 启动文档站 | 可用 |
+| `pnpm --filter @ds/docs build` | 文档站类型检查与静态构建 | 可用 |
 
 ## 5. 硬规则
 

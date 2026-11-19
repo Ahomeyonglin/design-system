@@ -1,0 +1,307 @@
+.color-page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: var(--semantic-space-inset-xl);
+}
+
+.page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--semantic-space-inline-lg);
+  margin-bottom: var(--semantic-space-stack-xl);
+}
+
+h1 {
+  margin: 0 0 var(--semantic-space-stack-sm);
+  font-family: var(--semantic-text-display-lg-font-family);
+  font-size: var(--semantic-text-display-lg-font-size);
+  font-weight: var(--semantic-text-display-lg-font-weight);
+  line-height: var(--semantic-text-display-lg-line-height);
+}
+
+h2 {
+  margin: 0 0 var(--semantic-space-stack-lg);
+  font-family: var(--semantic-text-heading-md-font-family);
+  font-size: var(--semantic-text-heading-md-font-size);
+  font-weight: var(--semantic-text-heading-md-font-weight);
+  line-height: var(--semantic-text-heading-md-line-height);
+}
+
+h3 {
+  margin: 0 0 var(--semantic-space-stack-md);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  letter-spacing: var(--semantic-text-label-md-letter-spacing);
+  line-height: var(--semantic-text-label-md-line-height);
+}
+
+section {
+  margin-bottom: var(--semantic-space-stack-xl);
+}
+
+.page__lead {
+  margin: 0;
+  color: var(--semantic-color-text-secondary);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.theme-switch {
+  display: inline-flex;
+  gap: var(--semantic-space-inline-sm);
+  padding: var(--semantic-space-inset-sm);
+  background: var(--semantic-color-bg-surface);
+  border: 1px solid var(--semantic-color-border-default);
+  border-radius: var(--semantic-radius-pill);
+}
+
+.theme-switch button,
+.copy-button {
+  padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-md);
+  color: var(--semantic-color-action-secondary-text);
+  background: var(--semantic-color-action-secondary-bg);
+  border: 1px solid var(--semantic-color-action-secondary-border);
+  border-radius: var(--semantic-radius-control);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+  cursor: pointer;
+}
+
+.theme-switch button[aria-pressed='true'] {
+  color: var(--semantic-color-action-primary-text);
+  background: var(--semantic-color-action-primary-bg);
+  border-color: var(--semantic-color-action-primary-border);
+}
+
+.groups {
+  display: grid;
+  gap: var(--semantic-space-stack-xl);
+}
+
+.group {
+  padding: var(--semantic-space-inset-lg);
+  background: var(--semantic-color-bg-surface);
+  border: 1px solid var(--semantic-color-border-subtle);
+  border-radius: var(--semantic-radius-surface);
+}
+
+.token-list {
+  display: grid;
+  gap: var(--semantic-space-stack-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.token-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--semantic-space-inline-lg);
+}
+
+.token-row__meta {
+  display: grid;
+  gap: var(--semantic-space-stack-sm);
+  min-width: 0;
+}
+
+.token-row code {
+  overflow-wrap: anywhere;
+  font-family: var(--semantic-text-code-md-font-family);
+  font-size: var(--semantic-text-code-md-font-size);
+  line-height: var(--semantic-text-code-md-line-height);
+}
+
+.token-row__desc {
+  color: var(--semantic-color-text-tertiary);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.swatch {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  padding: 2px;
+  background-image: repeating-conic-gradient(
+    var(--semantic-color-border-subtle) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 12px 12px;
+  border: 1px solid var(--semantic-color-border-default);
+  border-radius: var(--semantic-radius-control);
+}
+
+.swatch--small {
+  width: 32px;
+  height: 32px;
+}
+
+.swatch__fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--swatch);
+  border-radius: calc(var(--semantic-radius-control) - 2px);
+}
+
+.preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--semantic-space-stack-lg);
+}
+
+.preview__panel {
+  display: grid;
+  gap: var(--semantic-space-stack-md);
+  padding: var(--semantic-space-inset-lg);
+  background: var(--semantic-color-bg-surface-raised);
+  border: 1px solid var(--semantic-color-border-subtle);
+  border-radius: var(--semantic-radius-surface);
+}
+
+.preview__label {
+  color: var(--semantic-color-text-tertiary);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+}
+
+.preview__actions,
+.preview__statuses,
+.preview__text,
+.preview__borders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--semantic-space-inline-md);
+}
+
+.demo-button,
+.demo-status,
+.demo-border {
+  padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-md);
+  border: 1px solid;
+  border-radius: var(--semantic-radius-control);
+  font-size: var(--semantic-text-label-md-font-size);
+  line-height: var(--semantic-text-label-md-line-height);
+}
+
+.demo-button--primary {
+  color: var(--semantic-color-action-primary-text);
+  background: var(--semantic-color-action-primary-bg);
+  border-color: var(--semantic-color-action-primary-border);
+}
+
+.demo-button--secondary {
+  color: var(--semantic-color-action-secondary-text);
+  background: var(--semantic-color-action-secondary-bg);
+  border-color: var(--semantic-color-action-secondary-border);
+}
+
+.demo-button--ghost {
+  color: var(--semantic-color-action-ghost-text);
+  background: var(--semantic-color-action-ghost-bg);
+  border-color: var(--semantic-color-action-ghost-border);
+}
+
+.demo-status--success {
+  color: var(--semantic-color-status-success-text);
+  background: var(--semantic-color-status-success-bg);
+  border-color: var(--semantic-color-status-success-border);
+}
+
+.demo-status--warning {
+  color: var(--semantic-color-status-warning-text);
+  background: var(--semantic-color-status-warning-bg);
+  border-color: var(--semantic-color-status-warning-border);
+}
+
+.demo-status--danger {
+  color: var(--semantic-color-status-danger-text);
+  background: var(--semantic-color-status-danger-bg);
+  border-color: var(--semantic-color-status-danger-border);
+}
+
+.demo-status--info {
+  color: var(--semantic-color-status-info-text);
+  background: var(--semantic-color-status-info-bg);
+  border-color: var(--semantic-color-status-info-border);
+}
+
+.demo-text--primary {
+  color: var(--semantic-color-text-primary);
+}
+
+.demo-text--secondary {
+  color: var(--semantic-color-text-secondary);
+}
+
+.demo-text--tertiary {
+  color: var(--semantic-color-text-tertiary);
+}
+
+.demo-text--disabled {
+  color: var(--semantic-color-text-disabled);
+}
+
+.demo-border {
+  color: var(--semantic-color-text-secondary);
+  background: var(--semantic-color-bg-surface);
+}
+
+.demo-border--subtle {
+  border-color: var(--semantic-color-border-subtle);
+}
+
+.demo-border--default {
+  border-color: var(--semantic-color-border-default);
+}
+
+.demo-border--strong {
+  border-color: var(--semantic-color-border-strong);
+}
+
+.raw {
+  margin-top: var(--semantic-space-stack-xl);
+  padding-top: var(--semantic-space-stack-lg);
+  border-top: 1px solid var(--semantic-color-border-subtle);
+}
+
+.raw summary {
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+  cursor: pointer;
+}
+
+.raw__scales {
+  display: grid;
+  gap: var(--semantic-space-stack-xl);
+  margin-top: var(--semantic-space-stack-lg);
+}
+
+.raw__steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--semantic-space-inline-md);
+}
+
+.raw__step {
+  display: grid;
+  gap: var(--semantic-space-stack-sm);
+  justify-items: center;
+}
+
+.raw__step-label {
+  color: var(--semantic-color-text-tertiary);
+  font-family: var(--semantic-text-code-md-font-family);
+  font-size: var(--semantic-text-code-md-font-size);
+  line-height: var(--semantic-text-code-md-line-height);
+}

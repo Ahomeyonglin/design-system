@@ -1,0 +1,328 @@
+{
+  "semantic": {
+    "$description": "语义层：只表达用途，全部通过 alias 指向 raw 层。default 值即亮色主题，暗色由 themes/dark.tokens.json 同名覆盖。",
+    "color": {
+      "$type": "color",
+      "$description": "语义颜色，按 Background / Text / Border / Action / Status 五组组织。",
+      "bg": {
+        "$description": "Background：背景与表面层级。",
+        "page": {
+          "$value": "{raw.color.neutral.100}",
+          "$description": "页面最底层铺底。"
+        },
+        "surface": {
+          "$value": "{raw.color.neutral.50}",
+          "$description": "一级容器背景，如卡片、面板。"
+        },
+        "surface-raised": {
+          "$value": "{raw.color.neutral.50}",
+          "$description": "上浮层背景，如下拉菜单、Modal。"
+        },
+        "subtle": {
+          "$value": "{raw.color.neutral.200}",
+          "$description": "同一层内的弱化背景，如表格悬停行。"
+        }
+      },
+      "text": {
+        "$description": "Text：文字颜色的强弱层级。",
+        "primary": {
+          "$value": "{raw.color.neutral.900}",
+          "$description": "主要文字。"
+        },
+        "secondary": {
+          "$value": "{raw.color.neutral.700}",
+          "$description": "次要文字。"
+        },
+        "tertiary": {
+          "$value": "{raw.color.neutral.500}",
+          "$description": "辅助文字与占位提示。"
+        },
+        "disabled": {
+          "$value": "{raw.color.neutral.400}",
+          "$description": "禁用态文字。"
+        }
+      },
+      "border": {
+        "$description": "Border：边框与分隔线。",
+        "subtle": {
+          "$value": "{raw.color.neutral.200}",
+          "$description": "最弱的分隔线。"
+        },
+        "default": {
+          "$value": "{raw.color.neutral.300}",
+          "$description": "默认边框，如控件外框。"
+        },
+        "strong": {
+          "$value": "{raw.color.neutral.400}",
+          "$description": "需要强调的边框。"
+        }
+      },
+      "action": {
+        "$description": "Action：操作型颜色，按重要程度分 primary / secondary / ghost。",
+        "primary": {
+          "$description": "最高优先级实心操作。",
+          "bg": {
+            "$value": "{raw.color.brand.500}",
+            "$description": "主操作背景，配白色文字满足 WCAG AA。"
+          },
+          "text": {
+            "$value": "{raw.color.neutral.50}",
+            "$description": "主操作文字。"
+          },
+          "border": {
+            "$value": "{raw.color.brand.500}",
+            "$description": "主操作边框，与背景同色。"
+          }
+        },
+        "secondary": {
+          "$description": "中等优先级边框操作。",
+          "bg": {
+            "$value": "{raw.color.neutral.50}",
+            "$description": "次操作背景。"
+          },
+          "text": {
+            "$value": "{raw.color.brand.700}",
+            "$description": "次操作文字。"
+          },
+          "border": {
+            "$value": "{raw.color.brand.500}",
+            "$description": "次操作边框。"
+          }
+        },
+        "ghost": {
+          "$description": "最低优先级无背景操作。",
+          "bg": {
+            "$value": "{raw.color.transparent}",
+            "$description": "无背景。"
+          },
+          "text": {
+            "$value": "{raw.color.brand.700}",
+            "$description": "弱操作文字。"
+          },
+          "border": {
+            "$value": "{raw.color.transparent}",
+            "$description": "无边框。"
+          }
+        }
+      },
+      "status": {
+        "$description": "Status：状态反馈，只表达语义，不新增 action 变体。",
+        "success": {
+          "$description": "成功状态。",
+          "bg": {
+            "$value": "{raw.color.success.50}",
+            "$description": "成功提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.success.700}",
+            "$description": "成功提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.success.200}",
+            "$description": "成功提示边框。"
+          }
+        },
+        "warning": {
+          "$description": "警告状态。",
+          "bg": {
+            "$value": "{raw.color.warning.50}",
+            "$description": "警告提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.warning.700}",
+            "$description": "警告提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.warning.200}",
+            "$description": "警告提示边框。"
+          }
+        },
+        "danger": {
+          "$description": "危险状态。",
+          "bg": {
+            "$value": "{raw.color.danger.50}",
+            "$description": "危险提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.danger.700}",
+            "$description": "危险提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.danger.200}",
+            "$description": "危险提示边框。"
+          }
+        },
+        "info": {
+          "$description": "信息状态。",
+          "bg": {
+            "$value": "{raw.color.info.50}",
+            "$description": "信息提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.info.700}",
+            "$description": "信息提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.info.200}",
+            "$description": "信息提示边框。"
+          }
+        }
+      }
+    },
+    "space": {
+      "$type": "dimension",
+      "$description": "语义间距，按用途分 inline / stack / inset。",
+      "inline": {
+        "$description": "行内元素之间的间距。",
+        "sm": {
+          "$value": "{raw.space.100}",
+          "$description": "紧凑行内间隔，2px。"
+        },
+        "md": {
+          "$value": "{raw.space.300}",
+          "$description": "常规行内间隔，8px。"
+        },
+        "lg": {
+          "$value": "{raw.space.400}",
+          "$description": "宽松行内间隔，12px。"
+        },
+        "xl": {
+          "$value": "{raw.space.500}",
+          "$description": "最大行内间隔，16px。"
+        }
+      },
+      "stack": {
+        "$description": "块级元素之间的垂直间距。",
+        "sm": {
+          "$value": "{raw.space.200}",
+          "$description": "紧凑块级间隔，4px。"
+        },
+        "md": {
+          "$value": "{raw.space.500}",
+          "$description": "常规块级间隔，16px。"
+        },
+        "lg": {
+          "$value": "{raw.space.600}",
+          "$description": "宽松块级间隔，24px。"
+        },
+        "xl": {
+          "$value": "{raw.space.700}",
+          "$description": "最大块级间隔，32px。"
+        }
+      },
+      "inset": {
+        "$description": "容器内边距。",
+        "sm": {
+          "$value": "{raw.space.300}",
+          "$description": "紧凑内边距，8px。"
+        },
+        "md": {
+          "$value": "{raw.space.400}",
+          "$description": "常规内边距，12px。"
+        },
+        "lg": {
+          "$value": "{raw.space.500}",
+          "$description": "宽松内边距，16px。"
+        },
+        "xl": {
+          "$value": "{raw.space.600}",
+          "$description": "最大内边距，24px。"
+        }
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$description": "语义圆角，按元素类型分组。",
+      "none": {
+        "$value": "{raw.radius.100}",
+        "$description": "直角，不做圆角。"
+      },
+      "control": {
+        "$value": "{raw.radius.200}",
+        "$description": "可交互控件，8px。"
+      },
+      "surface": {
+        "$value": "{raw.radius.300}",
+        "$description": "容器与表面，12px。"
+      },
+      "pill": {
+        "$value": "{raw.radius.400}",
+        "$description": "胶囊形，9999px。"
+      }
+    },
+    "text": {
+      "$type": "typography",
+      "$description": "语义排版组合，只建实际使用的角色。",
+      "display": {
+        "lg": {
+          "$value": {
+            "fontFamily": "{raw.text.family.sans}",
+            "fontSize": "{raw.text.size.600}",
+            "fontWeight": "{raw.text.weight.semibold}",
+            "lineHeight": "{raw.text.line-height.400}",
+            "letterSpacing": "{raw.text.letter-spacing.normal}"
+          },
+          "$description": "页面主标题，32/40 semibold。"
+        }
+      },
+      "heading": {
+        "md": {
+          "$value": {
+            "fontFamily": "{raw.text.family.sans}",
+            "fontSize": "{raw.text.size.400}",
+            "fontWeight": "{raw.text.weight.semibold}",
+            "lineHeight": "{raw.text.line-height.300}",
+            "letterSpacing": "{raw.text.letter-spacing.normal}"
+          },
+          "$description": "小节标题，20/28 semibold。"
+        }
+      },
+      "body": {
+        "md": {
+          "$value": {
+            "fontFamily": "{raw.text.family.sans}",
+            "fontSize": "{raw.text.size.300}",
+            "fontWeight": "{raw.text.weight.regular}",
+            "lineHeight": "{raw.text.line-height.200}",
+            "letterSpacing": "{raw.text.letter-spacing.normal}"
+          },
+          "$description": "正文默认，16/24 regular。"
+        },
+        "sm": {
+          "$value": {
+            "fontFamily": "{raw.text.family.sans}",
+            "fontSize": "{raw.text.size.200}",
+            "fontWeight": "{raw.text.weight.regular}",
+            "lineHeight": "{raw.text.line-height.100}",
+            "letterSpacing": "{raw.text.letter-spacing.normal}"
+          },
+          "$description": "正文小号，14/20 regular。"
+        }
+      },
+      "label": {
+        "md": {
+          "$value": {
+            "fontFamily": "{raw.text.family.sans}",
+            "fontSize": "{raw.text.size.200}",
+            "fontWeight": "{raw.text.weight.medium}",
+            "lineHeight": "{raw.text.line-height.100}",
+            "letterSpacing": "{raw.text.letter-spacing.normal}"
+          },
+          "$description": "标签文字，14/20 medium。"
+        }
+      },
+      "code": {
+        "md": {
+          "$value": {
+            "fontFamily": "{raw.text.family.mono}",
+            "fontSize": "{raw.text.size.200}",
+            "fontWeight": "{raw.text.weight.regular}",
+            "lineHeight": "{raw.text.line-height.100}",
+            "letterSpacing": "{raw.text.letter-spacing.normal}"
+          },
+          "$description": "代码与变量名，14/20 regular、等宽字体。"
+        }
+      }
+    }
+  }
+}

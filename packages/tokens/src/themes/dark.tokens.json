@@ -1,0 +1,135 @@
+{
+  "semantic": {
+    "$description": "暗色主题：只重映射与亮色不同的语义颜色，全部为 alias，不写字面量。",
+    "color": {
+      "$type": "color",
+      "$description": "暗色语义颜色覆盖。",
+      "bg": {
+        "page": {
+          "$value": "{raw.color.neutral.950}",
+          "$description": "页面最底层铺底。"
+        },
+        "surface": {
+          "$value": "{raw.color.neutral.900}",
+          "$description": "一级容器背景。"
+        },
+        "surface-raised": {
+          "$value": "{raw.color.neutral.800}",
+          "$description": "上浮层背景。"
+        },
+        "subtle": {
+          "$value": "{raw.color.neutral.800}",
+          "$description": "同一层内的弱化背景。"
+        }
+      },
+      "text": {
+        "primary": {
+          "$value": "{raw.color.neutral.50}",
+          "$description": "主要文字。"
+        },
+        "secondary": {
+          "$value": "{raw.color.neutral.300}",
+          "$description": "次要文字。"
+        },
+        "tertiary": {
+          "$value": "{raw.color.neutral.400}",
+          "$description": "辅助文字与占位提示。"
+        },
+        "disabled": {
+          "$value": "{raw.color.neutral.600}",
+          "$description": "禁用态文字。"
+        }
+      },
+      "border": {
+        "subtle": {
+          "$value": "{raw.color.neutral.800}",
+          "$description": "最弱的分隔线。"
+        },
+        "default": {
+          "$value": "{raw.color.neutral.700}",
+          "$description": "默认边框。"
+        },
+        "strong": {
+          "$value": "{raw.color.neutral.600}",
+          "$description": "需要强调的边框。"
+        }
+      },
+      "action": {
+        "secondary": {
+          "bg": {
+            "$value": "{raw.color.neutral.900}",
+            "$description": "次操作背景。"
+          },
+          "text": {
+            "$value": "{raw.color.brand.300}",
+            "$description": "次操作文字。"
+          }
+        },
+        "ghost": {
+          "text": {
+            "$value": "{raw.color.brand.300}",
+            "$description": "弱操作文字。"
+          }
+        }
+      },
+      "status": {
+        "success": {
+          "bg": {
+            "$value": "{raw.color.success.950}",
+            "$description": "成功提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.success.200}",
+            "$description": "成功提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.success.700}",
+            "$description": "成功提示边框。"
+          }
+        },
+        "warning": {
+          "bg": {
+            "$value": "{raw.color.warning.950}",
+            "$description": "警告提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.warning.200}",
+            "$description": "警告提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.warning.700}",
+            "$description": "警告提示边框。"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{raw.color.danger.950}",
+            "$description": "危险提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.danger.200}",
+            "$description": "危险提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.danger.700}",
+            "$description": "危险提示边框。"
+          }
+        },
+        "info": {
+          "bg": {
+            "$value": "{raw.color.info.950}",
+            "$description": "信息提示背景。"
+          },
+          "text": {
+            "$value": "{raw.color.info.200}",
+            "$description": "信息提示文字。"
+          },
+          "border": {
+            "$value": "{raw.color.info.700}",
+            "$description": "信息提示边框。"
+          }
+        }
+      }
+    }
+  }
+}

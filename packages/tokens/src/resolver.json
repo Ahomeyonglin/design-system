@@ -1,0 +1,33 @@
+{
+  "name": "design-system",
+  "version": "2025.10",
+  "description": "S1 resolver：raw / semantic 为集合，theme 与 brand 为互斥 modifier。",
+  "sets": {
+    "base": {
+      "sources": [
+        { "$ref": "raw.tokens.json" },
+        { "$ref": "semantic.tokens.json" }
+      ]
+    }
+  },
+  "modifiers": {
+    "theme": {
+      "contexts": {
+        "light": [{ "$ref": "./themes/light.tokens.json" }],
+        "dark": [{ "$ref": "./themes/dark.tokens.json" }]
+      },
+      "default": "light"
+    },
+    "brand": {
+      "contexts": {
+        "base": [{ "$ref": "./brands/base.tokens.json" }]
+      },
+      "default": "base"
+    }
+  },
+  "resolutionOrder": [
+    { "$ref": "#/sets/base" },
+    { "$ref": "#/modifiers/theme" },
+    { "$ref": "#/modifiers/brand" }
+  ]
+}

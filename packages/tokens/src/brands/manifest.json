@@ -1,0 +1,8 @@
+{
+  "$description": "品牌 × 主题支持矩阵：构建只产出这里声明的组合，未声明的组合不生成 CSS 且必须禁用入口。",
+  "brands": {
+    "base": {
+      "themes": ["light", "dark"]
+    }
+  }
+}

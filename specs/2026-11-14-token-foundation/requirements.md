@@ -28,13 +28,16 @@ token 目前只存在于文档描述里，没有源文件、没有产物、没�
 | D9 | 排版组合 | 只建 6 个：`display.lg`、`heading.md`、`body.md`、`body.sm`、`label.md`、`code.md`；其余组合按真实需求增补 |
 | D10 | Action 状态 | S1 不建 hover / pressed / disabled，命名规则保留；待 S2 有 Button 时创建 |
 | D11 | 字重 | 只保留 `raw.text.weight.*`，不建独立的 semantic 字重 token；字重通过排版 token 组合使用 |
-| D12 | 间距 | raw 7 档（2 / 4 / 8 / 12 / 16 / 24 / 32px）；semantic 为 `inline` / `stack` / `inset` × `sm` / `md` / `lg` / `xl` 共 12 个，映射见下文 |
-| D13 | 圆角 | raw 4 档（0 / 8 / 12 / 9999px）；semantic 为 `none` / `control` / `surface` / `pill`，映射见下文 |
+| D12 | 间距 | raw 7 档，按 100 步进命名：`raw.space.100`–`700`，值 2 / 4 / 8 / 12 / 16 / 24 / 32px，源值单位 px；semantic 为 `inline` / `stack` / `inset` × `sm` / `md` / `lg` / `xl` 共 12 个，映射见下文 |
+| D13 | 圆角 | raw 4 档，按 100 步进命名：`raw.radius.100`–`400`，值 0 / 8 / 12 / 9999px；semantic 为 `none` / `control` / `surface` / `pill`，映射见下文 |
 | D14 | 排版取值 | 6 个组合的字号 / 行高 / 字重见下文；单位 px；raw 只建被使用的档位 |
 | D15 | 品牌色阶 | 11 级，色相固定 1.33°，500 为 `#CE1B6C` → `oklch(0.5592 0.2131 1.33)`；取值见下文；hex 仅用于预览与产物回退 |
 | D16 | 解析器 | Terrazzo 2.10.0（parser / cli / plugin-css 同版本），原生支持 DTCG 2025.10 resolver 与 modifier（见 [ADR-0011](../adr/0011-parser.md)） |
 | D17 | Neutral 色阶 | 11 级纯灰，50 为 `#FFFFFF`、950 为 `#0C0C0C`；取值见下文；承载背景、文字、边框 |
 | D18 | 状态色 | success / warning / danger / info 四套，每套 `50 / 100 / 200 / 700 / 950` 五级；色相分别为 150 / 75 / 27 / 255；取值见下文 |
+| D19 | 语义颜色角色 | Background / Text / Border / Action / Status 五组共 32 个，亮色默认映射见下文；暗色映射在 P3 由 theme 覆盖 |
+| D20 | 透明 token | 新增 `raw.color.transparent`（alpha 0），供 `action.ghost.bg` 与 `action.ghost.border` 使用，避免在语义层写字面量 |
+| D21 | 主题文件结构 | `semantic.tokens.json` 的默认值即亮色；`themes/light.tokens.json` 只声明 light context、不重复 alias；`themes/dark.tokens.json` 只覆盖与亮色不同的 26 个颜色角色 |
 
 间距映射（D12）：
 
@@ -120,25 +123,81 @@ Neutral 色阶（D17）：
 | success | 50 | `0.9700 0.0200 150` | #ECF9EE |
 | success | 100 | `0.9400 0.0500 150` | #D5F5DA |
 | success | 200 | `0.8800 0.0900 150` | #ADE9B8 |
-| success | 700 | `0.4300 0.1186 150` | #006129 |
-| success | 950 | `0.2200 0.0633 150` | #002209 |
-| warning | 50 | `0.9800 0.0160 75` | #FFF7ED |
+| success | 700 | `0.4300 0.1184 150` | #006129 |
+| success | 950 | `0.2200 0.0605 150` | #00220A |
+| warning | 50 | `0.9800 0.0159 75` | #FFF7ED |
 | warning | 100 | `0.9500 0.0404 75` | #FFEBD1 |
 | warning | 200 | `0.9000 0.0832 75` | #FFD7A0 |
-| warning | 700 | `0.5000 0.1056 75` | #865900 |
-| warning | 950 | `0.2500 0.0549 75` | #311D00 |
+| warning | 700 | `0.5000 0.1054 75` | #865900 |
+| warning | 950 | `0.2500 0.0527 75` | #301D00 |
 | danger | 50 | `0.9700 0.0147 27` | #FFF2F0 |
 | danger | 100 | `0.9400 0.0301 27` | #FFE4E0 |
 | danger | 200 | `0.8800 0.0634 27` | #FFC8C1 |
-| danger | 700 | `0.4200 0.1713 27` | #94000C |
+| danger | 700 | `0.4200 0.1711 27` | #94000C |
 | danger | 950 | `0.2200 0.0800 27` | #370404 |
 | info | 50 | `0.9700 0.0144 255` | #EFF6FF |
 | info | 100 | `0.9400 0.0291 255` | #DFEDFF |
 | info | 200 | `0.8800 0.0594 255` | #BEDAFF |
-| info | 700 | `0.4500 0.1485 255` | #0053A5 |
-| info | 950 | `0.2300 0.0797 255` | #001C41 |
+| info | 700 | `0.4500 0.1481 255` | #0053A4 |
+| info | 950 | `0.2300 0.0757 255` | #001C3F |
 
-状态色的用途约定：`50 / 100` 作浅色背景，`200` 作边框，`700` 作浅色模式文字，`950` 作暗色模式背景或深色文字。danger 与 brand（H 1.33）色相已区分，状态色只用于 `semantic.color.status.*`，不新增 action 变体。
+状态色的用途约定：`50 / 100` 作浅色背景，`200` 作边框，`700` 作浅色模式文字，`950` 作暗色模式背景或深色文字。danger 与 brand（H 1.33）色相已区分，状态色只用于 `semantic.color.status.*`，不新增 action 变体。状态色的彩度已按该亮度下的 sRGB 色域上限收窄（与品牌色 50 / 300 同一规则），保证 R3 不触发超色域报错。
+
+语义颜色映射（D19）：
+
+路径省略 `semantic.color.` 前缀。亮色映射写入 `semantic.tokens.json` 作为默认值，暗色映射在 P3 写入 `themes/dark.tokens.json`，只做 alias 覆盖。
+
+**Background**
+
+| 角色 | light | dark |
+| --- | --- | --- |
+| `bg.page` | neutral.100 | neutral.950 |
+| `bg.surface` | neutral.50 | neutral.900 |
+| `bg.surface-raised` | neutral.50 | neutral.800 |
+| `bg.subtle` | neutral.200 | neutral.800 |
+
+**Text**
+
+| 角色 | light | dark |
+| --- | --- | --- |
+| `text.primary` | neutral.900 | neutral.50 |
+| `text.secondary` | neutral.700 | neutral.300 |
+| `text.tertiary` | neutral.500 | neutral.400 |
+| `text.disabled` | neutral.400 | neutral.600 |
+
+**Border**
+
+| 角色 | light | dark |
+| --- | --- | --- |
+| `border.subtle` | neutral.200 | neutral.800 |
+| `border.default` | neutral.300 | neutral.700 |
+| `border.strong` | neutral.400 | neutral.600 |
+
+**Action**
+
+| 角色 | light | dark |
+| --- | --- | --- |
+| `action.primary.bg` | brand.500 | brand.500 |
+| `action.primary.text` | neutral.50 | neutral.50 |
+| `action.primary.border` | brand.500 | brand.500 |
+| `action.secondary.bg` | neutral.50 | neutral.900 |
+| `action.secondary.text` | brand.700 | brand.300 |
+| `action.secondary.border` | brand.500 | brand.500 |
+| `action.ghost.bg` | transparent | transparent |
+| `action.ghost.text` | brand.700 | brand.300 |
+| `action.ghost.border` | transparent | transparent |
+
+**Status**
+
+四套结构一致，`<type>` = success / warning / danger / info：
+
+| 角色 | light | dark |
+| --- | --- | --- |
+| `status.<type>.bg` | `<type>.50` | `<type>.950` |
+| `status.<type>.text` | `<type>.700` | `<type>.200` |
+| `status.<type>.border` | `<type>.200` | `<type>.700` |
+
+S1 不建 `border.focus`，待 S2 出现 Button / Input 时按真实焦点场景补充。
 
 ## 4. 范围
 
@@ -169,9 +228,16 @@ raw / semantic / brand / theme / resolver 五部分齐备，职责不重叠。�
 
 ### R2 构建产物
 
-一条命令产出：2 份主题 CSS（light / dark）+ N 份品牌 CSS（S1 共 3 份）、一份含 oklch 与 6 位 hex 的 JSON。
+一条命令（`pnpm --filter @ds/tokens build`）产出：`theme-light.css`、`theme-dark.css`、`brand-<id>.css`（S1 共 3 份）与 `tokens.json`。
 
-**验收**：产物数量为 3；CSS 同时包含 `--raw-*` 与 `--semantic-*`，其中 `--raw-*` 仅供品牌文件覆盖；CSS 中颜色值均为 6 位 hex，非颜色值保持原始单位与精度；JSON 保留原始 oklch 与非颜色源值。
+- 主题 CSS：raw 输出字面值，颜色为 hex（alpha < 1 时用 8 位 hex）；semantic 颜色 / 间距 / 圆角输出 `var(--raw-*)` 引用，保证品牌覆盖 raw 后 semantic 自动跟随，不需要按品牌重生成主题 CSS。
+- 排版组合在 CSS 中拆为 `-font-family` / `-font-size` / `-font-weight` / `-line-height` / `-letter-spacing` 五个变量。
+- 颜色先输出 hex，再在 `@supports (color: oklch(0 0 0))` 内用 oklch 覆盖（见 ADR-0003）。
+- 品牌 CSS 只输出 `--raw-color-brand-*`，使用同一套 hex + @supports 结构。
+- 加载顺序固定：`theme-light.css` → `theme-dark.css` → `brand-*.css`。
+- JSON 按 `theme/brand` 保存每个组合的解析结果，颜色同时保留 oklch 与 hex，非颜色保留原始单位。
+
+**验收**：产物为 3 份 CSS + 1 份 JSON；主题 CSS 同时包含 `--raw-*` 与 `--semantic-*`；semantic 颜色值均为 `var(--raw-*)`，切换品牌时无需重新生成主题 CSS；CSS 中 hex 仅出现 6 位或 8 位；非颜色值保持原始单位与精度；JSON 保留 oklch 与非颜色源值；连续构建两次字节一致。
 
 ### R3 色彩合规
 
@@ -195,9 +261,9 @@ raw / semantic / brand / theme / resolver 五部分齐备，职责不重叠。�
 
 ### R6 支持矩阵
 
-resolver 声明哪些品牌支持哪些 theme。单品牌（light + dark）是 S1 的真实交付；「品牌不支持暗色 → 不产出对应 CSS 且禁用切换」由测试 fixture 覆盖。
+resolver 声明哪些品牌支持哪些 theme。单品牌（light + dark）是 S1 的真实交付；「品牌不支持暗色 → 不产出对应 CSS 且禁用切换」随第二个品牌引入时验收，S1 不为此提前实现品牌切换器。
 
-**验收**：fixture 中的仅 light 品牌不产出暗色 CSS，且切换被禁用；真实品牌产出 3 份 CSS。
+**验收**：真实品牌产出 3 份 CSS；fixture 场景在引入第二品牌时补充。
 
 ### R7 状态进 URL
 
@@ -239,7 +305,7 @@ resolver 声明哪些品牌支持哪些 theme。单品牌（light + dark）是 S
 
 ## 7. 待输入
 
-无。非颜色基线与品牌基色已全部确定（D12–D14、[ADR-0010](../adr/0010-brand-color.md)）。
+无。非颜色基线与品牌基色已全部确定（D12–D20、[ADR-0012](../adr/0012-brand-color-change.md)）。
 
 另有一项未决，不阻塞 R1–R4：文档站样式方案（Tailwind v4 或原生 CSS），影响 R5 写法。
 

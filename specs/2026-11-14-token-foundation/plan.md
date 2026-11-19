@@ -62,6 +62,7 @@ apps/docs/
 | Terrazzo CSS 插件做色彩空间转换，数值与源值不逐位一致 | P4 用自定义 transform / plugin 输出，快照以 parser 结果为准 |
 | 品牌色在 oklch 下重算后观感偏移 | P3 产出后先做小样比对，确认后再全量 |
 | 超色域颜色被静默接受 | P5 的色域测试必须在 P4 产物上跑，而不是只测源文件 |
+| Terrazzo 默认不返回 `listPermutations` | P4 拿不到组合枚举 | `parse()` 时显式传入 `config: { permutationLimit: 1000 }`；否则 `listPermutations` 为 `undefined` |
 
 ## 5. 回滚
 
