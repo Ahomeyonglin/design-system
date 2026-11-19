@@ -1,0 +1,11 @@
+{
+  "name": "@ds/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "src",
+    "registry.json",
+    "AGENTS.md"
+  ]
+}
