@@ -3,9 +3,33 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "src",
     "registry.json",
     "AGENTS.md"
-  ]
+  ],
+  "exports": {
+    "./Badge": "./src/components/Badge/Badge.tsx",
+    "./Button": "./src/components/Button/Button.tsx",
+    "./Card": "./src/components/Card/Card.tsx",
+    "./Text": "./src/components/Text/Text.tsx",
+    "./TextField": "./src/components/TextField/TextField.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:registry": "node scripts/build-registry.mjs",
+    "lint": "node scripts/lint-components.mjs",
+    "test": "node --test --test-concurrency=1 tests/"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "react": "^19.3.1",
+    "typescript": "^7.0.2"
+  }
 }

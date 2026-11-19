@@ -38,7 +38,7 @@
           "$description": "辅助文字与占位提示。"
         },
         "disabled": {
-          "$value": "{raw.color.neutral.400}",
+          "$value": "{raw.color.neutral.500}",
           "$description": "禁用态文字。"
         }
       },
@@ -55,6 +55,14 @@
         "strong": {
           "$value": "{raw.color.neutral.400}",
           "$description": "需要强调的边框。"
+        },
+        "focus": {
+          "$value": "{raw.color.brand.500}",
+          "$description": "焦点指示，用于 outline。"
+        },
+        "invalid": {
+          "$value": "{raw.color.danger.700}",
+          "$description": "校验失败边框。"
         }
       },
       "action": {
@@ -65,6 +73,14 @@
             "$value": "{raw.color.brand.500}",
             "$description": "主操作背景，配白色文字满足 WCAG AA。"
           },
+          "bg-hover": {
+            "$value": "{raw.color.brand.600}",
+            "$description": "主操作悬停背景，深一档保证白字对比。"
+          },
+          "bg-disabled": {
+            "$value": "{raw.color.neutral.300}",
+            "$description": "主操作禁用背景。"
+          },
           "text": {
             "$value": "{raw.color.neutral.50}",
             "$description": "主操作文字。"
@@ -72,6 +88,14 @@
           "border": {
             "$value": "{raw.color.brand.500}",
             "$description": "主操作边框，与背景同色。"
+          },
+          "border-hover": {
+            "$value": "{raw.color.brand.600}",
+            "$description": "主操作悬停边框，与背景同步。"
+          },
+          "border-disabled": {
+            "$value": "{raw.color.neutral.300}",
+            "$description": "主操作禁用边框，与禁用背景同色。"
           }
         },
         "secondary": {
@@ -80,6 +104,10 @@
             "$value": "{raw.color.neutral.50}",
             "$description": "次操作背景。"
           },
+          "bg-hover": {
+            "$value": "{raw.color.neutral.300}",
+            "$description": "次操作悬停背景。"
+          },
           "text": {
             "$value": "{raw.color.brand.700}",
             "$description": "次操作文字。"
@@ -87,6 +115,10 @@
           "border": {
             "$value": "{raw.color.brand.500}",
             "$description": "次操作边框。"
+          },
+          "border-disabled": {
+            "$value": "{raw.color.neutral.300}",
+            "$description": "次操作禁用边框。"
           }
         },
         "ghost": {
@@ -94,6 +126,10 @@
           "bg": {
             "$value": "{raw.color.transparent}",
             "$description": "无背景。"
+          },
+          "bg-hover": {
+            "$value": "{raw.color.neutral.300}",
+            "$description": "弱操作悬停背景。"
           },
           "text": {
             "$value": "{raw.color.brand.700}",

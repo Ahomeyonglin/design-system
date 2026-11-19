@@ -39,6 +39,7 @@ token 目前只存在于文档描述里，没有源文件、没有产物、没�
 | D20 | 透明 token | 新增 `raw.color.transparent`（alpha 0），供 `action.ghost.bg` 与 `action.ghost.border` 使用，避免在语义层写字面量 |
 | D21 | 主题文件结构 | `semantic.tokens.json` 的默认值即亮色；`themes/light.tokens.json` 只声明 light context、不重复 alias；`themes/dark.tokens.json` 只覆盖与亮色不同的 26 个颜色角色 |
 | D22 | 页面范围调整 | `/color` 同一页增加 space / radius / typography 区块；语义项展示并可复制变量名，raw 色阶仍默认折叠 |
+| D23 | 控件高度 | 不建 size token；高度由排版行高与内边距推导，边框用内描边、不参与高度（当前 24 + 12×2 = 48px） |
 
 间距映射（D12）：
 

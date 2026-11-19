@@ -1,0 +1,94 @@
+{
+  "name": "TextField",
+  "category": "form",
+  "$description": "带标签、帮助文本与错误提示的单行输入域，用于表单中的文本采集。",
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "description": "标签文字，渲染为 label[for]。"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "帮助文本，error 存在时不显示。"
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false,
+      "description": "错误文案，存在时进入 invalid 状态。"
+    },
+    {
+      "name": "type",
+      "type": "\"text\" | \"password\" | \"email\" | \"number\" | \"search\" | \"tel\" | \"url\"",
+      "required": false,
+      "defaultValue": "\"text\"",
+      "description": "输入类型。"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "受控值。"
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": true,
+      "description": "值变化回调。"
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "description": "占位提示，不能替代标签。"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "禁用态。"
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "透传原生 required，不渲染星号。"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false,
+      "description": "表单字段名。"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "输入框 id，未传时自动生成。"
+    }
+  ],
+  "tokens": [
+    "semantic.color.bg.subtle",
+    "semantic.color.bg.surface",
+    "semantic.color.border.default",
+    "semantic.color.border.focus",
+    "semantic.color.border.invalid",
+    "semantic.color.status.danger.text",
+    "semantic.color.text.disabled",
+    "semantic.color.text.primary",
+    "semantic.color.text.tertiary",
+    "semantic.radius.control",
+    "semantic.space.inset.md",
+    "semantic.space.inset.sm",
+    "semantic.space.stack.sm",
+    "semantic.text.body.md",
+    "semantic.text.body.sm",
+    "semantic.text.label.md"
+  ]
+}

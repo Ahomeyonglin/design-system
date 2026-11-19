@@ -1,0 +1,43 @@
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--semantic-space-inline-sm) var(--semantic-space-inset-sm);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--semantic-radius-pill);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+  white-space: nowrap;
+}
+
+.ds-badge[data-tone='neutral'] {
+  color: var(--semantic-color-text-secondary);
+  background: var(--semantic-color-bg-subtle);
+  border-color: var(--semantic-color-border-default);
+}
+
+.ds-badge[data-tone='info'] {
+  color: var(--semantic-color-status-info-text);
+  background: var(--semantic-color-status-info-bg);
+  border-color: var(--semantic-color-status-info-border);
+}
+
+.ds-badge[data-tone='success'] {
+  color: var(--semantic-color-status-success-text);
+  background: var(--semantic-color-status-success-bg);
+  border-color: var(--semantic-color-status-success-border);
+}
+
+.ds-badge[data-tone='warning'] {
+  color: var(--semantic-color-status-warning-text);
+  background: var(--semantic-color-status-warning-bg);
+  border-color: var(--semantic-color-status-warning-border);
+}
+
+.ds-badge[data-tone='danger'] {
+  color: var(--semantic-color-status-danger-text);
+  background: var(--semantic-color-status-danger-bg);
+  border-color: var(--semantic-color-status-danger-border);
+}

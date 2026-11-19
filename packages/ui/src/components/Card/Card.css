@@ -1,0 +1,8 @@
+.ds-card {
+  padding: var(--semantic-space-inset-lg);
+  background: var(--semantic-color-bg-surface);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--semantic-color-border-subtle);
+  border-radius: var(--semantic-radius-surface);
+}

@@ -1,0 +1,66 @@
+.ds-text-field {
+  display: grid;
+  gap: var(--semantic-space-stack-sm);
+}
+
+.ds-text-field__label {
+  color: var(--semantic-color-text-primary);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+}
+
+.ds-text-field__input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-md);
+  color: var(--semantic-color-text-primary);
+  background: var(--semantic-color-bg-surface);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--semantic-color-border-default);
+  border-radius: var(--semantic-radius-control);
+  font-family: var(--semantic-text-body-md-font-family);
+  font-size: var(--semantic-text-body-md-font-size);
+  font-weight: var(--semantic-text-body-md-font-weight);
+  line-height: var(--semantic-text-body-md-line-height);
+}
+
+.ds-text-field__input::placeholder {
+  color: var(--semantic-color-text-tertiary);
+}
+
+.ds-text-field__input:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--semantic-color-border-focus);
+  outline-offset: 2px;
+}
+
+.ds-text-field__input[aria-invalid='true'] {
+  border-color: var(--semantic-color-border-invalid);
+}
+
+.ds-text-field__input:disabled {
+  color: var(--semantic-color-text-disabled);
+  background: var(--semantic-color-bg-subtle);
+  border-color: var(--semantic-color-border-default);
+  cursor: not-allowed;
+}
+
+.ds-text-field__description {
+  color: var(--semantic-color-text-tertiary);
+  font-family: var(--semantic-text-body-sm-font-family);
+  font-size: var(--semantic-text-body-sm-font-size);
+  font-weight: var(--semantic-text-body-sm-font-weight);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.ds-text-field__error {
+  color: var(--semantic-color-status-danger-text);
+  font-family: var(--semantic-text-body-sm-font-family);
+  font-size: var(--semantic-text-body-sm-font-size);
+  font-weight: var(--semantic-text-body-sm-font-weight);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
