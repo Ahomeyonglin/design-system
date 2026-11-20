@@ -40,5 +40,11 @@ jobs:
       - name: Check registry drift
         run: git diff --exit-code -- packages/ui/registry.json
 
+      - name: Lint docs
+        run: pnpm --filter @ds/docs lint
+
+      - name: Test docs
+        run: pnpm --filter @ds/docs test
+
       - name: Build docs
         run: pnpm --filter @ds/docs build

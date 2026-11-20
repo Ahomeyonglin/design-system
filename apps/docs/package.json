@@ -8,7 +8,9 @@
     "dev": "vite",
     "prebuild": "pnpm --filter @ds/tokens build",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "node scripts/lint-docs.mjs",
+    "test": "node --test --test-concurrency=1 tests/"
   },
   "dependencies": {
     "@ds/tokens": "workspace:*",

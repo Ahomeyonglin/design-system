@@ -144,6 +144,86 @@ export function radiusTokens(combination: Record<string, TokenEntry>): Dimension
     }));
 }
 
+export function anchorOf(id: string): string {
+  return id.replaceAll('.', '-');
+}
+
+export interface TokenLink {
+  path: string;
+  anchor: string;
+}
+
+export function tokenLink(id: string): TokenLink | null {
+  if (id.startsWith('semantic.color.') || id.startsWith('raw.color.')) {
+    return { path: '/color', anchor: anchorOf(id) };
+  }
+  if (id.startsWith('semantic.text.')) {
+    return { path: '/type', anchor: anchorOf(id) };
+  }
+  if (id.startsWith('semantic.space.') || id.startsWith('semantic.radius.')) {
+    return { path: '/space', anchor: anchorOf(id) };
+  }
+  return null;
+}
+
+export function tokenCounts(combination: Record<string, TokenEntry>): {
+  semantic: number;
+  raw: number;
+} {
+  const ids = Object.keys(combination);
+  return {
+    semantic: ids.filter((id) => id.startsWith('semantic.')).length,
+    raw: ids.filter((id) => id.startsWith('raw.')).length,
+  };
+}
+
+export interface SearchableToken {
+  id: string;
+  description: string;
+}
+
+export function searchableTokens(combination: Record<string, TokenEntry>): SearchableToken[] {
+  return Object.keys(combination)
+    .filter((id) => id.startsWith('semantic.') || id.startsWith('raw.color.'))
+    .sort(naturalSort)
+    .map((id) => ({ id, description: combination[id].$description ?? '' }));
+}
+
+const DIFFERENCE_GROUPS = [
+  { key: 'color', label: '颜色' },
+  { key: 'text', label: '排版' },
+  { key: 'space', label: '间距' },
+  { key: 'radius', label: '圆角' },
+] as const;
+
+export interface ThemeDifferenceGroup {
+  key: string;
+  label: string;
+  tokens: string[];
+}
+
+export interface ThemeDifferences {
+  total: number;
+  groups: ThemeDifferenceGroup[];
+}
+
+export function themeDifferences(
+  light: Record<string, TokenEntry>,
+  dark: Record<string, TokenEntry>,
+): ThemeDifferences {
+  const changed = Object.keys(light)
+    .filter((id) => id.startsWith('semantic.'))
+    .filter((id) => JSON.stringify(light[id]?.$value) !== JSON.stringify(dark[id]?.$value))
+    .sort(naturalSort);
+
+  const groups = DIFFERENCE_GROUPS.map((group) => ({
+    ...group,
+    tokens: changed.filter((id) => id.startsWith(`semantic.${group.key}.`)),
+  })).filter((group) => group.tokens.length > 0);
+
+  return { total: changed.length, groups };
+}
+
 export function typographyTokens(combination: Record<string, TokenEntry>): TypographyToken[] {
   return Object.keys(combination)
     .filter((id) => id.startsWith('semantic.text.'))

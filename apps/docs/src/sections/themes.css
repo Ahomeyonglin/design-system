@@ -1,0 +1,88 @@
+.themes__matrix {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.themes__matrix th,
+.themes__matrix td {
+  padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-md);
+  border-bottom: var(--docs-hairline) solid var(--semantic-color-border-subtle);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.themes__matrix thead th {
+  color: var(--semantic-color-text-tertiary);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-weight: var(--semantic-text-label-md-font-weight);
+}
+
+.themes__cell {
+  padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-md);
+  border: 0;
+  border-radius: var(--semantic-radius-control);
+  color: var(--semantic-color-action-secondary-text);
+  background: var(--semantic-color-action-secondary-bg);
+  outline: var(--docs-hairline) solid var(--semantic-color-action-secondary-border);
+  outline-offset: calc(-1 * var(--docs-hairline));
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+  cursor: pointer;
+}
+
+.themes__cell[aria-pressed='true'] {
+  color: var(--semantic-color-action-primary-text);
+  background: var(--semantic-color-action-primary-bg);
+  outline-color: var(--semantic-color-action-primary-border);
+}
+
+.themes__cell:disabled {
+  color: var(--semantic-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.themes__cell:focus-visible {
+  outline: var(--docs-focus-ring) solid var(--semantic-color-border-focus);
+  outline-offset: var(--docs-focus-ring);
+}
+
+.themes__color-link {
+  margin-top: var(--semantic-space-stack-md);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.themes__summary {
+  color: var(--semantic-color-text-secondary);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.themes__diff {
+  display: grid;
+  gap: var(--semantic-space-stack-lg);
+  margin-top: var(--semantic-space-stack-lg);
+}
+
+.themes__diff-group h3 {
+  margin-bottom: var(--semantic-space-stack-sm);
+}
+
+.themes__diff-group ul {
+  display: grid;
+  gap: var(--semantic-space-stack-sm);
+  margin: 0;
+  padding-left: var(--semantic-space-inset-lg);
+  color: var(--semantic-color-text-secondary);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.themes__diff-group code {
+  overflow-wrap: anywhere;
+}
+
+.themes__diff-group a {
+  overflow-wrap: anywhere;
+}

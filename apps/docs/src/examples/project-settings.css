@@ -1,0 +1,31 @@
+.project-settings__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--semantic-space-inline-md);
+  margin-bottom: var(--semantic-space-stack-sm);
+}
+
+.project-settings__layout {
+  display: grid;
+  gap: var(--semantic-space-stack-lg);
+}
+
+.project-settings__section {
+  display: grid;
+  gap: var(--semantic-space-stack-lg);
+}
+
+.project-settings__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--semantic-space-inline-sm);
+}
+
+.project-settings__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--semantic-space-inline-sm);
+}

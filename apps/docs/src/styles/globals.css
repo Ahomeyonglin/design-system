@@ -4,9 +4,14 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
   background: var(--semantic-color-bg-page);
   color: var(--semantic-color-text-primary);
   font-family: var(--semantic-text-body-md-font-family);
@@ -15,23 +20,60 @@ body {
   line-height: var(--semantic-text-body-md-line-height);
 }
 
-.page {
-  padding: var(--semantic-space-inset-xl);
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
 h1 {
-  margin: 0 0 var(--semantic-space-stack-md);
   font-family: var(--semantic-text-display-lg-font-family);
   font-size: var(--semantic-text-display-lg-font-size);
   font-weight: var(--semantic-text-display-lg-font-weight);
   line-height: var(--semantic-text-display-lg-line-height);
 }
 
+h2 {
+  font-family: var(--semantic-text-heading-md-font-family);
+  font-size: var(--semantic-text-heading-md-font-size);
+  font-weight: var(--semantic-text-heading-md-font-weight);
+  line-height: var(--semantic-text-heading-md-line-height);
+}
+
+h3 {
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+}
+
 p {
-  margin: 0;
   color: var(--semantic-color-text-secondary);
 }
 
-.page__link {
+a {
   color: var(--semantic-color-action-ghost-text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code,
+kbd {
+  font-family: var(--semantic-text-code-md-font-family);
+  font-size: var(--semantic-text-code-md-font-size);
+  line-height: var(--semantic-text-code-md-line-height);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
 }

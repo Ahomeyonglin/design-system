@@ -29,7 +29,7 @@ token 目前只存在于文档描述里，没有源文件、没有产物、没�
 | D10 | Action 状态 | S1 不建 hover / pressed / disabled，命名规则保留；待 S2 有 Button 时创建 |
 | D11 | 字重 | 只保留 `raw.text.weight.*`，不建独立的 semantic 字重 token；字重通过排版 token 组合使用 |
 | D12 | 间距 | raw 7 档，按 100 步进命名：`raw.space.100`–`700`，值 2 / 4 / 8 / 12 / 16 / 24 / 32px，源值单位 px；semantic 为 `inline` / `stack` / `inset` × `sm` / `md` / `lg` / `xl` 共 12 个，映射见下文 |
-| D13 | 圆角 | raw 4 档，按 100 步进命名：`raw.radius.100`–`400`，值 0 / 8 / 12 / 9999px；semantic 为 `none` / `control` / `surface` / `pill`，映射见下文 |
+| D13 | 圆角 | raw 4 档，按 100 步进命名：`raw.radius.100`–`400`，值 0 / 8 / 12 / 9999px；semantic 为 `none` / `control` / `surface` / `pill`，当前全站直角，后三者均映射 0，映射见下文 |
 | D14 | 排版取值 | 6 个组合的字号 / 行高 / 字重见下文；单位 px；raw 只建被使用的档位 |
 | D15 | 品牌色阶 | 11 级，色相固定 1.33°，500 为 `#CE1B6C` → `oklch(0.5592 0.2131 1.33)`；取值见下文；hex 仅用于预览与产物回退 |
 | D16 | 解析器 | Terrazzo 2.10.0（parser / cli / plugin-css 同版本），原生支持 DTCG 2025.10 resolver 与 modifier（见 [ADR-0011](../adr/0011-parser.md)） |
@@ -54,9 +54,11 @@ token 目前只存在于文档描述里，没有源文件、没有产物、没�
 | 角色 | 值 |
 | --- | --- |
 | `none` | 0 |
-| `control` | 8px |
-| `surface` | 12px |
-| `pill` | 9999px |
+| `control` | 0 |
+| `surface` | 0 |
+| `pill` | 0 |
+
+2026-11-20 调整：设计方向改为全站直角，`control` / `surface` / `pill` 都映射到 `raw.radius.100`；raw 的 8 / 12 / 9999px 尺度保留，供后续需要时重新映射。
 
 排版取值（D14）：
 

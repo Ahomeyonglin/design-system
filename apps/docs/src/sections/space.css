@@ -1,0 +1,8 @@
+.space-page__groups {
+  display: grid;
+  gap: var(--semantic-space-stack-xl);
+}
+
+.docs-panel h3 {
+  margin-bottom: var(--semantic-space-stack-md);
+}

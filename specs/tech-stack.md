@@ -113,6 +113,9 @@ src/components/<PascalCase>/
 | `/components` | 组件地图，由 registry 渲染 | S3 |
 | `/components/<name>` | 组件详情 | S3 |
 | `/changelog` | 变更记录 | S3 |
+| `/examples/project-settings` | 项目设置样板页 | S3 |
+
+部署：`main` 推送触发 `.github/workflows/deploy-docs.yml`，以 `VITE_BASE=/design-system/` 构建，产物补 `404.html`（复制 `index.html`）与 `.nojekyll` 后发布到 GitHub Pages。固定 URL 为 `https://ahomeyonglin.github.io/design-system/`；深链由 `404.html` 回退到应用自身路由。仓库 Pages 的 Source 需一次性设为「GitHub Actions」。
 
 ### 5.1 三层 token 的呈现
 

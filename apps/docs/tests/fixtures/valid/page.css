@@ -1,0 +1,5 @@
+.page {
+  padding: var(--semantic-space-inset-md);
+  color: var(--semantic-color-text-primary);
+  background: var(--semantic-color-bg-page);
+}

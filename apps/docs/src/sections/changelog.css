@@ -1,0 +1,42 @@
+.changelog__body {
+  display: grid;
+  gap: var(--semantic-space-stack-md);
+}
+
+.changelog__body h2 {
+  margin-top: var(--semantic-space-stack-md);
+  padding-bottom: var(--semantic-space-stack-sm);
+  border-bottom: var(--docs-hairline) solid var(--semantic-color-border-subtle);
+}
+
+.changelog__body h3 {
+  margin-top: var(--semantic-space-stack-md);
+  color: var(--semantic-color-text-secondary);
+}
+
+.changelog__body h4 {
+  margin: var(--semantic-space-stack-sm) 0 0;
+  color: var(--semantic-color-text-tertiary);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+}
+
+.changelog__body p,
+.changelog__body li {
+  color: var(--semantic-color-text-secondary);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.changelog__body ul {
+  display: grid;
+  gap: var(--semantic-space-stack-sm);
+  margin: 0;
+  padding-left: var(--semantic-space-inset-lg);
+}
+
+.changelog__body code {
+  overflow-wrap: anywhere;
+}

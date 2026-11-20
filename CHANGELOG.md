@@ -12,6 +12,11 @@
 
 ### Added
 
+- S3 文档站：九条路由、应用外壳、总览、排版、间距与圆角、主题与品牌、组件地图与详情、变更记录
+- 全局搜索（页面 / 组件 / token），快捷键 `Cmd/Ctrl+K` 与 `/`
+- 文档站 lint、路由与支持矩阵测试、lint fixture，并接入 CI
+- `page-assembly` skill 与项目设置样板页 `/examples/project-settings`
+- GitHub Pages 部署 workflow、`404.html` 深链回退与 `.nojekyll`
 - 仓库骨架：pnpm workspace、三份宪法、根与包级 `AGENTS.md`
 - 首个功能规格：`specs/2026-11-14-token-foundation/`
 - S2 组件最小集：`Text` / `Button` / `TextField` / `Card` / `Badge` 三件套与 `registry.json`
@@ -21,7 +26,10 @@
 
 ### Changed
 
+- 全站圆角改为直角：`semantic.radius.control` / `surface` / `pill` 均映射到 0，组件与文档站统一
+- TextField 聚焦改为深灰边框 + 2px 品牌色底边，文档站搜索框聚焦样式同步对齐
 - 新增 9 个交互状态语义 token；浅色 `semantic.color.text.disabled` 由 `neutral.400` 调整为 `neutral.500`
+- 文档站样式迁到语义 token 与 `--docs-*` 布局变量；`/color` 接入应用外壳，主题切换移到页头
 
 ## 版本记录
 

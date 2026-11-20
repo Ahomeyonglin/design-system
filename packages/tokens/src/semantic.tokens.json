@@ -53,8 +53,8 @@
           "$description": "默认边框，如控件外框。"
         },
         "strong": {
-          "$value": "{raw.color.neutral.400}",
-          "$description": "需要强调的边框。"
+          "$value": "{raw.color.neutral.500}",
+          "$description": "需要强调的边框，如输入框聚焦时的外框。"
         },
         "focus": {
           "$value": "{raw.color.brand.500}",
@@ -274,16 +274,16 @@
         "$description": "直角，不做圆角。"
       },
       "control": {
-        "$value": "{raw.radius.200}",
-        "$description": "可交互控件，8px。"
+        "$value": "{raw.radius.100}",
+        "$description": "可交互控件。全站直角风格，映射 0。"
       },
       "surface": {
-        "$value": "{raw.radius.300}",
-        "$description": "容器与表面，12px。"
+        "$value": "{raw.radius.100}",
+        "$description": "容器与表面。全站直角风格，映射 0。"
       },
       "pill": {
-        "$value": "{raw.radius.400}",
-        "$description": "胶囊形，9999px。"
+        "$value": "{raw.radius.100}",
+        "$description": "胶囊角色。全站直角风格，映射 0；raw 尺度保留。"
       }
     },
     "text": {

@@ -1,0 +1,34 @@
+/*
+ * 文档站布局与可视化尺寸的唯一集中声明处。
+ * 这些值不属于设计 token 类别（容器、侧栏、断点、色块、示意条、图标、层级、偏移），
+ * 其余样式文件只能引用 --docs-*，不得再写字面量尺寸。
+ */
+:root {
+  --docs-hairline: 1px;
+  --docs-viewport-height: 100vh;
+  --docs-search-panel-max-height: calc(100vh - var(--semantic-space-inset-xl));
+  --docs-focus-ring: 2px;
+  --docs-sidebar-width: 248px;
+  --docs-header-height: 64px;
+  --docs-content-max: 1040px;
+  --docs-swatch-size: 44px;
+  --docs-swatch-size-sm: 28px;
+  --docs-swatch-inset: 2px;
+  --docs-checker-size: 12px;
+  --docs-demo-block: 16px;
+  --docs-space-demo-width: 160px;
+  --docs-type-measure: 320px;
+  --docs-preview-min: 220px;
+  --docs-preview-height: 120px;
+  --docs-control-label-width: 140px;
+  --docs-search-trigger-width: 200px;
+  --docs-search-panel-width: 640px;
+  --docs-layer-header: 10;
+  --docs-layer-dialog: 20;
+}
+
+.is-anchor-target {
+  outline: var(--docs-focus-ring) solid var(--semantic-color-border-focus);
+  outline-offset: var(--docs-focus-ring);
+  border-radius: var(--semantic-radius-control);
+}

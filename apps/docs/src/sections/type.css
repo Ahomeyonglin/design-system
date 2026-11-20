@@ -1,0 +1,10 @@
+.type-page__vars {
+  margin-top: var(--semantic-space-stack-md);
+}
+
+.type-page__var code {
+  overflow-wrap: anywhere;
+  font-family: var(--semantic-text-code-md-font-family);
+  font-size: var(--semantic-text-code-md-font-size);
+  line-height: var(--semantic-text-code-md-line-height);
+}

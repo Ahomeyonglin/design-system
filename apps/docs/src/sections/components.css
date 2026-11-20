@@ -1,0 +1,45 @@
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--docs-preview-min), 1fr));
+  gap: var(--semantic-space-stack-lg);
+}
+
+.component-card {
+  display: grid;
+  gap: var(--semantic-space-stack-md);
+}
+
+.component-card__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--docs-preview-height);
+  padding: var(--semantic-space-inset-md);
+  background: var(--semantic-color-bg-surface-raised);
+  border-radius: var(--semantic-radius-control);
+}
+
+.component-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--semantic-space-inline-sm);
+}
+
+.component-card__name {
+  color: var(--semantic-color-text-primary);
+}
+
+.component-card__name:hover {
+  text-decoration: none;
+  color: var(--semantic-color-action-ghost-text);
+}
+
+.component-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--semantic-space-inline-md);
+  color: var(--semantic-color-text-tertiary);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}

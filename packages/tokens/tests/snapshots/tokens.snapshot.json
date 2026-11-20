@@ -1276,7 +1276,7 @@
       "semantic.radius.control": {
         "$type": "dimension",
         "$value": {
-          "value": 8,
+          "value": 0,
           "unit": "px"
         }
       },
@@ -1290,14 +1290,14 @@
       "semantic.radius.pill": {
         "$type": "dimension",
         "$value": {
-          "value": 9999,
+          "value": 0,
           "unit": "px"
         }
       },
       "semantic.radius.surface": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 0,
           "unit": "px"
         }
       },
@@ -2576,13 +2576,13 @@
         "$value": {
           "colorSpace": "oklch",
           "components": [
-            0.82,
+            0.68,
             0,
             0
           ],
           "alpha": 1
         },
-        "hex": "#C4C4C4"
+        "hex": "#989898"
       },
       "semantic.color.border.subtle": {
         "$type": "color",
@@ -2808,7 +2808,7 @@
       "semantic.radius.control": {
         "$type": "dimension",
         "$value": {
-          "value": 8,
+          "value": 0,
           "unit": "px"
         }
       },
@@ -2822,14 +2822,14 @@
       "semantic.radius.pill": {
         "$type": "dimension",
         "$value": {
-          "value": 9999,
+          "value": 0,
           "unit": "px"
         }
       },
       "semantic.radius.surface": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 0,
           "unit": "px"
         }
       },

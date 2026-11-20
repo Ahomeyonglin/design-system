@@ -27,13 +27,15 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 
 ## 3. 当前阶段
 
-**S1（Token 地基）已实现**：`packages/tokens` 具备 raw / semantic / brand / theme / resolver、构建与测试；`apps/docs` 具备可运行的 Color 验收页。`packages/ui` 仍为空，组件与 `registry.json` 属于 S2。
+**S3（文档站与页面组装）已实现**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署。
 
 因此：
 
 - 包内脚本以各 `package.json` 为准，不要发明脚本名。
 - 改 token 值必须重新构建并更新快照：`UPDATE_SNAPSHOT=1 pnpm --filter @ds/tokens test`。
-- 未确认项（品牌支持矩阵的运行时行为、组件层）先问，不要替用户决定。
+- 文档站改动必须同时通过 `lint`、`test`、`build`；布局尺寸只允许写在 `apps/docs/src/styles/layout.css` 的 `--docs-*`。
+- 部署需要 `main` 推送；本地验证带 base 的产物用 `VITE_BASE=/design-system/ pnpm --filter @ds/docs build`。
+- 未确认项（第二个品牌、S4 治理、npm 发布）先问，不要替用户决定。
 
 ## 4. 命令
 
@@ -42,8 +44,10 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 | `pnpm install` | 安装 workspace 依赖 | 可用 |
 | `pnpm --filter @ds/tokens build` | 生成 token 产物 | 可用 |
 | `pnpm --filter @ds/tokens test` | 快照 + 色域 + 违规 fixture | 可用 |
-| `pnpm --filter @ds/ui build:registry` | 聚合 `registry.json` | S2 引入 |
+| `pnpm --filter @ds/ui build:registry` | 聚合 `registry.json` | 可用 |
 | `pnpm --filter @ds/docs dev` | 启动文档站 | 可用 |
+| `pnpm --filter @ds/docs lint` | 文档站硬编码、raw 与布局尺寸检查 | 可用 |
+| `pnpm --filter @ds/docs test` | 路由、支持矩阵与 lint fixture | 可用 |
 | `pnpm --filter @ds/docs build` | 文档站类型检查与静态构建 | 可用 |
 
 ## 5. 硬规则

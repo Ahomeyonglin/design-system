@@ -1,0 +1,109 @@
+.component-detail__title {
+  display: flex;
+  align-items: center;
+  gap: var(--semantic-space-inline-md);
+  margin-bottom: var(--semantic-space-stack-sm);
+}
+
+.component-detail__import {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--semantic-space-inline-sm);
+  margin-top: var(--semantic-space-stack-md);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.component-detail__import code {
+  overflow-wrap: anywhere;
+}
+
+.component-detail__controls {
+  display: grid;
+  gap: var(--semantic-space-stack-md);
+  padding-bottom: var(--semantic-space-inset-md);
+  border-bottom: var(--docs-hairline) solid var(--semantic-color-border-subtle);
+}
+
+.component-detail__control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--semantic-space-inline-sm);
+}
+
+.component-detail__label {
+  min-width: var(--docs-control-label-width);
+  color: var(--semantic-color-text-tertiary);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-size: var(--semantic-text-label-md-font-size);
+  font-weight: var(--semantic-text-label-md-font-weight);
+  line-height: var(--semantic-text-label-md-line-height);
+}
+
+.component-detail__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--semantic-space-inline-sm);
+}
+
+.component-detail__options .docs-control[aria-pressed='true'] {
+  color: var(--semantic-color-action-primary-text);
+  background: var(--semantic-color-action-primary-bg);
+  outline-color: var(--semantic-color-action-primary-border);
+}
+
+.component-detail__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--docs-preview-height);
+  margin-top: var(--semantic-space-inset-lg);
+  padding: var(--semantic-space-inset-lg);
+  background: var(--semantic-color-bg-surface-raised);
+  border-radius: var(--semantic-radius-control);
+}
+
+.component-detail__table-wrap {
+  overflow-x: auto;
+}
+
+.component-detail__table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.component-detail__table th,
+.component-detail__table td {
+  padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-md);
+  border-bottom: var(--docs-hairline) solid var(--semantic-color-border-subtle);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+  vertical-align: top;
+}
+
+.component-detail__table thead th {
+  color: var(--semantic-color-text-tertiary);
+  font-family: var(--semantic-text-label-md-font-family);
+  font-weight: var(--semantic-text-label-md-font-weight);
+}
+
+.component-detail__table code {
+  overflow-wrap: anywhere;
+}
+
+.component-detail__tokens {
+  display: grid;
+  gap: var(--semantic-space-stack-sm);
+  margin: 0;
+  padding-left: var(--semantic-space-inset-lg);
+  font-size: var(--semantic-text-body-sm-font-size);
+  line-height: var(--semantic-text-body-sm-line-height);
+}
+
+.component-detail__tokens code,
+.component-detail__tokens a {
+  overflow-wrap: anywhere;
+}

@@ -263,6 +263,7 @@
         "semantic.color.border.default",
         "semantic.color.border.focus",
         "semantic.color.border.invalid",
+        "semantic.color.border.strong",
         "semantic.color.status.danger.text",
         "semantic.color.text.disabled",
         "semantic.color.text.primary",
