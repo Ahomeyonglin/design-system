@@ -81,10 +81,10 @@
 | V24 | 样板页只使用 Card / Text / TextField / Button / Badge；保存 → 已保存、取消恢复最近保存值、归档 → 已归档（danger）均已实测；样式仅语义间距与布局变量 | 2026-11-20 | 通过 |
 | V25 | 先写 `.trae/skills/page-assembly/SKILL.md`，再产出 `apps/docs/src/examples/ProjectSettingsPage.tsx` 与同目录样式；颜色与间距无手工修改；lint / test / build 通过 | 2026-11-20 | 通过 |
 | V26 | `/color` 保留语义色、组合预览、间距、圆角、排版、原始色阶与复制变量名；主题切换移到页头，raw 区仍是唯一 raw 展示入口 | 2026-11-20 | 通过 |
-| V27 | 导航为真实链接可键盘遍历；弹层有 `aria-label="全局搜索"`；主题按钮 `aria-pressed` 正确；通用零件只在 `src/layout` / `src/search` / `src/ui`；样板页与预览只用 registry 组件 | 2026-11-20 | 部分通过（完整键盘走查待人工执行） |
-| V28 | 需仓库 Settings → Pages → Source = GitHub Actions，本地无法代办 | — | 待部署 |
-| V29 | 需推送 `main` 触发 `deploy-docs` | — | 待部署 |
-| V30–V33 | 本地以 `VITE_BASE=/design-system/` 构建并 preview：首页、`/design-system/components/button?theme=dark&brand=base`、`/design-system/changelog` 与未知路径均正常渲染；固定 URL 与线上 `404.html` 需部署后复验 | 2026-11-20 | 本地通过，线上待验收 |
+| V27 | 导航为真实链接可键盘遍历；弹层有 `aria-label="全局搜索"`；主题按钮 `aria-pressed` 正确；通用零件只在 `src/layout` / `src/search` / `src/ui`；样板页与预览只用 registry 组件 | 2026-11-20 | 通过（线上键盘走查：Tab 遍历导航；`⌘K` 打开搜索；输入 `button` 后 ArrowDown + Enter 跳转 `/components/Button`；Light `aria-pressed=true`、Dark `false`；结构与 registry 约束在前序验收已覆盖） |
+| V28 | 需仓库 Settings → Pages → Source = GitHub Actions，本地无法代办 | 2026-11-20 | 通过（仓库改为 public，Pages `build_type=workflow`） |
+| V29 | 需推送 `main` 触发 `deploy-docs` | 2026-11-20 | 通过（`be4c476`；Deploy Docs #44707530216、CI #44707530225 均成功） |
+| V30–V33 | 线上固定 URL、深链、`/changelog` 与未知路径验收 | 2026-11-20 | 通过：<https://ahomeyonglin.github.io/design-system/> 返回 200；`/design-system/components/button?theme=dark&brand=base` 正常渲染 Button 详情并保持 dark；`/design-system/changelog` 正常渲染；未知路径渲染应用内 404；深链使用 `404.html` 回退，HTTP 状态为 404 但 SPA 渲染正常 |
 
 ## 5. 未通过的处理
 

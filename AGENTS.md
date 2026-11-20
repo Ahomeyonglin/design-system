@@ -27,7 +27,7 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 
 ## 3. 当前阶段
 
-**S3（文档站与页面组装）已实现**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署。
+**S3（文档站与页面组装）已完成并上线**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署；线上地址 <https://ahomeyonglin.github.io/design-system/>。S4 治理尚未开始。
 
 因此：
 

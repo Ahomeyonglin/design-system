@@ -16,7 +16,7 @@
 - 全局搜索（页面 / 组件 / token），快捷键 `Cmd/Ctrl+K` 与 `/`
 - 文档站 lint、路由与支持矩阵测试、lint fixture，并接入 CI
 - `page-assembly` skill 与项目设置样板页 `/examples/project-settings`
-- GitHub Pages 部署 workflow、`404.html` 深链回退与 `.nojekyll`
+- GitHub Pages 部署 workflow、`404.html` 深链回退与 `.nojekyll`；文档站已上线：<https://ahomeyonglin.github.io/design-system/>
 - 仓库骨架：pnpm workspace、三份宪法、根与包级 `AGENTS.md`
 - 首个功能规格：`specs/2026-11-14-token-foundation/`
 - S2 组件最小集：`Text` / `Button` / `TextField` / `Card` / `Badge` 三件套与 `registry.json`
