@@ -2,5 +2,10 @@
   "name": "design-system",
   "version": "0.0.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "commit:check": "node scripts/commit-check.mjs",
+    "changelog:write": "node scripts/changelog.mjs --write",
+    "changelog:check": "node scripts/changelog.mjs --check"
+  }
 }

@@ -27,7 +27,9 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 
 ## 3. 当前阶段
 
-**S3（文档站与页面组装）已完成并上线**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署；线上地址 <https://ahomeyonglin.github.io/design-system/>。S4 治理尚未开始。
+**S3（文档站与页面组装）已完成并上线**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署；线上地址 <https://ahomeyonglin.github.io/design-system/>。
+
+**S4 治理进行中，本阶段只做 CI 门禁与变更日志自动生成**：提交标题校验、`[Unreleased]` 生成与过期检查、token 引用方向、生成物入库检查、带 `base` 构建；规格见 `specs/2026-11-20-governance/`。
 
 因此：
 
@@ -49,6 +51,9 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 | `pnpm --filter @ds/docs lint` | 文档站硬编码、raw 与布局尺寸检查 | 可用 |
 | `pnpm --filter @ds/docs test` | 路由、支持矩阵与 lint fixture | 可用 |
 | `pnpm --filter @ds/docs build` | 文档站类型检查与静态构建 | 可用 |
+| `pnpm commit:check [range]` | 校验提交标题，默认最近一条 | 可用 |
+| `pnpm changelog:write` | 从 git 提交生成 `[Unreleased]` | 可用 |
+| `pnpm changelog:check` | 校验 `[Unreleased]` 是否过期 | 可用 |
 
 ## 5. 硬规则
 
@@ -61,6 +66,8 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 5. **禁止臆造组件**：页面或组件里只能使用 `registry.json` 中已存在的组件。
 6. **token 名即 API**：重命名属于破坏性变更，必须走 `$deprecated` 过渡，不能直接改名删旧。
 7. **不为未来预留抽象**：不要加「以后可能用到」的参数、配置项或空实现。
+8. **`CHANGELOG.md` 的 `[Unreleased]` 禁止手改**：只能由 `pnpm changelog:write` 生成，`--check` 在 CI 中拦截过期。
+9. **提交标题必须符合 `type(scope): 描述`**：type 与 scope 取值见 `specs/2026-11-20-governance/requirements.md`；允许中文描述。
 
 ## 6. 改动的连带责任
 

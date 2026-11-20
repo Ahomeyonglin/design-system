@@ -149,7 +149,11 @@ src/components/<PascalCase>/
 | 色域 | 超 sRGB 直接失败 |
 | 源码禁 hex | lint 规则扫 `src/**` |
 | registry 漂移 | 重新生成后 `git diff --exit-code` |
-| token 引用完整性 | 构建期校验 alias 目标存在 |
+| token 引用完整性 | 构建期校验 alias 目标存在；测试校验 `raw ← semantic ← comp` 单向引用 |
+| 提交标题 | `pnpm commit:check <range>`，CI 覆盖 `push` 与 `pull_request` |
+| CHANGELOG 过期 | `pnpm changelog:check`，与最近 `v*` tag 之后的提交比对 |
+| 生成物入库 | `git ls-files packages/tokens/dist` 必须为空；`registry.json` 由漂移检查覆盖 |
+| 带 base 构建 | CI 额外执行 `VITE_BASE=/design-system/ pnpm --filter @ds/docs build` |
 
 ## 7. 明确禁止
 
@@ -158,6 +162,7 @@ src/components/<PascalCase>/
 3. 手改 `registry.json` 或 `dist/**`。
 4. 在组件里写死间距、圆角、字号（必须走变量）。
 5. 用缩写造 token 名（除固定的 `bg` 外，`clr`、`sp`、`fs` 之类一律禁止）。
+6. 手改 `CHANGELOG.md` 的 `[Unreleased]` 区块；只能由 `pnpm changelog:write` 生成。
 
 ## 8. 待确认
 

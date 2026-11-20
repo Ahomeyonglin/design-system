@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
         with:
@@ -21,6 +23,20 @@ jobs:
 
       - name: Install
         run: pnpm install --frozen-lockfile
+
+      - name: Check commit messages
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            RANGE="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+          elif [ -z "${{ github.event.before }}" ] || [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+            RANGE="v0.0.0..HEAD"
+          else
+            RANGE="${{ github.event.before }}..${{ github.sha }}"
+          fi
+          pnpm commit:check "$RANGE"
+
+      - name: Check changelog freshness
+        run: pnpm changelog:check
 
       - name: Build tokens
         run: pnpm --filter @ds/tokens build
@@ -40,6 +56,14 @@ jobs:
       - name: Check registry drift
         run: git diff --exit-code -- packages/ui/registry.json
 
+      - name: Check generated files are not tracked
+        run: |
+          TRACKED=$(git ls-files packages/tokens/dist)
+          if [ -n "$TRACKED" ]; then
+            echo "$TRACKED"
+            exit 1
+          fi
+
       - name: Lint docs
         run: pnpm --filter @ds/docs lint
 
@@ -48,3 +72,6 @@ jobs:
 
       - name: Build docs
         run: pnpm --filter @ds/docs build
+
+      - name: Build docs with pages base
+        run: VITE_BASE=/design-system/ pnpm --filter @ds/docs build
