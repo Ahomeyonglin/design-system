@@ -27,5 +27,5 @@
 .project-settings__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--semantic-space-inline-sm);
+  gap: var(--semantic-space-inline-lg);
 }

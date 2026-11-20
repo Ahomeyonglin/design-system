@@ -21,6 +21,10 @@
         "subtle": {
           "$value": "{raw.color.neutral.200}",
           "$description": "同一层内的弱化背景，如表格悬停行。"
+        },
+        "scrim": {
+          "$value": "{raw.color.scrim}",
+          "$description": "Modal / Dialog 背后的半透明压暗层。"
         }
       },
       "text": {
@@ -53,8 +57,8 @@
           "$description": "默认边框，如控件外框。"
         },
         "strong": {
-          "$value": "{raw.color.neutral.500}",
-          "$description": "需要强调的边框，如输入框聚焦时的外框。"
+          "$value": "{raw.color.neutral.800}",
+          "$description": "需要强调的边框，如 TextField 外框与聚焦态。"
         },
         "focus": {
           "$value": "{raw.color.brand.500}",

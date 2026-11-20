@@ -102,6 +102,10 @@
         "$value": { "colorSpace": "oklch", "components": [0, 0, 0], "alpha": 0 },
         "$description": "完全透明。供 action.ghost 的 bg 与 border 使用，避免在语义层写透明度字面量。"
       },
+      "scrim": {
+        "$value": { "colorSpace": "oklch", "components": [0.155, 0, 0], "alpha": 0.5 },
+        "$description": "遮罩层：neutral.950 的 50% 透明版本，用于 Modal / Dialog 背后压暗。"
+      },
       "success": {
         "$description": "成功状态色阶，色相 150°。只用于 semantic.status，不新增 action 变体。",
         "50": {

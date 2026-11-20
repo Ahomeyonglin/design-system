@@ -130,7 +130,7 @@ test('V4/V16/V17/V18 产物数量、分层与非颜色产物', () => {
   assert.deepEqual(badLayers, [], `非法层级：${badLayers.join(', ')}`);
 
   for (const [combo, tokens] of Object.entries(dist.combinations)) {
-    assert.equal(Object.keys(tokens).length, 131, `${combo} token 数量应为 131`);
+    assert.equal(Object.keys(tokens).length, 133, `${combo} token 数量应为 133`);
     for (const [id, token] of Object.entries(tokens)) {
       if (token.$type === 'color') {
         assert.equal(token.$value.colorSpace, 'oklch', `${combo} ${id} 不是 oklch`);

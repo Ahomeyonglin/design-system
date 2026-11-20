@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   padding-top: var(--semantic-space-inset-xl);
-  background: color-mix(in srgb, var(--semantic-color-bg-page) 80%, transparent);
+  background: var(--semantic-color-bg-scrim);
 }
 
 .search-panel {
@@ -32,7 +32,7 @@
   padding: var(--semantic-space-inset-sm) var(--semantic-space-inset-md);
   color: var(--semantic-color-text-primary);
   background: var(--semantic-color-bg-surface);
-  border: var(--docs-hairline) solid var(--semantic-color-border-default);
+  border: var(--docs-hairline) solid var(--semantic-color-border-strong);
   border-radius: var(--semantic-radius-control);
   outline: none;
   font-size: var(--semantic-text-body-md-font-size);

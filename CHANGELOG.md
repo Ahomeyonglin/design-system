@@ -23,6 +23,7 @@
 - 组件 lint、违规 fixture 与 `component-sync` skill
 - 文档站 `/color` 组合预览接入真实组件，新增表单面板
 - 最小 CI workflow：tokens 构建/测试、ui lint/typecheck、registry 漂移、docs 构建
+- 新增 `raw.color.scrim` 与 `semantic.color.bg.scrim`，供遮罩层统一使用
 
 ### Changed
 
@@ -30,6 +31,9 @@
 - TextField 聚焦改为深灰边框 + 2px 品牌色底边，文档站搜索框聚焦样式同步对齐
 - 新增 9 个交互状态语义 token；浅色 `semantic.color.text.disabled` 由 `neutral.400` 调整为 `neutral.500`
 - 文档站样式迁到语义 token 与 `--docs-*` 布局变量；`/color` 接入应用外壳，主题切换移到页头
+- `semantic.color.border.strong` 由 `neutral.500` 改为 `neutral.800`，TextField 静止态与文档站搜索框边框统一使用
+- 搜索弹窗遮罩改用 `semantic.color.bg.scrim`，修复浅色模式遮罩发虚
+- 文档站亮/暗切换控件改为胶囊形，样板页操作按钮间距由 `inline-sm` 调整为 `inline-lg`
 
 ## 版本记录
 

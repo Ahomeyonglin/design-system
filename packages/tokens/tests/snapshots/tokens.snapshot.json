@@ -425,6 +425,19 @@
         },
         "hex": "#0C0C0C"
       },
+      "raw.color.scrim": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.155,
+            0,
+            0
+          ],
+          "alpha": 0.5
+        },
+        "hex": "#0C0C0C80"
+      },
       "raw.color.success.50": {
         "$type": "color",
         "$value": {
@@ -960,6 +973,19 @@
           "alpha": 1
         },
         "hex": "#0C0C0C"
+      },
+      "semantic.color.bg.scrim": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.155,
+            0,
+            0
+          ],
+          "alpha": 0.5
+        },
+        "hex": "#0C0C0C80"
       },
       "semantic.color.bg.subtle": {
         "$type": "color",
@@ -1957,6 +1983,19 @@
         },
         "hex": "#0C0C0C"
       },
+      "raw.color.scrim": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.155,
+            0,
+            0
+          ],
+          "alpha": 0.5
+        },
+        "hex": "#0C0C0C80"
+      },
       "raw.color.success.50": {
         "$type": "color",
         "$value": {
@@ -2493,6 +2532,19 @@
         },
         "hex": "#FAFAFA"
       },
+      "semantic.color.bg.scrim": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.155,
+            0,
+            0
+          ],
+          "alpha": 0.5
+        },
+        "hex": "#0C0C0C80"
+      },
       "semantic.color.bg.subtle": {
         "$type": "color",
         "$value": {
@@ -2576,13 +2628,13 @@
         "$value": {
           "colorSpace": "oklch",
           "components": [
-            0.68,
+            0.31,
             0,
             0
           ],
           "alpha": 1
         },
-        "hex": "#989898"
+        "hex": "#303030"
       },
       "semantic.color.border.subtle": {
         "$type": "color",

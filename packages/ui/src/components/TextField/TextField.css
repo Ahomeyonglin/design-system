@@ -19,7 +19,7 @@
   background: var(--semantic-color-bg-surface);
   border-width: 1px;
   border-style: solid;
-  border-color: var(--semantic-color-border-default);
+  border-color: var(--semantic-color-border-strong);
   border-radius: var(--semantic-radius-control);
   font-family: var(--semantic-text-body-md-font-family);
   font-size: var(--semantic-text-body-md-font-size);

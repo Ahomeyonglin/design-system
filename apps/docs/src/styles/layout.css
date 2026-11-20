@@ -5,6 +5,7 @@
  */
 :root {
   --docs-hairline: 1px;
+  --docs-pill-radius: 9999px;
   --docs-viewport-height: 100vh;
   --docs-search-panel-max-height: calc(100vh - var(--semantic-space-inset-xl));
   --docs-focus-ring: 2px;

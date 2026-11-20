@@ -140,6 +140,10 @@
   gap: var(--semantic-space-inline-sm);
 }
 
+.docs-segment .docs-control {
+  border-radius: var(--docs-pill-radius);
+}
+
 .docs-segment .docs-control[aria-pressed='true'] {
   color: var(--semantic-color-action-primary-text);
   background: var(--semantic-color-action-primary-bg);
@@ -153,6 +157,7 @@
   gap: var(--semantic-space-inline-sm);
   min-width: var(--docs-search-trigger-width);
   color: var(--semantic-color-text-tertiary);
+  outline-color: var(--semantic-color-border-strong);
 }
 
 .docs-brand-select {
