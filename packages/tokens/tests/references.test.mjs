@@ -91,12 +91,12 @@ function readSourceFiles() {
   }));
 }
 
-test('V19 现有 token 引用方向合法', () => {
+test('V7 现有 token 引用方向合法', () => {
   const failures = checkReferences(readSourceFiles());
   assert.deepEqual(failures, []);
 });
 
-test('V19 反例：raw 引用 semantic 失败', () => {
+test('V7 反例：raw 引用 semantic 失败', () => {
   const failures = checkReferences([
     {
       name: 'raw.tokens.json',
@@ -106,7 +106,7 @@ test('V19 反例：raw 引用 semantic 失败', () => {
   assert.match(failures[0], /raw 层不允许引用 semantic 层/);
 });
 
-test('V19 反例：semantic 引用 comp 失败', () => {
+test('V7 反例：semantic 引用 comp 失败', () => {
   const failures = checkReferences([
     {
       name: 'semantic.tokens.json',
@@ -116,7 +116,7 @@ test('V19 反例：semantic 引用 comp 失败', () => {
   assert.match(failures[0], /semantic 层不允许引用 comp 层/);
 });
 
-test('V19 反例：comp 引用 raw 失败', () => {
+test('V7 反例：comp 引用 raw 失败', () => {
   const failures = checkReferences([
     {
       name: 'comp.button.tokens.json',

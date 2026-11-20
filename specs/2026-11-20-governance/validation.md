@@ -1,7 +1,8 @@
 # Validation — Governance：CI 门禁与变更日志
 
-> 对应规格：`requirements.md` · 状态：待验证（v0.1）· 创建 2026-11-20
+> 对应规格：`requirements.md` · 状态：已验证（v0.2）· 创建 2026-11-20 · 更新 2026-11-20
 > 规则：每一项必须有可复现的证据（命令输出、CI 运行链接、diff），不接受「看起来没问题」。
+> 待网络恢复后补充：V9 的 CI 运行链接、V13 的远端 tag、V16 的 CI 红绿演练。
 
 ## 1. 自动化检查
 
@@ -35,21 +36,21 @@
 
 | 项 | 证据 | 执行日期 | 结果 |
 | --- | --- | --- | --- |
-| V1 | 待执行 | — | — |
-| V2 | 待执行 | — | — |
-| V3 | 待执行 | — | — |
-| V4 | 待执行 | — | — |
-| V5 | 待执行 | — | — |
-| V6 | 待执行 | — | — |
-| V7 | 待执行 | — | — |
-| V8 | 待执行 | — | — |
-| V9 | 待执行 | — | — |
-| V10 | 待执行 | — | — |
-| V11 | 待执行 | — | — |
-| V12 | 待执行 | — | — |
-| V13 | 待执行 | — | — |
-| V14 | 待执行 | — | — |
-| V15 | 待执行 | — | — |
-| V16 | 待执行 | — | — |
-| V17 | 待执行 | — | — |
-| V18 | 待执行 | — | — |
+| V1 | `node --test scripts/tests/`：11 个用例通过，含中文、scope、`!` 正例 | 2026-11-20 | 通过 |
+| V2 | 同一命令：缺 type、非法 type、非法 scope、缺空格、超长、空 subject 均返回原因；`Merge` / `Revert` / `fixup!` / `squash!` 豁免通过 | 2026-11-20 | 通过 |
+| V3 | 同一命令：`feat` → Added、`fix` → Fixed、`perf` / `refactor` → Changed；`docs` / `chore` 被跳过；破坏性统一进入 Changed 并带「破坏性：」前缀 | 2026-11-20 | 通过 |
+| V4 | 连续执行两次 `pnpm changelog:write`，第二次输出「CHANGELOG.md 已是最新」，`diff` 为空 | 2026-11-20 | 通过 |
+| V5 | feat 提交后执行 `pnpm changelog:check`：退出 1，输出期望区块前 20 行并提示运行 `changelog:write`；写入后校验通过 | 2026-11-20 | 通过 |
+| V6 | `git diff 0f3a8a7 -- CHANGELOG.md` 仅 Unreleased 区块变化，`## [0.0.0]` 及更早内容无 diff；单测覆盖「写入两次字节一致」 | 2026-11-20 | 通过 |
+| V7 | `pnpm --filter @ds/tokens test`：11 个用例通过；三类越层引用 fixture 分别失败并指出 token 路径 | 2026-11-20 | 通过 |
+| V8 | tokens test、ui lint/test、docs lint/test 全部退出 0 | 2026-11-20 | 通过 |
+| V9 | `.github/workflows/ci.yml` 已加入 `fetch-depth: 0`、提交信息、CHANGELOG、生成物入库、带 base 构建五处；CI 运行链接待推送后补 | 2026-11-20 | 待 CI |
+| V10 | `pnpm --filter @ds/docs build` 与 `VITE_BASE=/design-system/ pnpm --filter @ds/docs build` 均成功 | 2026-11-20 | 通过 |
+| V11 | `git diff 0f3a8a7..HEAD -- package.json` 仅新增 `scripts` 三条；`pnpm-lock.yaml` 无变化 | 2026-11-20 | 通过 |
+| V12 | `pnpm commit:check` 默认范围输出「提交信息校验通过（1 条）」 | 2026-11-20 | 通过 |
+| V13 | 本地 `git tag -l` 含 `v0.0.0`，指向迁移提交 `0f3a8a7`；远端推送因网络阻塞待补 | 2026-11-20 | 待推送 |
+| V14 | 迁移为纯移动：原 Unreleased 条目全部出现在 `## [0.0.0] - 2026-11-20`，文案未改 | 2026-11-20 | 通过 |
+| V15 | `docs build` 通过；生成结构仅用 `##` / `###` / 列表 / 段落，落在 `parseChangelog` 已支持语法内；构建产物包含 0.0.0 区块 | 2026-11-20 | 通过 |
+| V16 | 临时分支提交 `update something` 后执行 `pnpm commit:check v0.0.0..HEAD`：退出 1 并指出该提交；分支已删除；CI 端红绿待推送后补 | 2026-11-20 | 本地通过 / CI 待补 |
+| V17 | `pnpm commit:check`、`pnpm changelog:write`、`pnpm changelog:check` 三条命令实测输出与 AGENTS.md 描述一致 | 2026-11-20 | 通过 |
+| V18 | `git diff --name-only 0f3a8a7..HEAD -- apps/docs/src packages/ui/src packages/tokens/src` 为 0 个文件 | 2026-11-20 | 通过 |
