@@ -12,6 +12,7 @@
 
 ### Added
 
+- tokens: 支持弃用标记与移除门禁（`00fcde2`）
 - repo: 增加 semver 与发版规则（`dee300b`）
 - repo: 引入提交规范与变更日志生成（`85be48f`）
 
