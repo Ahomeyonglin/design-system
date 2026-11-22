@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const pkgRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const srcDir = join(pkgRoot, 'src');
 
-function runLint(edit) {
+function runLint(edit, extraEnv = {}) {
   const workDir = mkdtempSync(join(tmpdir(), 'ds-ui-lint-'));
   const fixtureSrc = join(workDir, 'src');
   cpSync(srcDir, fixtureSrc, { recursive: true });
@@ -19,7 +19,7 @@ function runLint(edit) {
   try {
     const stdout = execFileSync(process.execPath, ['scripts/lint-components.mjs'], {
       cwd: pkgRoot,
-      env: { ...process.env, UI_SRC_DIR: fixtureSrc },
+      env: { ...process.env, UI_SRC_DIR: fixtureSrc, ...extraEnv },
       stdio: 'pipe',
       encoding: 'utf8',
     });
@@ -33,6 +33,13 @@ function runLint(edit) {
 
 function append(file, text) {
   writeFileSync(file, `${readFileSync(file, 'utf8')}${text}`);
+}
+
+function withTokenFixture(entries) {
+  const workDir = mkdtempSync(join(tmpdir(), 'ds-ui-tokens-'));
+  const file = join(workDir, 'tokens.json');
+  writeFileSync(file, JSON.stringify({ combinations: { 'light/base': entries } }));
+  return { file, cleanup: () => rmSync(workDir, { recursive: true, force: true }) };
 }
 
 test('R5 正例：现有五个组件通过 lint', () => {
@@ -140,4 +147,81 @@ test('R5 反例：组件目录出现多余文件失败', () => {
   assert.notEqual(result.code, 0);
   assert.match(result.output, /index\.ts/);
   assert.match(result.output, /多余文件/);
+});
+
+test('R6 正例：未被引用的弃用 token 不影响 lint', () => {
+  const tokens = withTokenFixture({
+    'semantic.color.bg.retired': {
+      $type: 'color',
+      $deprecated: '改用 semantic.color.bg.surface',
+      $value: {},
+    },
+  });
+  try {
+    const result = runLint(undefined, { UI_TOKENS_JSON: tokens.file });
+    assert.equal(result.code, 0, result.output);
+  } finally {
+    tokens.cleanup();
+  }
+});
+
+test('R6 反例：组件样式引用已弃用 token 失败', () => {
+  const tokens = withTokenFixture({
+    'semantic.color.bg.surface': {
+      $type: 'color',
+      $deprecated: '改用 semantic.color.bg.subtle',
+      $value: {},
+    },
+  });
+  try {
+    const result = runLint((src) => {
+      append(join(src, 'components/Text/Text.css'), '\n.probe {\n  color: var(--semantic-color-bg-surface);\n}\n');
+    }, { UI_TOKENS_JSON: tokens.file });
+    assert.notEqual(result.code, 0);
+    assert.match(result.output, /Text\.css:\d+/);
+    assert.match(result.output, /已弃用 token semantic\.color\.bg\.surface/);
+    assert.match(result.output, /改用 semantic\.color\.bg\.subtle/);
+  } finally {
+    tokens.cleanup();
+  }
+});
+
+test('R6 反例：引用已弃用 typography token 的派生变量失败', () => {
+  const tokens = withTokenFixture({
+    'semantic.text.label.md': {
+      $type: 'typography',
+      $deprecated: '改用 semantic.text.label.sm',
+      $value: {},
+    },
+  });
+  try {
+    const result = runLint((src) => {
+      append(
+        join(src, 'components/Text/Text.css'),
+        '\n.probe {\n  font-size: var(--semantic-text-label-md-font-size);\n}\n',
+      );
+    }, { UI_TOKENS_JSON: tokens.file });
+    assert.notEqual(result.code, 0);
+    assert.match(result.output, /已弃用 token semantic\.text\.label\.md/);
+  } finally {
+    tokens.cleanup();
+  }
+});
+
+test('R6 反例：meta 声明已弃用 token 失败', () => {
+  const tokens = withTokenFixture({
+    'semantic.color.bg.subtle': {
+      $type: 'color',
+      $deprecated: '改用 semantic.color.bg.surface',
+      $value: {},
+    },
+  });
+  try {
+    const result = runLint(undefined, { UI_TOKENS_JSON: tokens.file });
+    assert.notEqual(result.code, 0);
+    assert.match(result.output, /Badge\/component\.meta\.json:\d+/);
+    assert.match(result.output, /含已弃用 token semantic\.color\.bg\.subtle/);
+  } finally {
+    tokens.cleanup();
+  }
 });

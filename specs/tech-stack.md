@@ -156,6 +156,7 @@ src/components/<PascalCase>/
 | 带 base 构建 | CI 额外执行 `VITE_BASE=/design-system/ pnpm --filter @ds/docs build` |
 | 版本一致性 | 根与三个包锁步同版本，包间依赖固定 `workspace:*`；`pnpm release:check` |
 | 发版状态 | 最新 `v*` tag 必须等于 `v<version>`，`CHANGELOG.md` 含对应版本区块 |
+| token 弃用 | 构建保留 `$deprecated`；组件 lint 禁止消费已弃用 token；删除需最近 `v*` tag 中已弃用 |
 
 ## 7. 明确禁止
 

@@ -37,6 +37,7 @@ src/components/<PascalCase>/
 4. 禁止手改 `registry.json`；改动后运行 `pnpm --filter @ds/ui build:registry`。
 5. 组件不承载业务逻辑，不发起请求，不含文案常量。
 6. 变体只做真实存在的需求，不预埋 `size="xl"` 这类无人使用的取值。
+7. 禁止消费带 `$deprecated` 的 token；lint 同时检查组件样式与 `component.meta.json`。
 
 ## 5. 新增组件的流程
 

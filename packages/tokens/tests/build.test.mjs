@@ -31,6 +31,9 @@ function snapshotOf(dist) {
         if (token.hex) {
           entry.hex = token.hex;
         }
+        if (token.$deprecated) {
+          entry.$deprecated = token.$deprecated;
+        }
         return [id, entry];
       }),
     );

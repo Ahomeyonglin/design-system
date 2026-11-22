@@ -26,6 +26,48 @@ const COLOR_LITERAL = /#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b/;
 const COLOR_FUNCTION = /\b(?:rgba?|hsla?|oklch)\(/i;
 const RAW_VAR = /--raw-/;
 const RAW_PATH = /(?<![\w-])raw\./;
+const TYPOGRAPHY_VAR_SUFFIXES = ['font-family', 'font-size', 'font-weight', 'line-height', 'letter-spacing'];
+const tokensJsonPath = process.env.UI_TOKENS_JSON
+  ? resolve(process.env.UI_TOKENS_JSON)
+  : join(root, '../../packages/tokens/dist/tokens.json');
+
+function loadDeprecatedTokens() {
+  if (!existsSync(tokensJsonPath)) {
+    console.error(`找不到 token 产物：${tokensJsonPath}\n先运行 pnpm --filter @ds/tokens build`);
+    process.exit(1);
+  }
+
+  const dist = JSON.parse(readFileSync(tokensJsonPath, 'utf8'));
+  const deprecated = new Map();
+  for (const tokens of Object.values(dist.combinations ?? {})) {
+    for (const [id, token] of Object.entries(tokens)) {
+      if (!token.$deprecated) {
+        continue;
+      }
+      const base = `--${id.replaceAll('.', '-')}`;
+      const names =
+        token.$type === 'typography'
+          ? [base, ...TYPOGRAPHY_VAR_SUFFIXES.map((suffix) => `${base}-${suffix}`)]
+          : [base];
+      deprecated.set(id, {
+        message: token.$deprecated,
+        patterns: names.map((name) => new RegExp(`${name}(?=[\\s;,)]|$)`)),
+      });
+    }
+  }
+  return deprecated;
+}
+
+const deprecatedTokens = loadDeprecatedTokens();
+
+function deprecatedHit(line) {
+  for (const [id, entry] of deprecatedTokens) {
+    if (entry.patterns.some((pattern) => pattern.test(line))) {
+      return { id, message: entry.message };
+    }
+  }
+  return undefined;
+}
 
 const SPACING_PROPS = new Set([
   'padding',
@@ -83,6 +125,10 @@ function scanFile(path) {
     }
     if (RAW_VAR.test(line) || RAW_PATH.test(line)) {
       report(rel, lineNumber, '引用了 raw 层，组件只能消费 semantic / comp token');
+    }
+    const deprecated = deprecatedHit(line);
+    if (deprecated) {
+      report(rel, lineNumber, `引用了已弃用 token ${deprecated.id}：${deprecated.message}`);
     }
     if (extension !== '.css') {
       if (/\bstyle\s*=/.test(line)) {
@@ -187,6 +233,14 @@ for (const entry of readdirSync(componentsDir, { withFileTypes: true })) {
     for (const token of meta.tokens) {
       if (typeof token !== 'string' || !(token.startsWith('semantic.') || token.startsWith('comp.'))) {
         report(metaRel, lineOf(metaText, 'tokens'), `tokens 含非法前缀：${token}`);
+      }
+      const deprecated = deprecatedTokens.get(token);
+      if (deprecated) {
+        report(
+          metaRel,
+          lineOf(metaText, token),
+          `tokens 含已弃用 token ${token}：${deprecated.message}`,
+        );
       }
     }
   }

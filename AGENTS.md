@@ -29,7 +29,7 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 
 **S3（文档站与页面组装）已完成并上线**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署；线上地址 <https://ahomeyonglin.github.io/design-system/>。
 
-**S4 治理进行中**：第一部分（CI 门禁与变更日志自动生成）与第二部分（semver 与发版规则）已完成，剩余跨仓升级 PR。规格见 `specs/2026-11-20-governance/` 与 `specs/2026-11-22-semver-and-release/`。
+**S4 治理进行中**：第一部分（CI 门禁与变更日志自动生成）、第二部分（semver 与发版规则）与 token 弃用过渡（构建透传 `$deprecated`、组件消费拦截、移除门禁）已完成，剩余跨仓升级 PR。规格见 `specs/2026-11-20-governance/`、`specs/2026-11-22-semver-and-release/` 与 `specs/2026-11-22-token-deprecation/`。
 
 因此：
 
@@ -81,6 +81,7 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 | --- | --- |
 | token 值或色阶 | 重新构建 + 更新 hex 快照 |
 | 新增/修改 token 名 | 按 semver 判断是否破坏性，补 `$deprecated` |
+| 删除 token | 确认最近 `v*` tag 中该 token 已带 `$deprecated`，否则移除门禁测试失败 |
 | 组件实现 | 重新生成 `registry.json` 并一并提交 |
 | 组件 props / 变体 | 同步 `component.meta.json` 与 `AGENTS.md` 中的用法说明 |
 

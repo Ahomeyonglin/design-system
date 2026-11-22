@@ -53,6 +53,13 @@ const combinations = Object.fromEntries(
 
 for (const [combinationId, tokens] of Object.entries(combinations)) {
   for (const [id, token] of Object.entries(tokens)) {
+    if (token.$deprecated !== undefined) {
+      if (typeof token.$deprecated !== 'string' || token.$deprecated.trim() === '') {
+        throw new Error(
+          `${combinationId} 的 ${id} 的 $deprecated 必须是非空字符串，写明替代 token 或迁移方式`,
+        );
+      }
+    }
     if (token.$type !== 'color') {
       continue;
     }
@@ -268,7 +275,11 @@ for (const input of permutations.sort((a, b) => `${a.theme}/${a.brand}`.localeCo
   json.combinations[id] = {};
   for (const tokenId of Object.keys(tokens).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))) {
     const token = tokens[tokenId];
-    const entry = { $type: token.$type, $description: token.$description, $value: token.$value };
+    const entry = { $type: token.$type, $description: token.$description };
+    if (token.$deprecated !== undefined) {
+      entry.$deprecated = token.$deprecated;
+    }
+    entry.$value = token.$value;
     if (token.$type === 'color') {
       entry.hex = colorToHex(token.$value);
     }
