@@ -39,7 +39,7 @@
 | V7 | 文档站构建通过，产物 CSS 含主题变量 | 2026-11-22 | 通过 |
 | V8 | docs lint / test（16 项）/ build 全部通过 | 2026-11-22 | 通过 |
 | V9 | tokens test（16 项）、ui lint（5 个组件）、ui test（14 项）、typecheck 通过；registry 重新生成后仅 `importPath` 变化 | 2026-11-22 | 通过 |
-| V10 | 依赖首次真实发布，待 tag 推送后执行 | — | 待执行 |
+| V10 | 推送 `v0.2.0` 触发 Publish（run 45035651805）成功；`registry.npmjs.org` 两个包均 200，`npm view` 返回 `0.2.0` / MIT / `latest`；下载 tarball 确认含 `LICENSE`、只含 `dist` 与 `registry.json` / `AGENTS.md`，无 `src` | 2026-11-22 | 通过 |
 | V11 | `npm pack` 两个 tarball → `/tmp/ds-l2` 安装 → Vite 构建成功（29 个模块，CSS 28.15 kB）→ 浏览器走完表单校验与提交 | 2026-11-22 | 通过（tarball 替代 registry） |
 | V12 | `packages/ui/AGENTS.md §8` 已写明 CSS 引入顺序与缺色行为；未做缺色实测 | 2026-11-22 | 文档通过 |
-| V13 | 需要两个已发布版本才能锁回，待首次发布后执行 | — | 待执行 |
+| V13 | 已发布版本仅 `0.2.0` 一个，锁回旧版本需要下一个版本存在；下一次发版后执行 | — | 待执行 |
