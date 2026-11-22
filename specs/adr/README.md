@@ -25,10 +25,11 @@
 | [0010](./0010-brand-color.md) | 品牌基色采用 `#C52935` | Superseded by [0012](./0012-brand-color-change.md) | 2026-11-19 |
 | [0011](./0011-parser.md) | 采用 Terrazzo 2.10.0 解析 DTCG Resolver | Accepted | 2026-11-19 |
 | [0012](./0012-brand-color-change.md) | 品牌基色改为 `#CE1B6C` | Accepted | 2026-11-19 |
+| [0013](./0013-versioning-and-release.md) | 版本与发版策略：三包锁步、只到 tag 与 CHANGELOG | Accepted | 2026-11-22 |
 
 ## 仍未决策
 
 以下项目在对话中被明确挂起，尚未形成 ADR：
 
-- 分发方式：仅本地 workspace，还是发布到 npm / 私有 registry。
+- 分发方式：仅本地 workspace，还是发布到 npm / 私有 registry。版本与发版流程已定（见 ADR-0013），但发版不包含 npm 发布。
 - 文档站样式方案：Tailwind v4 还是原生 CSS（技术栈已定为 Vite + React + TS，见 ADR-0008）。
