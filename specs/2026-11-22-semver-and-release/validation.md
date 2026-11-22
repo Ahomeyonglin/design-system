@@ -46,6 +46,6 @@
 | V11 | 临时副本修改 CHANGELOG 后执行 prepare：退出 1，输出「工作区有未提交改动」 | 2026-11-22 | 通过 |
 | V12 | tokens / ui / docs 全链路退出 0 | 2026-11-22 | 通过 |
 | V13 | 四个 `version` 仍为 `0.0.0`；diff 不含 token、组件与文档站源码 | 2026-11-22 | 通过 |
-| V14 | CI 步骤待推送后补 | 2026-11-22 | 待 CI |
+| V14 | CI 运行 <https://github.com/Ahomeyonglin/design-system/actions/runs/44976395529>：`Check release state` success，同批 `Check changelog freshness` 与 `Check commit messages` 也通过 | 2026-11-22 | 通过 |
 | V15 | 两条命令实测输出与 AGENTS.md 描述一致 | 2026-11-22 | 通过 |
 | V16 | R-D5 覆盖 token 改名、props 删除、默认行为变化；R-D6 定义 `$deprecated` 过渡 | 2026-11-22 | 通过 |
