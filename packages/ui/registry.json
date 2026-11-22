@@ -6,7 +6,7 @@
       "id": "Badge",
       "name": "Badge",
       "category": "marker",
-      "importPath": "@ds/ui/Badge",
+      "importPath": "@ahomeyonglin/ui/Badge",
       "$description": "用于表达状态或分类的静态标记。",
       "props": [
         {
@@ -49,7 +49,7 @@
       "id": "Button",
       "name": "Button",
       "category": "action",
-      "importPath": "@ds/ui/Button",
+      "importPath": "@ahomeyonglin/ui/Button",
       "$description": "触发操作的按钮，用 primary / secondary / ghost 表达操作优先级。",
       "props": [
         {
@@ -115,7 +115,7 @@
       "id": "Card",
       "name": "Card",
       "category": "container",
-      "importPath": "@ds/ui/Card",
+      "importPath": "@ahomeyonglin/ui/Card",
       "$description": "带描边的容器，用于把相关内容聚合成一个独立区块。",
       "props": [
         {
@@ -136,7 +136,7 @@
       "id": "Text",
       "name": "Text",
       "category": "text",
-      "importPath": "@ds/ui/Text",
+      "importPath": "@ahomeyonglin/ui/Text",
       "$description": "承载排版组合与文字颜色的文本单元，用于标题、正文、标签与代码；不负责布局。",
       "props": [
         {
@@ -184,7 +184,7 @@
       "id": "TextField",
       "name": "TextField",
       "category": "form",
-      "importPath": "@ds/ui/TextField",
+      "importPath": "@ahomeyonglin/ui/TextField",
       "$description": "带标签、帮助文本与错误提示的单行输入域，用于表单中的文本采集。",
       "props": [
         {

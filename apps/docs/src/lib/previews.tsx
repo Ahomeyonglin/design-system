@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Badge, type BadgeTone } from '@ds/ui/Badge';
-import { Button, type ButtonVariant } from '@ds/ui/Button';
-import { Card } from '@ds/ui/Card';
-import { Text, type TextTone, type TextVariant } from '@ds/ui/Text';
-import { TextField } from '@ds/ui/TextField';
+import { Badge, type BadgeTone } from '@ahomeyonglin/ui/Badge';
+import { Button, type ButtonVariant } from '@ahomeyonglin/ui/Button';
+import { Card } from '@ahomeyonglin/ui/Card';
+import { Text, type TextTone, type TextVariant } from '@ahomeyonglin/ui/Text';
+import { TextField } from '@ahomeyonglin/ui/TextField';
 
 export interface PreviewState {
   variant?: string;

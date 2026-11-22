@@ -44,19 +44,19 @@ jobs:
         run: pnpm release:check
 
       - name: Build tokens
-        run: pnpm --filter @ds/tokens build
+        run: pnpm --filter @ahomeyonglin/tokens build
 
       - name: Test tokens
-        run: pnpm --filter @ds/tokens test
+        run: pnpm --filter @ahomeyonglin/tokens test
 
       - name: Lint components
-        run: pnpm --filter @ds/ui lint
+        run: pnpm --filter @ahomeyonglin/ui lint
 
       - name: Typecheck components
-        run: pnpm --filter @ds/ui typecheck
+        run: pnpm --filter @ahomeyonglin/ui typecheck
 
       - name: Regenerate registry
-        run: pnpm --filter @ds/ui build:registry
+        run: pnpm --filter @ahomeyonglin/ui build:registry
 
       - name: Check registry drift
         run: git diff --exit-code -- packages/ui/registry.json
@@ -70,13 +70,13 @@ jobs:
           fi
 
       - name: Lint docs
-        run: pnpm --filter @ds/docs lint
+        run: pnpm --filter @ahomeyonglin/docs lint
 
       - name: Test docs
-        run: pnpm --filter @ds/docs test
+        run: pnpm --filter @ahomeyonglin/docs test
 
       - name: Build docs
-        run: pnpm --filter @ds/docs build
+        run: pnpm --filter @ahomeyonglin/docs build
 
       - name: Build docs with pages base
-        run: VITE_BASE=/design-system/ pnpm --filter @ds/docs build
+        run: VITE_BASE=/design-system/ pnpm --filter @ahomeyonglin/docs build

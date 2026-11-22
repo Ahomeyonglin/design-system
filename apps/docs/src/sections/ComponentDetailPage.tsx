@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Badge } from '@ds/ui/Badge';
+import { Badge } from '@ahomeyonglin/ui/Badge';
 import type { Theme } from '../lib/support';
 import { ComponentPreview, hasPreview, previewStates, type PreviewState } from '../lib/previews';
 import {

@@ -1,6 +1,6 @@
-import { Badge } from '@ds/ui/Badge';
-import { Card } from '@ds/ui/Card';
-import { Text } from '@ds/ui/Text';
+import { Badge } from '@ahomeyonglin/ui/Badge';
+import { Card } from '@ahomeyonglin/ui/Card';
+import { Text } from '@ahomeyonglin/ui/Text';
 import type { Theme } from '../lib/support';
 import { ComponentPreview, hasPreview } from '../lib/previews';
 import { components, enumValues, type RegistryComponent } from '../lib/registry';

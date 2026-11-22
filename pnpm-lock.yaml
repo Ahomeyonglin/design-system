@@ -10,10 +10,10 @@ importers:
 
   apps/docs:
     dependencies:
-      '@ds/tokens':
+      '@ahomeyonglin/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
-      '@ds/ui':
+      '@ahomeyonglin/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       react:

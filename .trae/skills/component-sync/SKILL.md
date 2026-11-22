@@ -1,6 +1,6 @@
 ---
 name: component-sync
-description: 在 @ds/ui 中新增或修改组件时使用。规定检索顺序、三件套与 meta 写法、registry 重新生成、lint 与破坏性变更判断，避免组件与 registry 脱节。
+description: 在 @ahomeyonglin/ui 中新增或修改组件时使用。规定检索顺序、三件套与 meta 写法、registry 重新生成、lint 与破坏性变更判断，避免组件与 registry 脱节。
 ---
 
 # component-sync
@@ -27,19 +27,19 @@ description: 在 @ds/ui 中新增或修改组件时使用。规定检索顺序�
    - 不对外暴露 `className` / `style` / `size`；变体用语义化枚举 prop，样式用 `data-*` 属性选择器。
    - 组件之间不互相 import；需要相同排版时直接消费同一批变量。
    - 不加载业务逻辑、不发请求、不内置文案。
-3. 在 `packages/ui/package.json` 的 `exports` 增加 `"./<PascalCase>": "./src/components/<PascalCase>/<PascalCase>.tsx"`。
+3. 在 `packages/ui/package.json` 的 `exports` 增加 `"./<PascalCase>"`：`types` 指向 `./dist/components/<PascalCase>/<PascalCase>.d.ts`，`default` 指向 `./dist/components/<PascalCase>/<PascalCase>.js`。
 4. 写 `component.meta.json`：
    - `props` 保持 API 表的声明顺序，每项含 `name`、`type`、`required`、`description`，有默认值才写 `defaultValue`。
    - `tokens` 列出实现真正消费的 token，前缀必须是 `semantic.` 或 `comp.`。
 5. 重新生成 registry：
    ```bash
-   pnpm --filter @ds/ui build:registry
+   pnpm --filter @ahomeyonglin/ui build:registry
    ```
    检查 diff：只应出现新组件，`components` 保持 id 升序，既有组件无变化。
 6. 严格类型检查与 lint：
    ```bash
-   pnpm --filter @ds/ui typecheck
-   pnpm --filter @ds/ui lint
+   pnpm --filter @ahomeyonglin/ui typecheck
+   pnpm --filter @ahomeyonglin/ui lint
    ```
 7. 自检 diff：`registry.json` 与三件套必须同一次提交；不夹带无关改动。
 

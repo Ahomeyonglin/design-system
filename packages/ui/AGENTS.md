@@ -1,4 +1,4 @@
-# AGENTS.md — @ds/ui 组件使用与新增规则
+# AGENTS.md — @ahomeyonglin/ui 组件使用与新增规则
 
 本文件约束 `packages/ui` 内的所有工作。根目录 `AGENTS.md` 的规则同样有效，冲突时以本文件为准（更具体）。
 
@@ -34,7 +34,7 @@ src/components/<PascalCase>/
 1. 只使用 `registry.json` 中存在的组件；缺能力时先补组件，不要在页面里内联实现。
 2. 样式只引用语义 token 变量，禁止 hex、禁止写死 px 间距与圆角。
 3. 禁止直接引用 core 层（`raw.color.red.500` 这类），只用 `semantic` / `comp`。
-4. 禁止手改 `registry.json`；改动后运行 `pnpm --filter @ds/ui build:registry`。
+4. 禁止手改 `registry.json`；改动后运行 `pnpm --filter @ahomeyonglin/ui build:registry`。
 5. 组件不承载业务逻辑，不发起请求，不含文案常量。
 6. 变体只做真实存在的需求，不预埋 `size="xl"` 这类无人使用的取值。
 7. 禁止消费带 `$deprecated` 的 token；lint 同时检查组件样式与 `component.meta.json`。
@@ -63,3 +63,10 @@ src/components/<PascalCase>/
 - 不要引入第三方 UI 库来「省事」。
 - 不要新增文档说明组件怎么用——用法属于 `registry.json` 与 `component.meta.json`。
 - 不要为了让某个页面好看而单独定制某个组件；那是变体或新组件的决策，需要先确认。
+
+## 8. 发布产物与下游接入
+
+- 发布内容来自 `pnpm --filter @ahomeyonglin/ui build` 生成的 `dist`；`dist` 不入库，不手改。
+- 新增组件时同步 `package.json` 的 `exports`：`"./<PascalCase>"` 的 `types` 指向 `dist/components/<PascalCase>/<PascalCase>.d.ts`，`default` 指向同名 `.js`。
+- 下游安装后必须自行引入 tokens 的 CSS，顺序为 `theme-light.css` → `theme-dark.css` → `brand-*.css`。
+- `ui` 不声明对 `tokens` 的依赖；缺 CSS 时组件不报错但会失去颜色，这是预期行为。

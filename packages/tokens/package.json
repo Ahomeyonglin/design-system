@@ -1,11 +1,22 @@
 {
-  "name": "@ds/tokens",
+  "name": "@ahomeyonglin/tokens",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "files": [
     "dist"
   ],
+  "exports": {
+    "./dist/*": "./dist/*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahomeyonglin/design-system.git",
+    "directory": "packages/tokens"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test --test-concurrency=1 tests/"

@@ -1,4 +1,4 @@
-import tokensFile from '@ds/tokens/dist/tokens.json';
+import tokensFile from '@ahomeyonglin/tokens/dist/tokens.json';
 
 export interface TokenEntry {
   $type: string;

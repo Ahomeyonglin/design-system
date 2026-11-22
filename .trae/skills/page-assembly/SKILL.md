@@ -5,7 +5,7 @@ description: 在文档站或产品应用中组装页面时使用。规定需求�
 
 # page-assembly
 
-适用范围：用 `@ds/ui` 的既有组件与 `@ds/tokens` 的语义 token 组装一个页面。新增组件不属于本 skill，走 `component-sync`。
+适用范围：用 `@ahomeyonglin/ui` 的既有组件与 `@ahomeyonglin/tokens` 的语义 token 组装一个页面。新增组件不属于本 skill，走 `component-sync`。
 
 ## 1. 输入解析
 
@@ -67,9 +67,9 @@ description: 在文档站或产品应用中组装页面时使用。规定需求�
 ## 7. 验证命令
 
 ```bash
-pnpm --filter @ds/docs lint
-pnpm --filter @ds/docs test
-pnpm --filter @ds/docs build
+pnpm --filter @ahomeyonglin/docs lint
+pnpm --filter @ahomeyonglin/docs test
+pnpm --filter @ahomeyonglin/docs build
 grep -rnE "#[0-9a-fA-F]{3,8}\b" apps/docs/src
 grep -rnE "(^|[^a-zA-Z])raw\." apps/docs/src
 grep -rnE "[0-9]+px" apps/docs/src --exclude=layout.css

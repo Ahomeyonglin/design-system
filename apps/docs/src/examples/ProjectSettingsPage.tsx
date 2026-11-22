@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Badge } from '@ds/ui/Badge';
-import { Button } from '@ds/ui/Button';
-import { Card } from '@ds/ui/Card';
-import { Text } from '@ds/ui/Text';
-import { TextField } from '@ds/ui/TextField';
+import { Badge } from '@ahomeyonglin/ui/Badge';
+import { Button } from '@ahomeyonglin/ui/Button';
+import { Card } from '@ahomeyonglin/ui/Card';
+import { Text } from '@ahomeyonglin/ui/Text';
+import { TextField } from '@ahomeyonglin/ui/TextField';
 import './project-settings.css';
 
 interface ProjectForm {

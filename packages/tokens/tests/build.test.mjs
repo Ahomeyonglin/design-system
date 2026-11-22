@@ -62,7 +62,7 @@ test('V3 快照：hex 与非颜色值变化必须显式更新', () => {
     return;
   }
 
-  assert.ok(existsSync(snapshotPath), '缺少快照文件，先运行 UPDATE_SNAPSHOT=1 pnpm --filter @ds/tokens test');
+  assert.ok(existsSync(snapshotPath), '缺少快照文件，先运行 UPDATE_SNAPSHOT=1 pnpm --filter @ahomeyonglin/tokens test');
   const expectedFlat = flatten(readJson(snapshotPath));
   const actualFlat = flatten(actual);
   const changes = [];

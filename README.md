@@ -31,15 +31,23 @@ apps/docs/          文档站（验收台 + 查询台）
 pnpm install
 ```
 
-其他命令尚未引入，随阶段落地：
-
-| 命令 | 状态 |
+| 命令 | 用途 |
 | --- | --- |
-| `pnpm --filter @ds/tokens build` | S1 |
-| `pnpm --filter @ds/tokens test` | S1 |
-| `pnpm --filter @ds/ui build:registry` | S2 |
-| `pnpm --filter @ds/docs dev` | S1 |
+| `pnpm --filter @ahomeyonglin/tokens build` | 生成 token 产物 |
+| `pnpm --filter @ahomeyonglin/tokens test` | 快照、色域与弃用门禁 |
+| `pnpm --filter @ahomeyonglin/ui build:registry` | 聚合 `registry.json` |
+| `pnpm --filter @ahomeyonglin/ui build` | 生成组件产物 |
+| `pnpm --filter @ahomeyonglin/docs dev` | 启动文档站 |
+
+## 分发
+
+- 发布包：`@ahomeyonglin/tokens`、`@ahomeyonglin/ui`；`@ahomeyonglin/docs` 保持 private。
+- 当前 license 未定，`tokens` 与 `ui` 暂时保留 `private: true` 作为发布保险；确认许可后移除再发版。
+- 发版：`pnpm release:prepare <patch|minor|major>` → 全量校验 → 提交 → 打 `v*` tag → 推送。
+- 发布由 `.github/workflows/publish.yml` 在 tag 推送时执行，顺序 tokens → ui，已存在版本跳过。
+- 下游须自行引入 tokens 的 CSS，顺序为 `theme-light.css` → `theme-dark.css` → `brand-*.css`。
+- 决策记录见 `specs/adr/0015-public-npm-distribution.md`。
 
 ## 当前状态
 
-S0（地基）：目录骨架与宪法已完成，包内无实现代码。首个功能规格见 `specs/2026-11-14-token-foundation/`。
+S4（治理）进行中：CI 门禁、semver 与发版、token 弃用门禁与公共 npm 分发已完成，剩余跨仓升级 PR。规格见 `specs/` 下对应日期目录。

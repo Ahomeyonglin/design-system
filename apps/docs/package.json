@@ -1,20 +1,20 @@
 {
-  "name": "@ds/docs",
+  "name": "@ahomeyonglin/docs",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "pnpm --filter @ds/tokens build",
+    "predev": "pnpm --filter @ahomeyonglin/tokens build && pnpm --filter @ahomeyonglin/ui build",
     "dev": "vite",
-    "prebuild": "pnpm --filter @ds/tokens build",
+    "prebuild": "pnpm --filter @ahomeyonglin/tokens build && pnpm --filter @ahomeyonglin/ui build",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "node scripts/lint-docs.mjs",
     "test": "node --test --test-concurrency=1 tests/"
   },
   "dependencies": {
-    "@ds/tokens": "workspace:*",
-    "@ds/ui": "workspace:*",
+    "@ahomeyonglin/tokens": "workspace:*",
+    "@ahomeyonglin/ui": "workspace:*",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

@@ -1,4 +1,4 @@
-import { Text, type TextVariant } from '@ds/ui/Text';
+import { Text, type TextVariant } from '@ahomeyonglin/ui/Text';
 import type { Theme } from '../lib/support';
 import {
   anchorOf,

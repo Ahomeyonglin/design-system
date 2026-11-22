@@ -63,7 +63,7 @@ export function collectIssues({ versions, dependencies, tag, changelog }) {
 
   for (const [file, deps] of Object.entries(dependencies)) {
     for (const [name, range] of Object.entries(deps)) {
-      if (name.startsWith('@ds/') && range !== 'workspace:*') {
+      if (name.startsWith('@ahomeyonglin/') && range !== 'workspace:*') {
         issues.push(`${file} 中 ${name} 应使用 workspace:*，实际为 ${range}`);
       }
     }

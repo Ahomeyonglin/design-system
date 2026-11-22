@@ -33,7 +33,7 @@ const tokensJsonPath = process.env.UI_TOKENS_JSON
 
 function loadDeprecatedTokens() {
   if (!existsSync(tokensJsonPath)) {
-    console.error(`找不到 token 产物：${tokensJsonPath}\n先运行 pnpm --filter @ds/tokens build`);
+    console.error(`找不到 token 产物：${tokensJsonPath}\n先运行 pnpm --filter @ahomeyonglin/tokens build`);
     process.exit(1);
   }
 

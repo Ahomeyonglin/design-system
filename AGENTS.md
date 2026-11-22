@@ -29,28 +29,29 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 
 **S3（文档站与页面组装）已完成并上线**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署；线上地址 <https://ahomeyonglin.github.io/design-system/>。
 
-**S4 治理进行中**：第一部分（CI 门禁与变更日志自动生成）、第二部分（semver 与发版规则）与 token 弃用过渡（构建透传 `$deprecated`、组件消费拦截、移除门禁）已完成，剩余跨仓升级 PR。规格见 `specs/2026-11-20-governance/`、`specs/2026-11-22-semver-and-release/` 与 `specs/2026-11-22-token-deprecation/`。
+**S4 治理进行中**：第一部分（CI 门禁与变更日志自动生成）、第二部分（semver 与发版规则）、token 弃用过渡（构建透传 `$deprecated`、组件消费拦截、移除门禁）与分发（公共 npm、构建产物）已完成，剩余跨仓升级 PR。规格见 `specs/2026-11-20-governance/`、`specs/2026-11-22-semver-and-release/`、`specs/2026-11-22-token-deprecation/` 与 `specs/2026-11-22-distribution/`。
 
 因此：
 
 - 包内脚本以各 `package.json` 为准，不要发明脚本名。
-- 改 token 值必须重新构建并更新快照：`UPDATE_SNAPSHOT=1 pnpm --filter @ds/tokens test`。
+- 改 token 值必须重新构建并更新快照：`UPDATE_SNAPSHOT=1 pnpm --filter @ahomeyonglin/tokens test`。
 - 文档站改动必须同时通过 `lint`、`test`、`build`；布局尺寸只允许写在 `apps/docs/src/styles/layout.css` 的 `--docs-*`。
-- 部署需要 `main` 推送；本地验证带 base 的产物用 `VITE_BASE=/design-system/ pnpm --filter @ds/docs build`。
-- 未确认项（第二个品牌、S4 治理、npm 发布）先问，不要替用户决定。
+- 部署需要 `main` 推送；本地验证带 base 的产物用 `VITE_BASE=/design-system/ pnpm --filter @ahomeyonglin/docs build`。
+- 未确认项（第二个品牌）先问，不要替用户决定。
 
 ## 4. 命令
 
 | 命令 | 用途 | 状态 |
 | --- | --- | --- |
 | `pnpm install` | 安装 workspace 依赖 | 可用 |
-| `pnpm --filter @ds/tokens build` | 生成 token 产物 | 可用 |
-| `pnpm --filter @ds/tokens test` | 快照 + 色域 + 违规 fixture | 可用 |
-| `pnpm --filter @ds/ui build:registry` | 聚合 `registry.json` | 可用 |
-| `pnpm --filter @ds/docs dev` | 启动文档站 | 可用 |
-| `pnpm --filter @ds/docs lint` | 文档站硬编码、raw 与布局尺寸检查 | 可用 |
-| `pnpm --filter @ds/docs test` | 路由、支持矩阵与 lint fixture | 可用 |
-| `pnpm --filter @ds/docs build` | 文档站类型检查与静态构建 | 可用 |
+| `pnpm --filter @ahomeyonglin/tokens build` | 生成 token 产物 | 可用 |
+| `pnpm --filter @ahomeyonglin/tokens test` | 快照 + 色域 + 违规 fixture | 可用 |
+| `pnpm --filter @ahomeyonglin/ui build:registry` | 聚合 `registry.json` | 可用 |
+| `pnpm --filter @ahomeyonglin/ui build` | 生成组件产物（JS / `.d.ts` / CSS） | 可用 |
+| `pnpm --filter @ahomeyonglin/docs dev` | 启动文档站 | 可用 |
+| `pnpm --filter @ahomeyonglin/docs lint` | 文档站硬编码、raw 与布局尺寸检查 | 可用 |
+| `pnpm --filter @ahomeyonglin/docs test` | 路由、支持矩阵与 lint fixture | 可用 |
+| `pnpm --filter @ahomeyonglin/docs build` | 文档站类型检查与静态构建 | 可用 |
 | `pnpm commit:check [range]` | 校验提交标题，默认最近一条 | 可用 |
 | `pnpm changelog:write` | 从 git 提交生成 `[Unreleased]` | 可用 |
 | `pnpm changelog:check` | 校验 `[Unreleased]` 是否过期 | 可用 |
@@ -72,6 +73,7 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 9. **提交标题必须符合 `type(scope): 描述`**：type 与 scope 取值见 `specs/2026-11-20-governance/requirements.md`；允许中文描述。
 10. **版本号只能由 `pnpm release:prepare` 修改**：根与三个包锁步同版本，禁止手改 `version` 或手写版本区块。
 11. **破坏性改名必须先走 `$deprecated`**：token 改名/删除至少保留旧名一个 `minor`；判定清单见 `specs/2026-11-22-semver-and-release/requirements.md`。
+12. **发布只由 `v*` tag 触发**：本地不执行 `npm publish`；包名、产物形态与分发方式见 `specs/adr/0015-public-npm-distribution.md`。
 
 ## 6. 改动的连带责任
 
@@ -82,7 +84,7 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 | token 值或色阶 | 重新构建 + 更新 hex 快照 |
 | 新增/修改 token 名 | 按 semver 判断是否破坏性，补 `$deprecated` |
 | 删除 token | 确认最近 `v*` tag 中该 token 已带 `$deprecated`，否则移除门禁测试失败 |
-| 组件实现 | 重新生成 `registry.json` 并一并提交 |
+| 组件实现 | 重新生成 `registry.json` 并一并提交；发布前跑 `ui build` 确认产物 |
 | 组件 props / 变体 | 同步 `component.meta.json` 与 `AGENTS.md` 中的用法说明 |
 
 ## 7. 工作方式

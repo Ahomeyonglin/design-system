@@ -59,7 +59,7 @@ const base = {
     { file: 'apps/docs/package.json', version: '0.0.0' },
   ],
   dependencies: {
-    'apps/docs/package.json': { '@ds/tokens': 'workspace:*', '@ds/ui': 'workspace:*' },
+    'apps/docs/package.json': { '@ahomeyonglin/tokens': 'workspace:*', '@ahomeyonglin/ui': 'workspace:*' },
   },
   tag: 'v0.0.0',
   changelog: '## [Unreleased]\n\n暂无未发布变更\n\n## [0.0.0] - 2026-11-20\n\n### Added\n\n- 历史条目\n',
@@ -82,7 +82,7 @@ test('版本不一致被发现', () => {
 test('依赖写死版本被发现', () => {
   const issues = collectIssues({
     ...base,
-    dependencies: { 'apps/docs/package.json': { '@ds/ui': '^0.1.0' } },
+    dependencies: { 'apps/docs/package.json': { '@ahomeyonglin/ui': '^0.1.0' } },
   });
   assert.match(issues[0], /应使用 workspace:\*/);
 });

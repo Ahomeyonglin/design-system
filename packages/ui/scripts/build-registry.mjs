@@ -22,7 +22,7 @@ const components = readdirSync(componentsDir, { withFileTypes: true })
       id,
       name: meta.name,
       category: meta.category,
-      importPath: `@ds/ui/${id}`,
+      importPath: `@ahomeyonglin/ui/${id}`,
       $description: meta.$description,
       props: meta.props.map((prop) => {
         const entry = {

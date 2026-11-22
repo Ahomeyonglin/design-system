@@ -1,5 +1,5 @@
 {
-  "name": "@ds/ui",
+  "name": "@ahomeyonglin/ui",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,18 +7,42 @@
     "**/*.css"
   ],
   "files": [
-    "src",
+    "dist",
     "registry.json",
     "AGENTS.md"
   ],
   "exports": {
-    "./Badge": "./src/components/Badge/Badge.tsx",
-    "./Button": "./src/components/Button/Button.tsx",
-    "./Card": "./src/components/Card/Card.tsx",
-    "./Text": "./src/components/Text/Text.tsx",
-    "./TextField": "./src/components/TextField/TextField.tsx"
+    "./Badge": {
+      "types": "./dist/components/Badge/Badge.d.ts",
+      "default": "./dist/components/Badge/Badge.js"
+    },
+    "./Button": {
+      "types": "./dist/components/Button/Button.d.ts",
+      "default": "./dist/components/Button/Button.js"
+    },
+    "./Card": {
+      "types": "./dist/components/Card/Card.d.ts",
+      "default": "./dist/components/Card/Card.js"
+    },
+    "./Text": {
+      "types": "./dist/components/Text/Text.d.ts",
+      "default": "./dist/components/Text/Text.js"
+    },
+    "./TextField": {
+      "types": "./dist/components/TextField/TextField.d.ts",
+      "default": "./dist/components/TextField/TextField.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahomeyonglin/design-system.git",
+    "directory": "packages/ui"
   },
   "scripts": {
+    "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
     "build:registry": "node scripts/build-registry.mjs",
     "lint": "node scripts/lint-components.mjs",

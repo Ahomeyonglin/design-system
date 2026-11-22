@@ -34,7 +34,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build docs
-        run: VITE_BASE=/design-system/ pnpm --filter @ds/docs build
+        run: VITE_BASE=/design-system/ pnpm --filter @ahomeyonglin/docs build
 
       - name: Prepare Pages artifacts
         run: |
