@@ -128,3 +128,4 @@
 | 包 license 未定 | 已定：MIT；`LICENSE` 已加入根目录与两个包，`private: true` 已移除 |
 | `NPM_TOKEN` 由谁提供 | 用户生成 granular token 并写入仓库 secret |
 | 是否加 `--provenance` | 本规格不做，等发布流程稳定后再评估 |
+| 迁移 Trusted Publishing（替代 `NPM_TOKEN`） | 暂缓，与下一次发版合并处理；迁移前 `NPM_TOKEN` 到期需先轮换 |
