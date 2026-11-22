@@ -16,15 +16,15 @@
 | 主题模型 | `theme` + `brand` 双 modifier | 已定 |
 | 组件元数据 | 每组件 `component.meta.json` → 聚合 `registry.json` | 已定 |
 | 文档站框架 | Vite + React + TS | 已定（2026-11-16） |
-| 样式方案 | Tailwind v4（`@theme` 消费 CSS 变量） | **待确认** |
+| 样式方案 | 原生 CSS + `--semantic-*` 变量，不引入 Tailwind | 已定（2026-11-19） |
 
 ## 2. 仓库与包管理
 
 ```
 default/
-├── packages/tokens/     @ds/tokens   唯一事实源，产 CSS/JSON
-├── packages/ui/         @ds/ui       组件 + registry.json
-├── apps/docs/           @ds/docs     验收台 + 查询台
+├── packages/tokens/     @ahomeyonglin/tokens   唯一事实源，产 CSS/JSON
+├── packages/ui/         @ahomeyonglin/ui       组件 + registry.json
+├── apps/docs/           @ahomeyonglin/docs     验收台 + 查询台（不发布）
 ├── specs/               宪法与功能规格
 ├── .trae/skills/        AI 可执行规则
 └── .github/workflows/   CI 强制约束
@@ -168,7 +168,7 @@ src/components/<PascalCase>/
 5. 用缩写造 token 名（除固定的 `bg` 外，`clr`、`sp`、`fs` 之类一律禁止）。
 6. 手改 `CHANGELOG.md` 的 `[Unreleased]` 区块；只能由 `pnpm changelog:write` 生成。
 
-## 8. 待确认
+## 8. 已确认
 
 文档站样式方案已确认（2026-11-19）：原生 CSS + `--semantic-*` 变量，不引入 Tailwind。
 

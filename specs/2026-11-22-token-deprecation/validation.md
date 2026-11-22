@@ -1,5 +1,7 @@
 # Validation — Token 弃用与移除门禁
 
+> 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
+
 > 对应规格：`requirements.md` · 记录日期 2026-11-22
 > 结论：R1–R6 全部通过；本地校验与临时副本三轮演练均按预期拦截或放行。
 

@@ -31,6 +31,4 @@
 
 ## 仍未决策
 
-以下项目在对话中被明确挂起，尚未形成 ADR：
-
-- 文档站样式方案：Tailwind v4 还是原生 CSS（技术栈已定为 Vite + React + TS，见 ADR-0008）。
+暂无。文档站样式方案已在 S3 定为原生 CSS + `--semantic-*` 变量（见 `specs/tech-stack.md` §1、§8），不再作为待决项。

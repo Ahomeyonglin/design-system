@@ -1,5 +1,7 @@
 # Requirements — Governance：CI 门禁与变更日志
 
+> 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
+
 > 阶段：S4（第一部分）· 状态：已确认（2026-11-20）· 创建 2026-11-20
 > 上游约束：`specs/mission.md`、`specs/tech-stack.md`、`specs/roadmap.md`
 > 范围声明：本规格只覆盖 S4 的「CI 门禁 + CHANGELOG 自动生成」。完整 semver 策略、npm 发布、跨仓升级 PR 不在本阶段，见 `roadmap.md` S4 其余项。

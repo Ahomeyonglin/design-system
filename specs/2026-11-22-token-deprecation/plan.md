@@ -1,5 +1,7 @@
 # Plan — Token 弃用与移除门禁
 
+> 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
+
 > 对应规格：`requirements.md` · 状态：已确认（2026-11-22）· 创建 2026-11-22
 > 前置：`specs/2026-11-22-semver-and-release/` 已定义破坏性变更与 `$deprecated` 规则。
 

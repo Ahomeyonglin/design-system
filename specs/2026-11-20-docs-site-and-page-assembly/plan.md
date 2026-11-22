@@ -1,5 +1,7 @@
 # Plan — Docs Site & Page Assembly
 
+> 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
+
 > 对应规格：`requirements.md` · 状态：待评审 · 创建 2026-11-20
 > 前置：S2 已合并（五个组件、`registry.json`、组件 lint、`/color` 接入真实组件）；本计划不修改 token 与组件。
 

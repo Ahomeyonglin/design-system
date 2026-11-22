@@ -1,5 +1,7 @@
 # Validation — Token Foundation
 
+> 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
+
 > 对应规格：`requirements.md` · 状态：S1 实现完成（V11 移出 S1；V12 暂时通过，后续调色需复验） · 创建 2026-11-14
 > 规则：每一项必须有可复现的证据（命令输出、截图、URL），不接受「看起来没问题」。
 

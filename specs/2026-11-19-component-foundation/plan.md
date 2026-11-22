@@ -1,5 +1,7 @@
 # Plan — Component Foundation
 
+> 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
+
 > 对应规格：`requirements.md` · 状态：待评审 · 创建 2026-11-19
 > 前置：S1 已合并（token 单一事实源、Color 页可用）；本计划不修改既有 token 值。
 

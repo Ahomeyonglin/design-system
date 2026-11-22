@@ -1,5 +1,7 @@
 # Requirements — Semver 与发版流程
 
+> 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
+
 > 阶段：S4（第二部分）· 状态：已确认（2026-11-22）· 创建 2026-11-22
 > 上游约束：`specs/mission.md`、`specs/tech-stack.md`、`specs/roadmap.md`
 > 前置：`specs/2026-11-20-governance/` 已完成提交规范、`[Unreleased]` 生成与 CI 门禁。
