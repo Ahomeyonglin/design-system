@@ -26,6 +26,7 @@
 | [0011](./0011-parser.md) | 采用 Terrazzo 2.10.0 解析 DTCG Resolver | Accepted | 2026-11-19 |
 | [0012](./0012-brand-color-change.md) | 品牌基色改为 `#CE1B6C` | Accepted | 2026-11-19 |
 | [0013](./0013-versioning-and-release.md) | 版本与发版策略：三包锁步、只到 tag 与 CHANGELOG | Accepted | 2026-11-22 |
+| [0014](./0014-governance-gates.md) | 治理门禁：自写提交规范与变更日志生成 | Accepted | 2026-11-20 |
 
 ## 仍未决策
 
