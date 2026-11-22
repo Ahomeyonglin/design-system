@@ -4,7 +4,7 @@ import { matchRoute, routeTitle } from '../src/router.ts';
 
 const IDS = ['Badge', 'Button', 'Card', 'Text', 'TextField'];
 
-test('九条路由可直接解析', () => {
+test('十条路由可直接解析', () => {
   assert.equal(matchRoute('/', '/', IDS).name, 'overview');
   assert.equal(matchRoute('/color', '/', IDS).name, 'color');
   assert.equal(matchRoute('/type', '/', IDS).name, 'type');
@@ -13,6 +13,7 @@ test('九条路由可直接解析', () => {
   assert.equal(matchRoute('/components', '/', IDS).name, 'components');
   assert.equal(matchRoute('/changelog', '/', IDS).name, 'changelog');
   assert.equal(matchRoute('/examples/project-settings', '/', IDS).name, 'example-project-settings');
+  assert.equal(matchRoute('/examples/branch-transfer', '/', IDS).name, 'example-branch-transfer');
   assert.deepEqual(matchRoute('/components/button', '/', IDS), {
     name: 'component-detail',
     params: { id: 'Button' },

@@ -124,7 +124,7 @@
 
 | 问题 | 处理 |
 | --- | --- |
-| `@ahomeyonglin` scope 是否已在 npm 注册 | 首次发布前由用户确认；未注册则先创建账号或组织 |
-| 包 license 未定 | 两包暂时保留 `private: true` 作为硬保险；确认许可后移除再发布 |
+| `@ahomeyonglin` scope 是否已在 npm 注册 | 已确认：npm 用户名为 `ahomeyonglin`，`NPM_TOKEN` 已写入仓库 secret |
+| 包 license 未定 | 已定：MIT；`LICENSE` 已加入根目录与两个包，`private: true` 已移除 |
 | `NPM_TOKEN` 由谁提供 | 用户生成 granular token 并写入仓库 secret |
 | 是否加 `--provenance` | 本规格不做，等发布流程稳定后再评估 |

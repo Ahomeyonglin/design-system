@@ -42,7 +42,7 @@ pnpm install
 ## 分发
 
 - 发布包：`@ahomeyonglin/tokens`、`@ahomeyonglin/ui`；`@ahomeyonglin/docs` 保持 private。
-- 当前 license 未定，`tokens` 与 `ui` 暂时保留 `private: true` 作为发布保险；确认许可后移除再发版。
+- 两个发布包采用 MIT 许可，`LICENSE` 随包发布。
 - 发版：`pnpm release:prepare <patch|minor|major>` → 全量校验 → 提交 → 打 `v*` tag → 推送。
 - 发布由 `.github/workflows/publish.yml` 在 tag 推送时执行，顺序 tokens → ui，已存在版本跳过。
 - 下游须自行引入 tokens 的 CSS，顺序为 `theme-light.css` → `theme-dark.css` → `brand-*.css`。

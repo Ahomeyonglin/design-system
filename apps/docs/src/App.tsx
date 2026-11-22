@@ -15,6 +15,7 @@ import ComponentsPage from './sections/ComponentsPage';
 import ComponentDetailPage from './sections/ComponentDetailPage';
 import ChangelogPage from './sections/ChangelogPage';
 import ProjectSettingsPage from './examples/ProjectSettingsPage';
+import BranchTransferPage from './examples/BranchTransferPage';
 import './styles/layout.css';
 
 const manifest = manifestFile as BrandManifest;
@@ -242,6 +243,8 @@ export default function App() {
         return <ChangelogPage />;
       case 'example-project-settings':
         return <ProjectSettingsPage />;
+      case 'example-branch-transfer':
+        return <BranchTransferPage />;
       default:
         return (
           <div className="not-found">
