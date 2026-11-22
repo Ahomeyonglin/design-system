@@ -29,7 +29,7 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 
 **S3（文档站与页面组装）已完成并上线**：九条路由与外壳、总览 / 排版 / 间距与圆角 / 主题与品牌 / 组件地图与详情 / 变更记录、全局搜索、文档站 lint、`page-assembly` skill 与项目设置样板页、GitHub Pages 部署；线上地址 <https://ahomeyonglin.github.io/design-system/>。
 
-**S4 治理进行中，本阶段只做 CI 门禁与变更日志自动生成**：提交标题校验、`[Unreleased]` 生成与过期检查、token 引用方向、生成物入库检查、带 `base` 构建；规格见 `specs/2026-11-20-governance/`。
+**S4 治理进行中**：第一部分（CI 门禁与变更日志自动生成）与第二部分（semver 与发版规则）已完成，剩余跨仓升级 PR。规格见 `specs/2026-11-20-governance/` 与 `specs/2026-11-22-semver-and-release/`。
 
 因此：
 
@@ -54,6 +54,8 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 | `pnpm commit:check [range]` | 校验提交标题，默认最近一条 | 可用 |
 | `pnpm changelog:write` | 从 git 提交生成 `[Unreleased]` | 可用 |
 | `pnpm changelog:check` | 校验 `[Unreleased]` 是否过期 | 可用 |
+| `pnpm release:prepare <patch\|minor\|major>` | 归档版本、同步四个 `version` | 可用 |
+| `pnpm release:check` | 校验版本、tag 与日志版本区块一致 | 可用 |
 
 ## 5. 硬规则
 
@@ -68,6 +70,8 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 7. **不为未来预留抽象**：不要加「以后可能用到」的参数、配置项或空实现。
 8. **`CHANGELOG.md` 的 `[Unreleased]` 禁止手改**：只能由 `pnpm changelog:write` 生成，`--check` 在 CI 中拦截过期。
 9. **提交标题必须符合 `type(scope): 描述`**：type 与 scope 取值见 `specs/2026-11-20-governance/requirements.md`；允许中文描述。
+10. **版本号只能由 `pnpm release:prepare` 修改**：根与三个包锁步同版本，禁止手改 `version` 或手写版本区块。
+11. **破坏性改名必须先走 `$deprecated`**：token 改名/删除至少保留旧名一个 `minor`；判定清单见 `specs/2026-11-22-semver-and-release/requirements.md`。
 
 ## 6. 改动的连带责任
 

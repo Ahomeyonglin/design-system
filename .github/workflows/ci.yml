@@ -40,6 +40,9 @@ jobs:
       - name: Check changelog freshness
         run: pnpm changelog:check
 
+      - name: Check release state
+        run: pnpm release:check
+
       - name: Build tokens
         run: pnpm --filter @ds/tokens build
 
