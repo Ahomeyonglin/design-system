@@ -1,0 +1,29 @@
+{
+  "semantic": {
+    "$description": "zhixing 品牌在暗色主题下的语义颜色覆盖：只调整主操作，让品牌蓝在白字下保持足够对比。",
+    "color": {
+      "$type": "color",
+      "$description": "暗色下 zhixing 的语义颜色覆盖，全部为 alias。",
+      "action": {
+        "primary": {
+          "bg": {
+            "$value": "{raw.color.brand.400}",
+            "$description": "暗色主操作背景：品牌 500 在暗底对比不足，改用 400。"
+          },
+          "bg-hover": {
+            "$value": "{raw.color.brand.500}",
+            "$description": "暗色主操作悬停背景：沿加深方向回到品牌 500。"
+          },
+          "border": {
+            "$value": "{raw.color.brand.400}",
+            "$description": "暗色主操作边框：与背景同色。"
+          },
+          "border-hover": {
+            "$value": "{raw.color.brand.500}",
+            "$description": "暗色主操作悬停边框：与悬停背景同色。"
+          }
+        }
+      }
+    }
+  }
+}

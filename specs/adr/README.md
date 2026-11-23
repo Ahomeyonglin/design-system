@@ -28,6 +28,8 @@
 | [0013](./0013-versioning-and-release.md) | 版本与发版策略：三包锁步、只到 tag 与 CHANGELOG | Accepted | 2026-11-22 |
 | [0014](./0014-governance-gates.md) | 治理门禁：自写提交规范与变更日志生成 | Accepted | 2026-11-20 |
 | [0015](./0015-public-npm-distribution.md) | 分发方式：公共 npm 与构建产物 | Accepted | 2026-11-22 |
+| [0016](./0016-zhixing-brand-color.md) | 第二个品牌 zhixing 与暗色阶 | Accepted | 2026-11-23 |
+| [0017](./0017-brand-theme-overrides.md) | 品牌级主题语义覆盖 | Accepted | 2026-11-23 |
 
 ## 仍未决策
 

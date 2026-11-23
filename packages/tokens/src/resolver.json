@@ -20,7 +20,8 @@
     },
     "brand": {
       "contexts": {
-        "base": [{ "$ref": "./brands/base.tokens.json" }]
+        "base": [{ "$ref": "./brands/base.tokens.json" }],
+        "zhixing": [{ "$ref": "./brands/zhixing.tokens.json" }]
       },
       "default": "base"
     }

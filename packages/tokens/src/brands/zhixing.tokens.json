@@ -1,0 +1,55 @@
+{
+  "raw": {
+    "$description": "品牌 zhixing 的原始色阶覆盖：按同名路径完整覆盖 raw.color.brand.*。",
+    "color": {
+      "$type": "color",
+      "brand": {
+        "$description": "zhixing 品牌色阶，锚点为 500，色相固定 259.59°，必须提供 50–950 全部级别。",
+        "50": {
+          "$value": { "colorSpace": "oklch", "components": [0.96, 0.018, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 50。"
+        },
+        "100": {
+          "$value": { "colorSpace": "oklch", "components": [0.895, 0.042, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 100。"
+        },
+        "200": {
+          "$value": { "colorSpace": "oklch", "components": [0.79, 0.075, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 200。"
+        },
+        "300": {
+          "$value": { "colorSpace": "oklch", "components": [0.65, 0.105, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 300。"
+        },
+        "400": {
+          "$value": { "colorSpace": "oklch", "components": [0.5, 0.128, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 400，暗色主题主操作背景锚点。"
+        },
+        "500": {
+          "$value": { "colorSpace": "oklch", "components": [0.3734, 0.1126, 259.5882], "alpha": 1 },
+          "$description": "品牌基色，主操作背景锚点。"
+        },
+        "600": {
+          "$value": { "colorSpace": "oklch", "components": [0.315, 0.104, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 600。"
+        },
+        "700": {
+          "$value": { "colorSpace": "oklch", "components": [0.26, 0.09, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 700。"
+        },
+        "800": {
+          "$value": { "colorSpace": "oklch", "components": [0.21, 0.073, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 800。"
+        },
+        "900": {
+          "$value": { "colorSpace": "oklch", "components": [0.16, 0.055, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 900。"
+        },
+        "950": {
+          "$value": { "colorSpace": "oklch", "components": [0.115, 0.039, 259.59], "alpha": 1 },
+          "$description": "品牌色阶 950。"
+        }
+      }
+    }
+  }
+}

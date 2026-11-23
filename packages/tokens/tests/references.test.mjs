@@ -27,6 +27,9 @@ function walk(dir) {
 function layerOf(file) {
   const name = basename(file);
   const segments = file.split('/');
+  if (name.endsWith('.dark.tokens.json')) {
+    return 'semantic';
+  }
   if (name === 'raw.tokens.json' || segments.includes('brands')) {
     return 'raw';
   }

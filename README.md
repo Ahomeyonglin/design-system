@@ -45,9 +45,9 @@ pnpm install
 - 两个发布包采用 MIT 许可，`LICENSE` 随包发布。
 - 发版：`pnpm release:prepare <patch|minor|major>` → 全量校验 → 提交 → 打 `v*` tag → 推送。
 - 发布由 `.github/workflows/publish.yml` 在 tag 推送时执行，顺序 tokens → ui，已存在版本跳过。
-- 下游须自行引入 tokens 的 CSS，顺序为 `theme-light.css` → `theme-dark.css` → `brand-*.css`。
+- 下游须自行引入 tokens 的 CSS（建议顺序 `theme-light.css` → `theme-dark.css` → `brand-*.css`）；生成物位于 `@layer tokens.theme` / `tokens.brand`，层级由层保证，加载顺序不影响结果。
 - 决策记录见 `specs/adr/0015-public-npm-distribution.md`。
 
 ## 当前状态
 
-S4（治理）进行中：CI 门禁、semver 与发版、token 弃用门禁与公共 npm 分发已完成，剩余跨仓升级 PR。规格见 `specs/` 下对应日期目录。
+S4（治理）进行中：CI 门禁、semver 与发版、token 弃用门禁与公共 npm 分发已完成，剩余跨仓升级 PR。第二品牌 `zhixing`（#183E7B）已接入，暗色下按品牌覆盖主操作语义色。规格见 `specs/` 下对应日期目录。

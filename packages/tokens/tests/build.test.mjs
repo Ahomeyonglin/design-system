@@ -104,8 +104,10 @@ test('V2 色域：产物中所有颜色均在 sRGB 内', () => {
 });
 
 test('V4/V16/V17/V18 产物数量、分层与非颜色产物', () => {
+  const dist = readJson(join(distDir, 'tokens.json'));
   const cssFiles = readdirSync(distDir).filter((file) => file.endsWith('.css'));
-  assert.equal(cssFiles.length, 3, `CSS 文件数量应为 3，实际 ${cssFiles.join(', ')}`);
+  const expectedCss = dist.themes.length + dist.brands.length;
+  assert.equal(cssFiles.length, expectedCss, `CSS 文件数量应为 ${expectedCss}，实际 ${cssFiles.join(', ')}`);
 
   const themeCss = readFileSync(join(distDir, 'theme-light.css'), 'utf8');
   assert.match(themeCss, /--raw-/, '主题 CSS 缺少 --raw-*');
@@ -113,12 +115,33 @@ test('V4/V16/V17/V18 产物数量、分层与非颜色产物', () => {
   assert.match(themeCss, /--semantic-space-inline-sm/, '主题 CSS 缺少语义间距');
   assert.match(themeCss, /--semantic-radius-control/, '主题 CSS 缺少语义圆角');
   assert.match(themeCss, /--semantic-text-body-md-font-size/, '主题 CSS 缺少语义排版');
+  assert.match(themeCss, /@layer tokens\.theme, tokens\.brand;/, '主题 CSS 缺少层级顺序声明');
+  assert.match(themeCss, /@layer tokens\.theme \{/, '主题 CSS 未放入 tokens.theme 层');
 
   const brandCss = readFileSync(join(distDir, 'brand-base.css'), 'utf8');
   assert.match(brandCss, /--raw-color-brand-500/, '品牌 CSS 缺少品牌色阶');
   assert.doesNotMatch(brandCss, /--semantic-/, '品牌 CSS 不应包含语义变量');
+  assert.match(brandCss, /@layer tokens\.brand \{/, '品牌 CSS 未放入 tokens.brand 层');
 
-  const dist = readJson(join(distDir, 'tokens.json'));
+  const zhixingCss = readFileSync(join(distDir, 'brand-zhixing.css'), 'utf8');
+  assert.match(zhixingCss, /\[data-brand="zhixing"\]/, 'zhixing 品牌 CSS 缺少品牌选择器');
+  assert.match(
+    zhixingCss,
+    /\[data-theme="dark"\]\[data-brand="zhixing"\]/,
+    'zhixing 品牌 CSS 缺少暗色主题覆盖块',
+  );
+  assert.match(
+    zhixingCss,
+    /--semantic-color-action-primary-bg:\s*var\(--raw-color-brand-400\)/,
+    'zhixing 暗色主操作背景应引用品牌 400',
+  );
+  assert.match(
+    zhixingCss,
+    /--semantic-color-action-primary-bg-hover:\s*var\(--raw-color-brand-500\)/,
+    'zhixing 暗色主操作悬停背景应引用品牌 500',
+  );
+  assert.doesNotMatch(zhixingCss, /--semantic-color-bg-page/, '品牌 CSS 不应输出无关语义变量');
+
   const badLayers = [];
   for (const [combo, tokens] of Object.entries(dist.combinations)) {
     for (const id of Object.keys(tokens)) {

@@ -1,4 +1,4 @@
-import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from '@terrazzo/parser';
@@ -50,6 +50,77 @@ const brands = [...new Set(permutations.map((input) => input.brand))];
 const combinations = Object.fromEntries(
   permutations.map((input) => [`${input.theme}/${input.brand}`, resolver.apply(input)]),
 );
+
+/** 品牌 → 主题 → 覆盖源 token（用于品牌 CSS 输出 alias 引用） */
+const overrideSources = {};
+
+for (const [brand, config] of Object.entries(manifest.brands)) {
+  for (const [theme, file] of Object.entries(config.overrides ?? {})) {
+    if (!config.themes.includes(theme)) {
+      throw new Error(`品牌 ${brand} 的 overrides 主题 ${theme} 未在 manifest themes 中声明`);
+    }
+    const combinationId = `${theme}/${brand}`;
+    const target = combinations[combinationId];
+    if (!target) {
+      throw new Error(`品牌 ${brand} 的 overrides 组合 ${combinationId} 不存在`);
+    }
+    const overridePath = join(srcDir, file);
+    if (!existsSync(overridePath)) {
+      throw new Error(`品牌 ${brand} 的 overrides 文件不存在：${file}`);
+    }
+
+    const entries = [];
+    collectOverrideTokens(JSON.parse(readFileSync(overridePath, 'utf8')), '', undefined, entries);
+    if (entries.length === 0) {
+      throw new Error(`品牌 ${brand} 的 overrides 文件 ${file} 没有任何 token`);
+    }
+
+    const sourceTokens = {};
+    for (const { id, type, token } of entries) {
+      if (!id.startsWith('semantic.')) {
+        throw new Error(`${file} 的 ${id} 不在 semantic 层，品牌主题覆盖只允许 semantic token`);
+      }
+      if (!type) {
+        throw new Error(`${file} 的 ${id} 缺少 $type`);
+      }
+      if (type === 'typography') {
+        throw new Error(`${file} 的 ${id} 是复合 typography，请改为调整其组成 token`);
+      }
+      if (typeof token.$description !== 'string' || token.$description.trim() === '') {
+        throw new Error(`${file} 的 ${id} 缺少非空 $description`);
+      }
+      if (!(id in target)) {
+        throw new Error(`${file} 的 ${id} 在 ${combinationId} 中不存在，覆盖只允许重映射已有 token`);
+      }
+      if (target[id].$type !== type) {
+        throw new Error(`${file} 的 ${id} 的 $type ${type} 与目标 ${target[id].$type} 不一致`);
+      }
+
+      const match = typeof token.$value === 'string' ? token.$value.match(/^\{([\w.-]+)\}$/) : null;
+      if (!match) {
+        throw new Error(`${file} 的 ${id} 只允许 alias，覆盖用于重映射而不是写新值`);
+      }
+      if (!(match[1] in target)) {
+        throw new Error(`${file} 的 ${id} 引用的 ${match[1]} 在 ${combinationId} 中不存在`);
+      }
+      if (target[match[1]].$type !== type) {
+        throw new Error(
+          `${file} 的 ${id} 引用的 ${match[1]} 类型为 ${target[match[1]].$type}，与 ${type} 不一致`,
+        );
+      }
+
+      target[id] = {
+        ...target[id],
+        $value: target[match[1]].$value,
+        $description: token.$description,
+      };
+      sourceTokens[id] = token;
+    }
+
+    overrideSources[brand] ??= {};
+    overrideSources[brand][theme] = sourceTokens;
+  }
+}
 
 for (const [combinationId, tokens] of Object.entries(combinations)) {
   for (const [id, token] of Object.entries(tokens)) {
@@ -181,6 +252,28 @@ function sortedIds(tokens, layer) {
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 }
 
+function sortedKeys(tokens) {
+  return Object.keys(tokens).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+}
+
+/** 收集品牌主题覆盖文件中的叶子 token，携带从父级继承的 $type */
+function collectOverrideTokens(node, path, inheritedType, out) {
+  if (!node || typeof node !== 'object' || Array.isArray(node)) {
+    return;
+  }
+  if ('$value' in node) {
+    out.push({ id: path, type: inheritedType, token: node });
+    return;
+  }
+  const type = node.$type ?? inheritedType;
+  for (const [key, child] of Object.entries(node)) {
+    if (key.startsWith('$')) {
+      continue;
+    }
+    collectOverrideTokens(child, path ? `${path}.${key}` : key, type, out);
+  }
+}
+
 function block(selector, lines, indent = '') {
   const indentedSelector = selector.replaceAll('\n', `\n${indent}`);
   const body = lines
@@ -189,19 +282,36 @@ function block(selector, lines, indent = '') {
   return `${indent}${indentedSelector} {\n${body}\n${indent}}`;
 }
 
+/** 用级联层包裹一段 CSS，保证层级顺序不依赖选择器特异性与文件加载顺序 */
+function wrapLayer(name, css, indent = '') {
+  const body = css
+    .split('\n')
+    .map((line) => (line === '' ? '' : `${indent}  ${line}`))
+    .join('\n');
+  return `${indent}@layer ${name} {\n${body}\n${indent}}`;
+}
+
+const LAYER_ORDER = '@layer tokens.theme, tokens.brand;';
+
 const header = [
   '/* 生成物，禁止手改。由 packages/tokens/scripts/build.mjs 产出。 */',
-  '/* 加载顺序：theme-light.css → theme-dark.css → brand-*.css。 */',
+  '/* 层级顺序由 @layer tokens.theme → tokens.brand 保证，文件加载顺序不影响结果。 */',
 ].join('\n');
 
 rmSync(distDir, { recursive: true, force: true });
 mkdirSync(distDir, { recursive: true });
 
+/** 主题 CSS 以 manifest 声明的第一个品牌为基准，品牌级覆盖只进 brand-*.css */
+const themeBrand = Object.keys(manifest.brands)[0];
+
 for (const theme of themes) {
-  const combinationId = `${theme}/${brands[0]}`;
+  const combinationId = `${theme}/${themeBrand}`;
   const resolved = combinations[combinationId];
+  if (!resolved) {
+    throw new Error(`主题 CSS 的基准品牌 ${themeBrand} 缺少 ${theme} 组合`);
+  }
   const unresolved = resolver.apply(
-    { theme, brand: brands[0] },
+    { theme, brand: themeBrand },
     { resolveAliases: false },
   );
 
@@ -217,9 +327,7 @@ for (const theme of themes) {
     .map((id) => `${cssVar(id)}: ${colorToOklch(resolved[id].$value)};`);
 
   const selector = theme === 'light' ? ':root,\n[data-theme="light"]' : `[data-theme="${theme}"]`;
-  const css = [
-    header,
-    '',
+  const body = [
     block(selector, [
       '/* raw */',
       ...rawLines,
@@ -234,8 +342,9 @@ for (const theme of themes) {
       ...colorOverrides,
     ], '  '),
     '}',
-    '',
   ].join('\n');
+
+  const css = [header, '', LAYER_ORDER, '', wrapLayer('tokens.theme', body), ''].join('\n');
 
   writeFileSync(join(distDir, `theme-${theme}.css`), css);
 }
@@ -248,16 +357,24 @@ for (const brand of brands) {
   const overrides = brandIds.map((id) => `${cssVar(id)}: ${colorToOklch(resolved[id].$value)};`);
   const selector = `[data-brand="${brand}"]`;
 
-  const css = [
-    header,
-    '',
+  const parts = [
     block(selector, ['/* 品牌色阶覆盖 */', ...lines]),
     '',
     '@supports (color: oklch(0 0 0)) {',
     block(selector, [...overrides], '  '),
     '}',
-    '',
-  ].join('\n');
+  ];
+
+  for (const [overrideTheme, sourceTokens] of Object.entries(overrideSources[brand] ?? {})) {
+    const ids = sortedKeys(sourceTokens);
+    const overrideLines = ids.flatMap((id) =>
+      declarations(id, sourceTokens[id], { honorAliases: true }),
+    );
+    const overrideSelector = `[data-theme="${overrideTheme}"][data-brand="${brand}"]`;
+    parts.push('', block(overrideSelector, ['/* 品牌主题语义覆盖 */', ...overrideLines]));
+  }
+
+  const css = [header, '', LAYER_ORDER, '', wrapLayer('tokens.brand', parts.join('\n')), ''].join('\n');
 
   writeFileSync(join(distDir, `brand-${brand}.css`), css);
 }

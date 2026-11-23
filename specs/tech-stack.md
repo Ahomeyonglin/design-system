@@ -77,9 +77,11 @@ default/
 - 两个 modifier：`theme`（light / dark）、`brand`（每品牌一套完整色阶）。
 - `brand` 用相同路径覆盖 `raw.*`；`theme` 用相同路径覆盖 `semantic.*`；两者都不改名。
 - `theme` 只写 alias 重映射，不写字面量颜色；字面量只在 `brand` 层出现。
-- CSS 输出 `2 + N` 份（N = 品牌数）。
+- 品牌可在 manifest 中声明 `overrides`，按主题覆盖已存在的 `semantic.*` token：只允许 alias、`$type` 必填且与目标一致、必须带非空 `$description`；支持非复合类型，复合 typography 改为调整组成 token。
+- CSS 输出 `2 + N` 份（N = 品牌数）。生成物放入 `@layer tokens.theme` / `tokens.brand`，品牌层固定高于主题层；主题 CSS 以 manifest 首个品牌为基准，品牌覆盖只写入 `brand-*.css`，不进入 `theme-*.css`。
 - 品牌必须提供完整色阶，不允许只覆盖部分级别。
-- 品牌基色为 `#CE1B6C` → `oklch(0.5592 0.2131 1.33)`，锚定 `raw.color.brand.500`（见 [ADR-0012](./adr/0012-brand-color-change.md)）。
+- `base` 品牌基色为 `#CE1B6C` → `oklch(0.5592 0.2131 1.33)`，锚定 `raw.color.brand.500`（见 [ADR-0012](./adr/0012-brand-color-change.md)）。
+- `zhixing` 品牌基色为 `#183E7B` → `oklch(0.3734 0.1126 259.5882)`；暗色下 `action.primary` 的 `bg`/`border` 使用品牌 400、`bg-hover`/`border-hover` 使用品牌 500（见 [ADR-0016](./adr/0016-zhixing-brand-color.md)、[ADR-0017](./adr/0017-brand-theme-overrides.md)）。
 - 由 manifest 声明支持矩阵；品牌不支持暗色时强制 light 并禁用切换 UI。
 
 ## 4. 组件层（packages/ui）
