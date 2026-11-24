@@ -60,7 +60,7 @@ description: 在 @ahomeyonglin/ui 中新增或修改组件时使用。规定检�
 | 依赖 token 增删 | meta 的 `tokens` | 非破坏性，但需确认 token 真实存在 |
 | 仅样式内部调整 | 无 | 非破坏性 |
 
-破坏性变更不自行决定：先与使用者确认，再按 semver 处理；本阶段不发布 npm，仍需在提交说明中标出。
+破坏性变更不自行决定：先与使用者确认，再按 `specs/2026-11-22-semver-and-release/requirements.md` 判定并在提交说明中标出。两个包已公开发布，新增或修改组件必须发版，下游才能拿到。
 
 ## 5. 禁止
 

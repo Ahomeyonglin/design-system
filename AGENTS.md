@@ -76,6 +76,7 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 11. **破坏性改名必须先走 `$deprecated`**：token 改名/删除至少保留旧名一个 `minor`；判定清单见 `specs/2026-11-22-semver-and-release/requirements.md`。
 12. **发布只由 `v*` tag 触发**：本地不执行 `npm publish`；包名、产物形态与分发方式见 `specs/adr/0015-public-npm-distribution.md`。
 13. **品牌按主题改语义 token 只能走 manifest `overrides`**：只允许 `semantic.*` 已有 token、alias 与非空 `$description`，`$type` 须与目标一致（typography 除外）；不得直接改 `themes/*.tokens.json` 或写新值。
+14. **易变事实只写一处**：包名、版本、发布状态、文档站 URL 只在 `AGENTS.md` §3 与对应规格中定义；`README.md`、`.trae/skills/` 只引用不复述。发版前必须审计这些副本。
 
 ## 6. 改动的连带责任
 
@@ -88,7 +89,8 @@ specs/             宪法、功能规格与 ADR（决策记录见 specs/adr/READ
 | 删除 token | 确认最近 `v*` tag 中该 token 已带 `$deprecated`，否则移除门禁测试失败 |
 | 品牌色阶 / `overrides` | 重新构建 + 更新快照；确认 `brand-*.css` 与文档站 `main.tsx` 引入同步 |
 | 组件实现 | 重新生成 `registry.json` 并一并提交；发布前跑 `ui build` 确认产物 |
-| 组件 props / 变体 | 同步 `component.meta.json` 与 `AGENTS.md` 中的用法说明 |
+| 组件 props / 变体 | 同步 `component.meta.json`；用法属于 `registry.json` 与 meta，不写进 `AGENTS.md` |
+| 阶段状态 / 包名 / 发布方式 / 文档站 URL | 审计 `README.md`、`specs/roadmap.md` 与 `.trae/skills/` 中的相关陈述；易变事实只在一处定义，其余引用 |
 
 ## 7. 工作方式
 

@@ -2,7 +2,7 @@
 
 > 包名说明：文中 `@ds/*` 为当时的包名，已于 2026-11-22 改为 `@ahomeyonglin/*`（见 [ADR-0015](../adr/0015-public-npm-distribution.md)）。照抄命令时请替换包名。
 
-> 阶段：S2 · 状态：待评审（v0.1）· 创建 2026-11-19
+> 阶段：S2 · 状态：已完成 · 创建 2026-11-19
 > 上游约束：`specs/mission.md`、`specs/tech-stack.md`、`specs/roadmap.md`
 
 ## 1. 问题
