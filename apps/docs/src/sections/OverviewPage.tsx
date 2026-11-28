@@ -1,5 +1,4 @@
 import manifestFile from '../../../../packages/tokens/src/brands/manifest.json';
-import { changelogMarkdown, latestChanges } from '../lib/changelog';
 import { components, registry } from '../lib/registry';
 import {
   getCombination,
@@ -26,14 +25,12 @@ const ENTRIES = [
   { path: '/color', title: '颜色', description: '语义色的用途分组与原始色阶。' },
   { path: '/components', title: '组件地图', description: '由 registry 渲染的真实组件与状态。' },
   { path: '/themes', title: '主题与品牌', description: '支持矩阵与浅深色差异清单。' },
-  { path: '/changelog', title: '变更记录', description: '仓库根 CHANGELOG 的直接呈现。' },
 ];
 
 export default function OverviewPage({ theme, brand }: OverviewPageProps) {
   const combination = getCombination(theme, brand);
   const counts = tokenCounts(combination);
   const brands = manifestBrands(manifest);
-  const changes = latestChanges(changelogMarkdown, 3);
 
   return (
     <div className="overview">
@@ -126,20 +123,6 @@ export default function OverviewPage({ theme, brand }: OverviewPageProps) {
               ))}
             </tbody>
           </table>
-        </div>
-      </section>
-
-      <section className="docs-section" aria-labelledby="recent">
-        <h2 id="recent">最近变更</h2>
-        <div className="docs-panel">
-          <ul className="overview__changes">
-            {changes.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className="overview__more">
-            <a href={hrefFor('/changelog', { theme, brand })}>查看完整变更记录</a>
-          </p>
         </div>
       </section>
 

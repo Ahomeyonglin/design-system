@@ -33,7 +33,7 @@ export function buildSearchIndex(
   registryComponents: RegistryComponent[],
   state: { theme: Theme; brand: string },
 ): SearchEntry[] {
-  const pages: SearchEntry[] = PAGES.map((page) => ({
+  const pages: SearchEntry[] = PAGES.filter((page) => !page.hidden).map((page) => ({
     group: 'page',
     id: page.path,
     title: page.title,

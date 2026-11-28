@@ -59,21 +59,6 @@
   background: var(--semantic-color-status-danger-bg);
 }
 
-.overview__changes {
-  display: grid;
-  gap: var(--semantic-space-stack-sm);
-  margin: 0;
-  padding-left: var(--semantic-space-inset-lg);
-  color: var(--semantic-color-text-secondary);
-  font-size: var(--semantic-text-body-sm-font-size);
-  line-height: var(--semantic-text-body-sm-line-height);
-}
-
-.overview__more {
-  margin-top: var(--semantic-space-stack-md);
-  font-size: var(--semantic-text-body-sm-font-size);
-}
-
 .overview__entries {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--docs-preview-min), 1fr));

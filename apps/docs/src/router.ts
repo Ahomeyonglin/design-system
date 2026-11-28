@@ -19,6 +19,7 @@ export interface PageLink {
   name: Exclude<RouteName, 'component-detail' | 'not-found'>;
   path: string;
   title: string;
+  hidden?: boolean;
 }
 
 export const PAGES: PageLink[] = [
@@ -28,7 +29,7 @@ export const PAGES: PageLink[] = [
   { name: 'space', path: '/space', title: '间距与圆角' },
   { name: 'themes', path: '/themes', title: '主题与品牌' },
   { name: 'components', path: '/components', title: '组件地图' },
-  { name: 'changelog', path: '/changelog', title: '变更记录' },
+  { name: 'changelog', path: '/changelog', title: '变更记录', hidden: true },
   { name: 'example-project-settings', path: '/examples/project-settings', title: '项目设置样板' },
 ];
 

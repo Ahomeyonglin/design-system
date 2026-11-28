@@ -25,7 +25,7 @@ export function Sidebar({ route, theme, brand }: SidebarProps) {
 
       <nav className="docs-nav" aria-label="主导航">
         <ul>
-          {PAGES.map((page) => {
+          {PAGES.filter((page) => !page.hidden).map((page) => {
             const active = isActive(route, page.name);
             return (
               <li key={page.path}>
