@@ -8,7 +8,6 @@ export type RouteName =
   | 'component-detail'
   | 'changelog'
   | 'example-project-settings'
-  | 'example-branch-transfer'
   | 'not-found';
 
 export interface RouteMatch {
@@ -31,7 +30,6 @@ export const PAGES: PageLink[] = [
   { name: 'components', path: '/components', title: '组件地图' },
   { name: 'changelog', path: '/changelog', title: '变更记录' },
   { name: 'example-project-settings', path: '/examples/project-settings', title: '项目设置样板' },
-  { name: 'example-branch-transfer', path: '/examples/branch-transfer', title: '分行转账样板' },
 ];
 
 const STATIC_ROUTES: Record<string, RouteName> = {
@@ -43,7 +41,6 @@ const STATIC_ROUTES: Record<string, RouteName> = {
   '/components': 'components',
   '/changelog': 'changelog',
   '/examples/project-settings': 'example-project-settings',
-  '/examples/branch-transfer': 'example-branch-transfer',
 };
 
 export function normalizeBase(base: string): string {
